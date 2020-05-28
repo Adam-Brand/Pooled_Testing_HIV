@@ -1,3 +1,27 @@
+#==============================================================================
+# FILENAME: data_gen.R
+# PROJECT: 	Pooled testing in HIV
+# PURPOSE: generate simulated dataset for pooled testing method evaluation 
+#          the data are simulated to follow the VL distribution in Uganda
+# AUTHOR: Adam Brand
+
+
+# OUTPUT: 4 datasets
+#         - dataset for method evaluation with SD=1.0
+#         - dataset for method evaluation with SD=0
+#         - simulated training set with SD=1.0
+#         - simulated training set with SD=0
+
+# R VERSION: 3.6.1
+#==============================================================================
+#Notes: 
+
+
+
+
+
+# =============================== END OF FILE  ===============================
+
 ##### Data generation program AB 2020-03-03
 ##### Testing
 library(shiny)

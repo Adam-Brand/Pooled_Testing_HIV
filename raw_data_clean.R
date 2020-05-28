@@ -1,18 +1,16 @@
-####testing
-
 #==============================================================================
 # FILENAME: raw_data_clean.R
-# PROJECT: 	AB Project 4
-# PURPOSE: clean and add derived variables to the raw Uganda data from file Z:\KI_Project_4\Data\data_uganda\Raw_data_version1_2396
-# AUTHOR: AB
+# PROJECT: 	Pooled testing in HIV
+# PURPOSE: clean and add derived variables to the raw Uganda data 
+# AUTHOR: Adam Brand
 
 # CREATED:	20200224
 # UPDATED: 	
 
-# INPUT DATA: raw data form Uganda HIV clinic - Z:\KI_Project_4\Data\data_uganda\Raw_data_version1_2396				
-# OUTPUT: output dataset - Z:\KI_Project_4\Data\data_uganda\Clean_data\Clean_data2020-03-06	
+# INPUT DATA: raw data form Uganda HIV clinic 			
+# OUTPUT: output dataset Clean_data2020-03-06	
 
-# R VERSION: 
+# R VERSION: 3.6.1
 #==============================================================================
 #Notes: 
 
@@ -21,15 +19,17 @@
 
 
 # =============================== END OF FILE  ===============================
-#### Uganda data cleaning program AB 2020-02-10
 
-#### reading and reformatting the raw data from Uganda
+
+#### adding relevant libraries
 library(lubridate)
 library(ggplot2)
 library(dplyr)
-#setwd("C:/Users/adabra/Dropbox/KI_Project_4/Data/data_uganda")
+
+#### set working directory to location with data
 setwd("C:/Users/Barny/Dropbox/KI_Project_4/Data/data_uganda")
-#setwd("C:/Users/Barny/Documents/KI_project_4/data_uganda")
+
+### reading in raw data csv file
 raw <- read.csv("Raw_data_version1_2396.csv", header=T)
 
 #### checking the names of all variables in the raw data
@@ -41,6 +41,7 @@ sapply(raw, class)
 ### checking for duplicate study_id numbers
 length(unique(raw$study_id))
 length(unique(raw$study_id)) == nrow(raw)
+
 
 ### writing a function to reutrn number of NAs if numeric and number of missing if factor
 miss <- function(x){
@@ -106,7 +107,7 @@ levels(as.factor(mydata$basewho))
 #### looking at a summary of baseline VL values
 summary(mydata$basevl)
 length(which(mydata$basevl==-1)) # 80 subjects has undetectable VL at baseline
-length(which(mydata$basevl< 1000 )) # 121 subjects have VL below 1000
+length(which(mydata$basevl< 1000 )) # 121 subjects have VL below 1000 at baseline
 
 ### creating variables for age categories
 mydata$age16 <- ifelse(mydata$ageyrs<=16,1,0)
@@ -126,8 +127,10 @@ mydata$basewho <- as.factor(mydata$basewho)
 
 ### creating variables for log10 viral load
 
+#setting lower limit of detection
 lowdet <- 50
 
+## if HIV VL is < 0, it indicates below LLD, so setting the VL to the LLD
 for (i in 1:length(mydata$basevl)) {
   if (is.na(mydata$basevl[i])) {mydata$basvllog[i]=NA} 
   else if (mydata$basevl[i]<=0) {mydata$basvllog[i]=log10(lowdet)}
@@ -214,6 +217,7 @@ for (i in 1:nrow(mydata)){
   else if (!is.na(mydata$basevl[i])) {mydata$base_supp[i]=0}
   else {mydata$base_supp[i]=NA}
 }
+
 # checking the code
 sum(mydata$basevl, na.rm=T)
 summary(mydata$base_supp) # 6.22% suppressed at baseline
@@ -337,7 +341,7 @@ summary(mydata$mth72_supp)
 summary(mydata$vl_mth72)
 
 
-##### deriving variable, earlysupp which is the earliest date the subject had their VL suppressed
+##### deriving variable earlysupp which is the earliest date the subject had their VL suppressed
 for (i in 1:nrow(mydata)){
     if (!is.na(mydata$base_supp[i]) & mydata$base_supp[i]==1 & !is.na(mydata$cd4basedate[i])) {mydata$earlysupp[i]=mydata$cd4basedate[i]}
     else if (!is.na(mydata$mth6_supp[i]) & mydata$mth6_supp[i]==1 & !is.na(mydata$visitdate6[i])) {mydata$earlysupp[i]=mydata$visitdate6[i]}
@@ -354,11 +358,13 @@ for (i in 1:nrow(mydata)){
     else if (!is.na(mydata$mth72_supp[i]) & mydata$mth72_supp[i]==1 & !is.na(mydata$visitdate72[i])) {mydata$earlysupp[i]=mydata$visitdate72[i]}
     else {NA}
 }
+
 ##### converting the format of earlysupp to Date format
 mydata$earlysupp <- as.Date(mydata$earlysupp, origin)
 
-#### creating the previous failure variable
 
+#### creating the previous failure variable which is the earliest date after their first suppresion
+#### that they failed treatment, i.e., VL >= 1000
 mydata$fail <- as.numeric(NA)
 mydata$earlyfaildt <- as.Date(NA)
 
@@ -415,13 +421,17 @@ for (i in 1:length(mydata$study_id)){
 
 
 ##### End of cleaning and derivation code; this writes the dataset to a csv file
-#setwd("C:/Users/adabra/Dropbox/KI_Project_4/Data/data_uganda/Clean_data")
-setwd("C:/Users/Barny/Dropbox/KI_Project_4/Data/data_uganda/Clean_data")
-write.csv2(mydata, paste0("Clean_data", format(Sys.time(),"%Y-%m-%d"), ".csv"))
+
+##set working directory to location to write clean_data, and uncomment below line
+setwd("")
+#write.csv2(mydata, paste0("Clean_data", format(Sys.time(),"%Y-%m-%d"), ".csv"))
 
 
 
 ##### creating frequency distributions of VL levels ommitting baseline
+##### this code is intended to visualize the distribution of VLs post-baseline
+##### none of these are variables in the dataset, the visualization is used to
+##### get an idea of how to simulate VLs like those seen in practice
 
 ## putting all post-baseline VL measures into one dataset
 
@@ -479,22 +489,22 @@ sum(VLdata$VL >= 500)/length(VLdata$VL)
 
 summary(VLdata$VL10)
 
-# #making a histogram of post-baseline VL values on log10 scale
-# hist(VLdata$VL10,
-#      main="Distribution of Uganda VLs",
-#      xlab="Log 10 Viral Load",
-#      breaks=25,
-#      prob=TRUE)
-# 
-# lines(density(VLdata$VL10))
-# 
-# hist(log10(check),
-#      main="Distribution of simulated VLs",
-#      xlab="Log 10 Viral Load",
-#      breaks=25,
-#      prob=TRUE)
-# 
-# lines(density(log10(check)))
+#making a histogram of post-baseline VL values on log10 scale
+hist(VLdata$VL10,
+     main="Distribution of Uganda VLs",
+     xlab="Log 10 Viral Load",
+     breaks=25,
+     prob=TRUE)
+
+lines(density(VLdata$VL10))
+
+hist(log10(check),
+     main="Distribution of simulated VLs",
+     xlab="Log 10 Viral Load",
+     breaks=25,
+     prob=TRUE)
+
+lines(density(log10(check)))
 
 
 

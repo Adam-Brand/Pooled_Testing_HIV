@@ -1,8 +1,8 @@
 #==============================================================================
-# FILENAME: testing_set.R
-# PROJECT: 	AB Project 4
-# PURPOSE: derive the testing set from the Uganda data 
-# AUTHOR: AB
+# FILENAME: test_set.R
+# PROJECT: 	Pooled testing HIV
+# PURPOSE: derive the testing set from clean_data
+# AUTHOR: Adam Brand
 
 # CREATED:	20200302
 # UPDATED: 	
@@ -21,8 +21,9 @@
 #
 #
 # =============================== END OF FILE  ===============================
-#setwd("C:/Users/adabra/Dropbox/KI_Project_4/Programs")
-setwd("C:/Users/Barny/Dropbox/KI_Project_4/Programs")
+### set working directory to the location of the test_set.R program; location
+### should also have the raw_data_clean.R program
+setwd("")
 source("raw_data_clean.R")
 library(tidyverse)
 library(broom)
@@ -1438,8 +1439,8 @@ test.data2 <- select(test.data, study_id, sex, male, female, ageyrs,  age16, age
                       basecd4, bascd4log, basevl, basvllog, lastVL, lastVLlog,
                       lastVL_t, enroll_t, vl, vllog, fail_draw, dub_fail, lastVLcat, label)
 
-
-write.table(test.data2, paste0("test_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
+# set working directory to location you want to write the dataset and uncomment below line
+# write.table(test.data2, paste0("test_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
 
 
 
