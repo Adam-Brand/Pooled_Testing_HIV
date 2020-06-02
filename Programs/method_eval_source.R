@@ -1,15 +1,17 @@
 #==============================================================================
 # FILENAME: method_eval_source.R
 # PROJECT: 	Pooled testing in HIV
-# PURPOSE: these are all of the functions used for pooled testing method evaluation
+# PURPOSE: The functions used for pooled testing method evaluation
 # AUTHOR: Adam Brand
 
 
 
 # R VERSION: 3.6.1
 #==============================================================================
-#Notes: 
-
+#Notes: not all functions below are used in the paper. Many functions were used
+#       developing methods and ideas, but not all worked well.
+# We kept most functions in this program, but not all are used. 
+# We will note when a function is not needed for results in the paper.
 
 
 
@@ -18,7 +20,9 @@
 
 
 
-# This function simulated viral load values under 500 copies/mL
+# This function simulated viral load values under 500 copies/mL like those seen
+# in prectice in the US
+# NOT USED IN PAPER
 Under500VL <- function(n){
   a <- round(.85*n)
   b <- round(.05*n)
@@ -27,9 +31,9 @@ Under500VL <- function(n){
   return(y)
 }
 
-# responses for over 500 copies/mL
-#### mixed gamma distr.
-
+# VLs for those samples over 500 copies/mL like those seen in practice in the US
+# mixed gamma distribution
+# NOT USED IN PAPER
 Over500VL <- function(n){
   a <- round(.93*n)
   b <- n - a
@@ -39,8 +43,9 @@ Over500VL <- function(n){
 }
 
 
-#### Function which sets the prev of failure based on the prevover500 & the cutoff
-#### minimum cutoff is 50
+# Function which sets the prev of failure based on the prevover500 & the cutoff
+# minimum cutoff is 50
+# NOT USED IN PAPER
 prevfail <- function(prevover500, cutoff){
   if (50 <= cutoff & cutoff < 100){
     prevfail = prevover500 + .10 + .05((100-cutoff)/50)}
@@ -55,7 +60,8 @@ prevfail <- function(prevover500, cutoff){
   return(prevfail)
 }
 
-##### This function sets the prevover500 based on the prev of failure
+# This function sets the prevover500 based on the prev of failure and cutoff
+# NOT USED IN PAPER
 prevover500 <- function(prevfail, cutoff){
   if (50 <= cutoff & cutoff < 100){
     prevover500 = (prevfail - .10 - (.05*(100-cutoff)/50))/(1 - .1 - (.05*(100-cutoff)/50))}
@@ -70,9 +76,9 @@ prevover500 <- function(prevfail, cutoff){
   return(prevover500)
 }
 
-##### Function to create population of HIV patients based on prev over 500
-##### and the cutoff
-
+# Function to create population of HIV patients based on prev over 500
+# and the cutoff. VLs based on those seen in prectice in the US.
+# NOT USED IN PAPER
 createpop <- function(n, prevover500, cutoff, prevfail=FALSE){
   if (prevfail==FALSE){
     prevover500 = prevover500}
@@ -86,7 +92,13 @@ createpop <- function(n, prevover500, cutoff, prevfail=FALSE){
 }
 
 
-#### function which makes one testable matrix from the population
+# Function which makes one testable matrix from the population of VLs.
+# This matrix does not consider predictions of VL. The first n columns in the 
+# returned table are the true VL values, and the next n columns are those VL values 
+# with ME applied (the observed VL values). The rows column is the average of all true
+# VLs in the corresponding row, with ME applied. The cols row is the average of all true
+# VLs in the corresponding column with ME applied. SE in the argument is the SD of ME 
+# on the log 10 scale.
 one.matrix <- function(data, matsize, SE){
   m <- matrix(nrow=matsize, ncol=matsize)
   e <- matrix(nrow=matsize, ncol=matsize)
@@ -108,8 +120,10 @@ one.matrix <- function(data, matsize, SE){
 }
 
 
-#### this zeros out all rows and columns for the true values 
-##   if the row and column totals are less than cutoff/n
+# this zeros out all rows and columns for the true values 
+# if the row and column totals are less than cutoff/n
+# (classifies remaining subjects in a row/column whose updated average VL
+# id less than cutoff/n)
 zerocolrow <- function(y, matsize, cutoff, lowlimit){
   
   ###checks each row to see if its below the cutoff/matsize
@@ -148,7 +162,10 @@ zerocolrow <- function(y, matsize, cutoff, lowlimit){
 }
 
 
-#### this function checks to see if all the elements in a row or column are all zero.  If so, it sets that column or row value to zero
+# this function checks to see if all the elements in a row or column are all zero. 
+# If so, it sets that column or row value to zero.
+# (If all samples are classified in a row/coulmn, this function zeroes out
+# the remaining row/column average). This canhappen due to ME.
 checkrowcol <- function(y, n){
   for (i in 1:n){
     if(sum(y[i,1:n]) == 0){y$rows[i] = 0}
@@ -160,14 +177,15 @@ checkrowcol <- function(y, n){
 }
 
 
-#### This function checks to see if the listed index is in a matrix
-#### returns True or False
-### ind needs to be input as a vector e.g. c(i,j)
+# This function checks to see if the listed index is in a matrix
+# returns True or False
+# ind needs to be input as a vector e.g. c(i,j)
+# This is used to keep track of which samples were already tested
 check.indices <- function(mat, ind){
   any(apply(mat, 1, function(x, want) isTRUE(all.equal(x, want)), ind))
 }
 
-##### changes data frame into vector
+# changes data frame into vector
 df2vec <- function(dataframe, left, right){
   z <- NULL
   y <- NULL
@@ -176,8 +194,8 @@ df2vec <- function(dataframe, left, right){
     z <- c(z,y)}
   return(z)}
 
-#### calculates the prevalences of the original matrix
-#### returns true prev over 500, true prevfail, error prev over 500, error prevfail
+# calculates the prevalences of the original matrix
+# returns true prev over 500, true prevfail, error prev over 500, error prevfail
 prev <- function(x, matsize, cutoff){
   probs = c(.9,.95,.99,1)
   xt <- x[,1:matsize]
@@ -198,10 +216,10 @@ prev <- function(x, matsize, cutoff){
 }
 
 
-#### creates data frame of all possible sums of row and column totals
-### indexed by the ith row and jth column
-### if an element is zero, it stays zero
-### x is a matrix
+# creates data frame of all possible sums of row and column totals
+# indexed by the ith row and jth column
+# if an element is zero, it stays zero
+# the argument x is a testing matrix
 sums <- function(x, matsize){
   s <- matrix(nrow = matsize, ncol = matsize)
   sums <- data.frame(s)
@@ -213,9 +231,10 @@ sums <- function(x, matsize){
   return(sums)
 }
 
-##### function which compares a reduced matrix to the original 
-#### and calculates the sensitivity
-#### this returns prop of true failues we detect, prop of error fails we detect
+# function which compares a reduced matrix to the original 
+# and calculates the sensitivity
+# this returns prop of true failues we detect, prop of error fails we detect
+# z is the original testing matrix, y is the reduced matrix which has been classified
 sens <- function(y, z, matsize, cutoff){
   a <- 0
   b <- 0
@@ -245,8 +264,9 @@ sens <- function(y, z, matsize, cutoff){
   return (result)
 }
 
-### this function sets the accuracy bar for true sensitivity; adjusts
-### for measurement error (with measurement error, true sensitivity may not be 100%)
+# this function sets the accuracy bar for true sensitivity; adjusts
+# for measurement error (with measurement error, true sensitivity may not be 100%)
+# NOT USED IN PAPER
 accuracy <- function(n, prevover500, cutoff, SE, prevfail=FALSE){
   pop <- createpop(n, prevover500, cutoff, prevfail=prevfail)
   poperror <- pop*(10^(rnorm(1, sd=SE)))
@@ -261,11 +281,146 @@ accuracy <- function(n, prevover500, cutoff, SE, prevfail=FALSE){
 
 #################### Star of individual methods ##############################################
 
+### Sums Naive Method
+
+#### This function tests the matrix squares corresponding to the highest row and column totals
+#### making sure not to test the same square twice by zeroing out the tested square
+#### this function returns the reduced matrix with a column for how many tests were conducted
+### the reduced matrix shows which boxes were tested but does not zero out any columns or rows
+### this reduced matrix will be used to compare against the original to compute sensitivity
+### This function also accepts input tstperrd which indicates the number of boxes tested per round
+### It needs the above function, check.indices to work
+# NOT USED IN PAPER
+reduce.mat.naive <- function(x, y, matsize, cutoff, tstperrd){
+  t <- matsize*2
+  xerror=NULL
+  rounds = 1
+  prev <- prev(x, matsize, cutoff)
+  #### creates data frame of all possible sums of row and column totals
+  ### indexed by the ith row and jth column
+  sums <- sums(x,matsize)
+  ### This checks which row and column are the highest not yet tested, until all rows and columns are below cutoff/n
+  while (max(x$cols) > cutoff/matsize & max(x$rows) > cutoff/matsize){
+    ### changes tstperrd when we close to the end of testing
+    tstperrd <- min(tstperrd, max(length(x$rows[x$rows>0]), length(x$cols[x$cols>0])))
+    z <- NULL
+    xerror <- NULL
+    ### order sums from highest to lowest value
+    z <- head(order(sums, decreasing=TRUE))
+    ### creates a matrix to track the current indices for this round
+    d <- matrix(nrow=0, ncol=2)
+    ### picks the tstperrd highest sums totals and extracts their coordinates
+    for (n in 1:tstperrd){
+      j <- ceiling(z[n]/matsize)
+      if (z[n] %% 10 == 0){i <- 10}
+      else{i <- z[n] %% 10}
+      ### extracts the error value for the coordinate and divides by the matsize
+      xerror[n] <- (x[[i,(matsize+j)]])/matsize
+      ### adds current coords to matrix d
+      d <- rbind(d, c(i,j))
+      ### zeros out the corresponding sums box to make sure it isn't tested again
+      sums[i,j] = 0}
+    ### this loop takes all of our error values from the previous round of testing
+    ### subtracts the appropriate amount from each row and column, zeros out that element
+    ### for both the true and error value for matrix x, and only zeros out the true value in matrix y 
+    for (m in 1:tstperrd){
+      a <- d[m,1]
+      x$rows[a] <- x$rows[a] - xerror[m]
+      b <- d[m,2]
+      x$cols[b] <- x$cols[b] - xerror[m]
+      x[[a,(matsize+b)]] = 0
+      x[[a,b]] = 0
+      y[[a,b]] = 0}
+    #### number of rounds of testing needed, includes the 2 to start
+    rounds = rounds+1
+    #### zeros out the column or row total and all corresponding elements if 
+    ### row/column total < cutoff/matsize
+    x <- zerocolrow(x,matsize,cutoff)
+    ### this tests whether all elements in a row or column have been tested
+    #### if so, it zeros out the row/column total
+    x <- checkrowcol(x,matsize)
+    sums <- sums(x,matsize)
+    t <- t + tstperrd}
+  return (data.frame(cbind(y,t, rounds, prev[1], prev[2], prev[3], prev[4],
+                           prev[5], prev[6], prev[7], prev[8], prev[9], prev[10],
+                           prev[11], prev[12])))
+}
+
+#### This function takes a random matrix and returns the number of tests conducted
+### as well as the true and error sensitivity
+# NOT USED IN PAPER
+test.one.naive <- function(pop, matsize, cutoff, SE, tstperrd){
+  ## creates a matrix of random entries from the population
+  x <- one.matrix(pop, matsize, SE)
+  ## 2 exact copies of the original matrix with rows and cols columns
+  y <- x
+  z <- x
+  ## returns a matrix with zero'ed out boxes which were tested and 
+  ## number of tests as the last column (matsize + 3)
+  y <- reduce.mat.naive(x, y, matsize, cutoff, tstperrd)
+  t <- y[[1, (matsize*2 +3)]]
+  rounds <- y[[1, (matsize*2 +4)]]
+  sense <- sens(y, z, matsize, cutoff)
+  tprev500 <- y[[1, (matsize*2 +5)]]
+  tprevfail <- y[[1, (matsize*2 +6)]]
+  eprev500 <- y[[1, (matsize*2 +7)]]
+  eprevfail <- y[[1, (matsize*2 +8)]]
+  tq90 <- y[[1, (matsize*2 +9)]]
+  tq95 <- y[[1, (matsize*2 +10)]]
+  tq99 <- y[[1, (matsize*2 +11)]]
+  tq1 <- y[[1, (matsize*2 +12)]]
+  eq90 <- y[[1, (matsize*2 +13)]]
+  eq95 <- y[[1, (matsize*2 +14)]]
+  eq99 <- y[[1, (matsize*2 +15)]]
+  eq1 <- y[[1, (matsize*2 +16)]]
+  return(c(sense,t, rounds, tprev500, tprevfail, eprev500, eprevfail, tq90, tq95, tq99, tq1,
+           eq90, eq95, eq99, eq1))  
+}
+
+### This function runs the matrix algorithm on an entire population
+### and returns mean true sens., mean error sens., and mean number of tests
+### If prevfail is TRUE, the value entered into as prevover500 is converted to the prevfail based on cutoff
+# NOT USED IN PAPER
+mat.alg.naive <- function(reps, matsize, prevover500, cutoff, SE, tstperrd, prevfail=FALSE){
+  ### creates the population based on prevover500 and testing reps
+  pop <- createpop((reps*(matsize^2)*2), prevover500, cutoff, prevfail)
+  y <- NULL
+  for (i in 1:reps){
+    pop1 <- sample(pop,matsize^2,replace=FALSE)
+    pop <- pop[! pop %in% pop1]
+    z <- test.one.naive(pop1, matsize, cutoff, SE, tstperrd)
+    y <- cbind(y,z)}
+  true.sens <- mean(y[1,], na.rm=TRUE)
+  error.sens <- mean(y[2], na.rm=TRUE)
+  trials <- mean(y[3,])
+  rel.eff <- 1 - (trials/(matsize^2))
+  rounds <- mean(y[4,])
+  tprev500 <- mean(y[5,])
+  tprevfail <- mean(y[6,])
+  eprev500 <- mean(y[7,])
+  eprevfail <- mean(y[8,])
+  tq90 <- mean(y[9,])
+  tq95 <- mean(y[10,])
+  tq99 <- mean(y[11,])
+  tq1 <- mean(y[12,])
+  eq90 <- mean(y[13,])
+  eq95 <- mean(y[14,])
+  eq99 <- mean(y[15,])
+  eq1 <- mean(y[16,])
+  return(c(true.sens, error.sens, trials, rel.eff, rounds, tprev500, tprevfail, eprev500, eprevfail,
+           tq90, tq95, tq99, tq1, eq90, eq95, eq99, eq1))
+}
 
 
+### SOE Method
+# NOT USED IN PAPER
 
-#### this function takes a one.matrix and adjusts
-### the row and column values so that the sum of rows = sum of cols
+#### The main idea is to try to test based on minimizing the number of failures, without covariates
+
+# this function takes a one.matrix and adjusts
+# the row and column values so that the sum of rows = sum of cols
+# needed due to ME
+# x is a testing matrix
 soe.matrix <- function(x, matsize){
   tot <- (sum(x$rows) + sum(x$cols))/2
   rowdif <- (tot - sum(x$rows))/sum(x$rows)
@@ -275,6 +430,372 @@ soe.matrix <- function(x, matsize){
   return(x) 
 }
 
+#### This solves an soe matrix without using weights
+# NOT USED IN PAPER
+solve.soe.orig <- function(z, matsize, lowlimit){
+  ## fixed is a matrix which tracks the indices of boxes already solved
+  fixed <- matrix(nrow=0, ncol=2)
+  #### adds all zeroed out boxes to 'fixed' unless they're already there
+  for (i in 1:matsize){
+    for (j in 1:matsize){
+      if (z[i,j] == 0){
+        if (check.indices(fixed, c(i, j))){}
+        else {fixed <- rbind(fixed, c(i,j))}
+      }
+      else {}
+    }
+  }
+  
+  while (length(fixed[,1]) < (matsize^2)){
+    ### tracks how many boxes were 'zeroed' on a given interation
+    num.boxes.zero <- 0
+    for (i in 1:matsize){
+      a <- 0
+      b <- 0
+      for(j in 1:matsize){
+        if (check.indices(fixed, c(i, j))){
+          a <- a +1
+        }
+        if (check.indices(fixed, c(j, i))){
+          b <- b +1
+        }
+      }
+      if (a == matsize){
+        z$rows[i] <- 0
+      }
+      if (b == matsize){
+        z$cols[i] <- 0
+      }
+    }
+    ### get sindices for max col and row
+    order.rows <- order(z$rows, decreasing=TRUE)
+    order.cols <- order(z$cols, decreasing=TRUE)
+    i <- which.max(z$rows)
+    j <- which.max(z$cols)
+    if (check.indices(fixed, c(i,j))){
+      if ((max(z$rows)) > (max(z$cols))){
+        counter <- 2
+        while (check.indices(fixed, c(i,j))){
+          j <- order.cols[counter]
+          counter <- counter + 1
+        }
+      }
+      else{
+        counter <- 2
+        while (check.indices(fixed, c(i,j))){
+          i <- order.rows[counter]
+          counter <- counter + 1
+        }
+      }
+    }
+    
+    if (z$rows[i] > z$cols[j]){
+      
+      num <- z$cols[j]
+      for (k in 1:matsize){
+        ### This ensures we don't zero a box we've already fixed in our solution
+        if(check.indices(fixed, c(k, j))){}
+        else{
+          ### this zeros out all the boxes not fixed in the col
+          z[k, j] = lowlimit
+          ### tracks number of boxes zeroed
+          num.boxes.zero <- num.boxes.zero + 1
+          ### alters each row total by our lower VL limit/matsize for each box zeroed
+          z$rows[k] <- z$rows[k] - lowlimit/matsize
+          fixed <- rbind(fixed, c(k, j))}
+      }
+      
+      box.num <- (num*matsize) - (lowlimit*(num.boxes.zero - 1))
+      #### applies our solution VL number to the appropriate box
+      z[i, j]= box.num
+      ##### also zeros out the corresponding 'error values' (Probably not relevant)
+      z[[i,(matsize+j)]] = 0
+      #### zeros out the col total
+      z$cols[j] <- 0
+      ### subtracts the num from the row total and adds back in lowlimit/count.rowz that was subtracted earlier
+      z$rows[i] <- z$rows[i] - (box.num/matsize) + lowlimit/matsize
+      
+    }
+    
+    else{
+      num <- z$rows[i]
+      for (k in 1:matsize){
+        ### This ensures we don't zero a box we've already fixed in our solution
+        if(check.indices(fixed, c(i, k))){}
+        else{
+          ### this zeros out all the boxes not fixed in the col
+          z[i, k] = lowlimit
+          ### tracks number of boxes zeroed
+          num.boxes.zero <- num.boxes.zero + 1
+          ### alters each row total by our lower VL limit/matsize for each box zeroed
+          z$cols[k] <- z$cols[k] - lowlimit/matsize
+          fixed <- rbind(fixed, c(i, k))}
+      }
+      
+      box.num <- (num*matsize) - (lowlimit*(num.boxes.zero - 1))
+      #### applies our solution VL number to the appropriate box
+      z[i, j]= box.num
+      ##### also zeros out the corresponding 'error values' (Probably not relevant)
+      z[[i,(matsize+j)]] = 0
+      #### zeros out the col total
+      z$rows[i] <- 0
+      ### subtracts the num from the row total and adds back in lowlimit/count.rowz that was subtracted earlier
+      z$cols[j] <- z$cols[j] - (box.num/matsize) + lowlimit/matsize
+      
+    } 
+  }
+  return(z)
+}
+
+## tests one matrix using the SOE method
+# NOT USED IN PAPER
+reduce.mat.soe <- function(x, y, matsize, cutoff, lowlimit){
+  ## tracks number of trials
+  t <- matsize*2
+  # tracks number of rounds
+  rounds <- 1
+  prev <- prev(x, matsize, cutoff)
+  check <- matrix(nrow=0, ncol=2)
+  x <- zerocolrow(x, matsize, cutoff, lowlimit)
+  
+  while (max(x$cols) > cutoff/matsize & max(x$rows) > cutoff/matsize){
+    # alters original matrix rows and cols for the soe method
+    z <- soe.matrix(x)
+    d <- matrix(nrow=0, ncol=2)
+    xerror = NULL
+    ## Loop which picks the boxes to be tested
+    z <- solve.soe.orig(z, matsize, lowlimit)
+    
+    ### start of our code to test VL values
+    #### extracts only our solution matrix used to decide which boxes to test
+    testmat <- data.frame(z[,1:matsize])
+    ### tracks number of boxes > 0 in our solution (testable boxes)
+    over.limit <- testmat[testmat>cutoff]
+    index <- NULL
+    # loops over the number of tests this round where max tests in number in our solution
+    for (k in 1:length(over.limit)){
+      ## extracts the list coordinates of the highest box and converts to matrix coords
+      index <- head(order(testmat, decreasing=TRUE))
+      ### this code converst the list coordinates into matrix coords
+      j <- ceiling(index[1]/matsize)
+      if (index[1] %% matsize == 0){i <- matsize}
+      else{i <- index[1] %% matsize}
+      ### zeros our our testmat box to ensure we do not test twice
+      testmat[i,j] <- 0
+      ### diagnostic code, keeps running total of all boxes checked
+      check <- rbind(check, c(i,j))
+      ### extracts the error value for the coordinate and divides by the matsize
+      xerror <- (x[[i,(matsize+j)]])/matsize
+      x$rows[i] <- x$rows[i] - xerror
+      x$cols[j] <- x$cols[j] - xerror
+      x[[i,(matsize+j)]] = 0
+      x[[i,j]] = 0
+      y[[i,j]] = 0}
+    #### number of rounds of testing needed, includes the 2 to start
+    rounds = rounds+1
+    #### zeros out the column or row total and all corresponding elements if 
+    ### row/column total < cutoff/matsize
+    x <- zerocolrow(x,matsize,cutoff, lowlimit)
+    ### this tests whether all elements in a row or column have been tested
+    #### if so, it zeros out the row/column total
+    x <- checkrowcol(x,matsize)
+    t <- t + length(over.limit)}
+  
+  return (data.frame(cbind(y,t, rounds, prev[1], prev[2], prev[3], prev[4],
+                           prev[5], prev[6], prev[7], prev[8], prev[9], prev[10],
+                           prev[11], prev[12])))
+}
+
+#### This function takes a random matrix and returns the number of tests conducted
+### as well as the true and error sensitivity
+# NOT USED IN PAPER
+test.one.soe <- function(pop, matsize, cutoff, SE, lowlimit=0){
+  ## creates a matrix of random entries from the population
+  x <- one.matrix(pop, matsize, SE)
+  ## 2 exact copies of the original matrix with rows and cols columns
+  y <- x
+  z <- x
+  ## returns a matrix with zero'ed out boxes which were tested and 
+  ## number of tests as the last column (matsize + 3)
+  y <- reduce.mat.soe(x, y, matsize, cutoff, lowlimit)
+  t <- y[[1, (matsize*2 +3)]]
+  rounds <- y[[1, (matsize*2 +4)]]
+  x <- sens(y, z, matsize, cutoff)
+  tprev500 <- y[[1, (matsize*2 +5)]]
+  tprevfail <- y[[1, (matsize*2 +6)]]
+  eprev500 <- y[[1, (matsize*2 +7)]]
+  eprevfail <- y[[1, (matsize*2 +8)]]
+  tq90 <- y[[1, (matsize*2 +9)]]
+  tq95 <- y[[1, (matsize*2 +10)]]
+  tq99 <- y[[1, (matsize*2 +11)]]
+  tq1 <- y[[1, (matsize*2 +12)]]
+  eq90 <- y[[1, (matsize*2 +13)]]
+  eq95 <- y[[1, (matsize*2 +14)]]
+  eq99 <- y[[1, (matsize*2 +15)]]
+  eq1 <- y[[1, (matsize*2 +16)]]
+  return(c(x,t, rounds, tprev500, tprevfail, eprev500, eprevfail, tq90, tq95, tq99, tq1,
+           eq90, eq95, eq99, eq1))  
+}
+
+# NOT USED IN PAPER
+mat.alg.soe <- function(reps, matsize, prevover500, cutoff, SE, prevfail=FALSE, lowlimit){
+  ### creates the population based on prevover500 and testing reps
+  pop <- createpop((reps*(matsize^2)*2), prevover500, cutoff, prevfail)
+  y <- NULL
+  for (i in 1:reps){
+    pop1 <- sample(pop,matsize^2,replace=FALSE)
+    pop <- pop[! pop %in% pop1]
+    z <- test.one.soe(pop1, matsize, cutoff, SE, lowlimit)
+    y <- cbind(y,z)}
+  true.sens <- mean(y[1,], na.rm=TRUE)
+  error.sens <- mean(y[2,], na.rm=TRUE)
+  trials <- mean(y[3,])
+  rel.eff <- 1 - (trials/(matsize^2))
+  rounds <- mean(y[4,])
+  tprev500 <- mean(y[5,])
+  tprevfail <- mean(y[6,])
+  eprev500 <- mean(y[7,])
+  eprevfail <- mean(y[8,])
+  tq90 <- mean(y[9,])
+  tq95 <- mean(y[10,])
+  tq99 <- mean(y[11,])
+  tq1 <- mean(y[12,])
+  eq90 <- mean(y[13,])
+  eq95 <- mean(y[14,])
+  eq99 <- mean(y[15,])
+  eq1 <- mean(y[16,])
+  return(c(true.sens=true.sens, error.sens, trials, rel.eff, rounds, tprev500, tprevfail, eprev500, eprevfail,
+           tq90, tq95, tq99, tq1, eq90, eq95, eq99, eq1))
+}
+
+### SOE with Limit
+# NOT USED IN PAPER
+
+### This is a version of SOE approach which the user can limit the max tests per round
+
+### altered reduce mat to incorporate number of tests per round
+# NOT USED IN PAPER
+reduce.mat.soe.lim <- function(x, y, matsize, cutoff, lowlimit, tstperd){
+  ## tracks number of trials
+  t <- matsize*2
+  # tracks number of rounds
+  rounds <- 1
+  prev <- prev(x, matsize, cutoff)
+  check <- matrix(nrow=0, ncol=2)
+  x <- zerocolrow(x,matsize,cutoff, lowlimit)
+  
+  while (max(x$cols) > cutoff/matsize & max(x$rows) > cutoff/matsize){
+    # alters original matrix rows and cols for the soe method
+    z <- soe.matrix(x)
+    d <- matrix(nrow=0, ncol=2)
+    xerror = NULL
+    ## Loop which picks the boxes to be tested
+    z <- solve.soe.orig(z, matsize, lowlimit)
+    
+    ### start of our code to test VL values
+    #### extracts only our solution matrix used to decide which boxes to test
+    testmat <- data.frame(z[,1:matsize])
+    ### tracks number of boxes > 0 in our solution (testable boxes)
+    over.limit <- length(testmat[testmat>cutoff])
+    tstperd <- min(tstperd, over.limit)
+    index <- NULL
+    # loops over the number of tests this round where max tests in number in our solution
+    for (k in 1:tstperd){
+      ## extracts the list coordinates of the highest box and converts to matrix coords
+      index <- order(testmat, decreasing=TRUE)
+      ### this code converst the list coordinates into matrix coords
+      j <- ceiling(index[1]/matsize)
+      if (index[1] %% 10 == 0){i <- 10}
+      else{i <- index[1] %% 10}
+      ### zeros our our testmat box to ensure we do not test twice
+      testmat[i,j] <- 0
+      ### diagnostic code, keeps running total of all boxes checked
+      check <- rbind(check, c(i,j))
+      ### extracts the error value for the coordinate and divides by the matsize
+      xerror <- (x[[i,(matsize+j)]])/matsize
+      x$rows[i] <- x$rows[i] - xerror
+      x$cols[j] <- x$cols[j] - xerror
+      x[[i,(matsize+j)]] = 0
+      x[[i,j]] = 0
+      y[[i,j]] = 0}
+    #### number of rounds of testing needed, includes the 2 to start
+    rounds = rounds+1
+    #### zeros out the column or row total and all corresponding elements if 
+    ### row/column total < cutoff/matsize
+    x <- zerocolrow(x,matsize,cutoff, lowlimit)
+    ### this tests whether all elements in a row or column have been tested
+    #### if so, it zeros out the row/column total
+    x <- checkrowcol(x,matsize)
+    t <- t + min(tstperd, length(over.limit))}
+  
+  return (data.frame(cbind(y,t, rounds, prev[1], prev[2], prev[3], prev[4],
+                           prev[5], prev[6], prev[7], prev[8], prev[9], prev[10],
+                           prev[11], prev[12])))
+}
+
+#### This function takes a random matrix and returns the number of tests conducted
+### as well as the true and error sensitivity
+# NOT USED IN PAPER
+test.one.soe.lim <- function(pop, matsize, cutoff, SE, lowlimit=0, tstperd){
+  ## creates a matrix of random entries from the population
+  x <- one.matrix(pop, matsize, SE)
+  ## 2 exact copies of the original matrix with rows and cols columns
+  y <- x
+  z <- x
+  ## returns a matrix with zero'ed out boxes which were tested and 
+  ## number of tests as the last column (matsize + 3)
+  y <- reduce.mat.soe.lim(x, y, matsize, cutoff, lowlimit, tstperd)
+  t <- y[[1, (matsize*2 +3)]]
+  rounds <- y[[1, (matsize*2 +4)]]
+  x <- sens(y, z, matsize, cutoff)
+  tprev500 <- y[[1, (matsize*2 +5)]]
+  tprevfail <- y[[1, (matsize*2 +6)]]
+  eprev500 <- y[[1, (matsize*2 +7)]]
+  eprevfail <- y[[1, (matsize*2 +8)]]
+  tq90 <- y[[1, (matsize*2 +9)]]
+  tq95 <- y[[1, (matsize*2 +10)]]
+  tq99 <- y[[1, (matsize*2 +11)]]
+  tq1 <- y[[1, (matsize*2 +12)]]
+  eq90 <- y[[1, (matsize*2 +13)]]
+  eq95 <- y[[1, (matsize*2 +14)]]
+  eq99 <- y[[1, (matsize*2 +15)]]
+  eq1 <- y[[1, (matsize*2 +16)]]
+  return(c(x,t, rounds, tprev500, tprevfail, eprev500, eprevfail, tq90, tq95, tq99, tq1,
+           eq90, eq95, eq99, eq1))  
+}
+
+# NOT USED IN PAPER
+mat.alg.soe.lim <- function(reps, matsize, prevover500, cutoff, SE, tstperd, prevfail=FALSE, lowlimit){
+  ### creates the population based on prevover500 and testing reps
+  pop <- createpop((reps*(matsize^2)*2), prevover500, cutoff, prevfail)
+  y <- NULL
+  for (i in 1:reps){
+    pop1 <- sample(pop,matsize^2,replace=FALSE)
+    pop <- pop[! pop %in% pop1]
+    z <- test.one.soe.lim(pop1, matsize, cutoff, SE, lowlimit, tstperd)
+    y <- cbind(y,z)}
+  true.sens <- mean(y[1,], na.rm=TRUE)
+  error.sens <- mean(y[2,], na.rm=TRUE)
+  trials <- mean(y[3,])
+  rel.eff <- 1 - (trials/(matsize^2))
+  rounds <- mean(y[4,])
+  tprev500 <- mean(y[5,])
+  tprevfail <- mean(y[6,])
+  eprev500 <- mean(y[7,])
+  eprevfail <- mean(y[8,])
+  tq90 <- mean(y[9,])
+  tq95 <- mean(y[10,])
+  tq99 <- mean(y[11,])
+  tq1 <- mean(y[12,])
+  eq90 <- mean(y[13,])
+  eq95 <- mean(y[14,])
+  eq99 <- mean(y[15,])
+  eq1 <- mean(y[16,])
+  return(c(true.sens=true.sens, error.sens, trials, rel.eff, rounds, tprev500, tprevfail, eprev500, eprevfail,
+           tq90, tq95, tq99, tq1, eq90, eq95, eq99, eq1))
+}
+
+
 
 ##### Introduction to Covariates ####
 
@@ -282,6 +803,7 @@ soe.matrix <- function(x, matsize){
 ##### it then generates x-values following the model x = log10(y) + error
 ##### it returns the std dev of the error term which most closely estimates the 
 ##### desired correlation
+# NOT USED IN PAPER
 true.corr <- function(pop, corr, b0, b1){
   popx <- NULL
   z <- seq(from = .01, to = 2.0, by = .01)
@@ -296,12 +818,15 @@ true.corr <- function(pop, corr, b0, b1){
 }
 
 #### replicates true.corr to get a better estimate
+# NOT USED IN PAPER
 true.corr.est <- function(pop, corr, b0, b1, reps){
   y <- NULL
   y <- replicate(reps, true.corr(pop, corr, b0, b1))
   return(round(mean(y))/100)
 }
 
+# this function fills in a matrix based on the predicted VLs. It puts the highest 
+# predicted VLs along the center diagonal
 diag.mat.fill <- function(VLdata, matsize){
   m <- matrix(nrow=matsize, ncol=matsize)
   t <- 0
@@ -323,6 +848,10 @@ diag.mat.fill <- function(VLdata, matsize){
       t <- t+1}}
   return(m)}
 
+# this function randomly fills in a matrix, i.e., does not use the predictions
+# for creating a matrix. Thi method was used for all the results in the paper.
+# We still need to keep track of the VLs to match with the actual VLs, which
+# this function also does.
 rnd.mat.fill <- function(data, matsize, SE, Uganda=FALSE){
   m <- matrix(nrow=matsize, ncol=matsize)
 #  e <- matrix(nrow=matsize, ncol=matsize)
@@ -347,7 +876,7 @@ if (Uganda==FALSE){
 }
 
 
-
+# fills in the matrix putting the highest VLs in the top, left corner
 corner.mat.fill <- function(data, matsize, SE){
   m <- matrix(nrow=matsize, ncol=matsize)
 #  e <- matrix(nrow=matsize, ncol=matsize)
@@ -378,6 +907,7 @@ corner.mat.fill <- function(data, matsize, SE){
   return(x)
 }
 
+# creates a matrix by putting the highest predicted VLs along the 1st row
 row.mat.fill <- function(VLdata, matsize){
   m <- matrix(nrow=matsize, ncol=matsize)
   for (i in 1:matsize){
@@ -387,6 +917,7 @@ row.mat.fill <- function(VLdata, matsize){
   return(m)
 }
 
+# creates a matrix by putting the highest predicted VLs along the borders
 border.mat.fill <- function(VLdata, matsize){
   m <- matrix(nrow=matsize, ncol=matsize)
   z <- matsize
@@ -411,14 +942,15 @@ border.mat.fill <- function(VLdata, matsize){
   return(m)
 }
 
-#### this matrix builder can build a matrix based on a covariate with given correlation
-#### to VL levels using different methods. Ordering and filling of the matrices is
-### based solely off of the randomly generated covariate values with given correlation
-## filltype's are: rnd - doesn't use covariate values
+## this function creates a matrix for methods which use predictions depending
+## on the user-defined matrix fill types, and keeps track of the predictions
+## filltype's are: 
+## rnd - random
 ## diag - puts highest values on largest diagonals
 ## corner - puts highest values in top left corner
 ## row - puts highest values in lowest row number from left to right
 ## border - puts highest values around the border (2 outer borders only)
+## All results in the paper are based on the random fill type (rnd)
 one.cov.matrix <- function(data, matsize, SE, filltype, Uganda=FALSE){
   
   if (filltype=="rnd"){
@@ -640,6 +1172,114 @@ test.one.smt <- function(data, matsize, cutoff, SE, tstperd, lowlimit, Uganda=FA
   return(result) 
 }
 
+
+### This function runs the matrix algorithm on an entire population
+### and returns mean true sens., mean error sens., and mean number of tests
+### If prevfail is TRUE, the value entered into as prevover500 is converted to the prevfail based on cutoff
+# NOT USED IN PAPER
+mat.alg.smt <- function(reps, matsize, prevover500, cutoff, SE, tstperd, prevfail=FALSE, lowlimit){
+  ### creates the population based on prevover500 and testing reps
+  pop <- createpop((reps*(matsize^2)*2), prevover500, cutoff, prevfail)
+  y <- NULL
+  for (i in 1:reps){
+    pop1 <- sample(pop,matsize^2,replace=FALSE)
+    pop <- pop[! pop %in% pop1]
+    z <- test.one.smt(pop1, matsize, cutoff, SE, tstperd, lowlimit)
+    y <- cbind(y,z)}
+  true.sens <- mean(y[1,], na.rm=TRUE)
+  error.sens <- mean(y[2,], na.rm=TRUE)
+  trials <- mean(y[3,])
+  rel.eff <- 1 - (trials/(matsize^2))
+  rounds <- mean(y[4,])
+  tprev500 <- mean(y[5,])
+  tprevfail <- mean(y[6,])
+  eprev500 <- mean(y[7,])
+  eprevfail <- mean(y[8,])
+  tq90 <- mean(y[9,])
+  tq95 <- mean(y[10,])
+  tq99 <- mean(y[11,])
+  tq1 <- mean(y[12,])
+  eq90 <- mean(y[13,])
+  eq95 <- mean(y[14,])
+  eq99 <- mean(y[15,])
+  eq1 <- mean(y[16,])
+  return(c(true.sens=true.sens, error.sens, trials, rel.eff, rounds, tprev500, tprevfail, eprev500, eprevfail,
+           tq90, tq95, tq99, tq1, eq90, eq95, eq99, eq1))
+}
+
+
+#### creates a matrix of guessed VL values based on the model
+#### 10g10(VL) = b0 + b1x1 + b2x2 using simulated values for VL, x1 and x2 based on linreg.data
+#### Note: the betas for simulation need not be the same as for our guess
+#### mat passed in SHOULD BE AN SOE MATRIX!!!
+#### prec is the precision in matching actual row and column totals
+#### precrd is the max number of adjustment rounds to emulate the actual values (saves time)
+# NOT USED IN PAPER
+mat.linreg <- function(pop, data, mat, matsize, prec, precrd, b0star, b1star, b2star){
+  guess <- matrix(nrow=matsize, ncol=matsize)
+  rows <- NULL
+  cols <- NULL
+  rowpercent <- matrix(nrow=matsize, ncol=matsize)
+  colpercent <- matrix(nrow=matsize, ncol=matsize)
+  totpercent <- matrix(nrow=matsize, ncol=matsize)
+  for(i in 1:matsize){
+    for (j in 1:matsize){
+      if (mat[i,j]==0){guess[i,j]=0}
+      else{
+        guess[i,j] <- 10^(b0star + b1star*data[match(mat[i,j], data$pop), 2] + 
+                            b2star*data[match(mat[i,j], data$pop), 3])
+      }}}
+  for (i in 1:matsize){
+    rows[i] <- sum(guess[i,])
+    cols[i] <- sum(guess[,i])
+  }
+  for (i in 1:matsize){
+    for (j in 1:matsize){
+      rowpercent[i,j] <- guess[i,j]/rows[i]
+      colpercent[i,j] <- guess[i,j]/cols[j]
+      totpercent[i,j] <- guess[i,j]/sum(guess[,1:matsize])
+    }
+  }
+  for (i in 1:matsize){
+    for (j in 1:matsize){
+      if (guess[i,j]==0){guess[i,j]=0}
+      else{
+        guess[i,j] <- (rowpercent[i,j]*matsize*mat$rows[i] + colpercent[i,j]*matsize*mat$cols[j]
+                       + totpercent[i,j]*matsize*sum(mat$rows))/3
+      }}}
+  for (i in 1:matsize){
+    rows[i] <- sum(guess[i,])/matsize
+    cols[i] <- sum(guess[,i])/matsize
+  }
+  counter <- 1
+  while (counter <= precrd & (max(abs(rows - mat$rows)) > prec | max(abs(cols - mat$cols)) > prec)){
+    
+    for(i in 1:matsize){
+      for(j in 1:matsize){
+        if (guess[i,j]==0){guess[i,j]=0}
+        else{
+          guess[i,j] <- guess[i,j]*(mat$cols[j]/cols[j])}}}
+    
+    for (i in 1:matsize){
+      rows[i] <- sum(guess[i,])/matsize
+      cols[i] <- sum(guess[,i])/matsize
+    }
+    
+    for(i in 1:matsize){
+      for(j in 1:matsize){
+        if (guess[i,j]==0){guess[i,j]=0}
+        else{
+          guess[i,j] <- guess[i,j]*(mat$rows[i]/rows[i])}}}
+    
+    for (i in 1:matsize){
+      rows[i] <- sum(guess[i,])/matsize
+      cols[i] <- sum(guess[,i])/matsize
+    }
+    counter <- counter+1
+  }
+  prec.max <- max(max(abs(rows - mat$rows)), max(abs(cols - mat$cols)))
+  return(data.frame(cbind(guess, prec.max)))
+}
 
 ################ this matrix takes in a testing matrix (can be partially tested)
 ################ and returns an estimated matrix where the predictions are fitted to the observed row and column
@@ -905,12 +1545,132 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
   return(z)
 }
 
-##### This is the linreg soe method.  It is the reverse of the soelinreg method
+###### SOE Linreg
+
+###### Combining SOE and Linreg Methods
+###### solving soe and linreg matrices seperaptely
+###### use linreg to assign weights (weights are zero when VL < measlimit)
+###### multiply weights by SOE guesses
+##### CAUTION, lowlimit must be greater than 0!!!
+# NOT USED IN PAPER
+reduce.mat.soelinreg <- function(pop, data, x, y, matsize, cutoff, tstperd,
+                                 prec, precrd, b0star, b1star, b2star, b3star, lowlimit){
+  ## tracks number of trials
+  t <- matsize*2
+  # tracks number of rounds
+  rounds <- 1
+  prev <- prev(x, matsize, cutoff)
+  prec.max <- NULL
+  check <- matrix(nrow=0, ncol=2)
+  x <- zerocolrow(x,matsize,cutoff, lowlimit)
+  
+  while (max(x$cols) > cutoff/matsize & max(x$rows) > cutoff/matsize){
+    # alters original matrix rows and cols for the soe method
+    z <- soe.matrix(x)
+    linreg.z <- z
+    d <- matrix(nrow=0, ncol=3)
+    xerror = NULL
+    counter <- 1
+    #### this chunk solves the soe matrix and gives the indices and VL value
+    #### for supposed failures
+    ## Loop which picks the boxes to be tested
+    z <- solve.soe.orig(z, matsize, lowlimit)
+    for (i in 1:matsize){
+      for (j in 1:matsize){
+        if (z[i,j] <= 0){}
+        else{
+          d <- rbind(d, c(i,j,z[i,j]))}
+      }
+    }
+    tstperd <- min(tstperd, length(d[,1]))
+    ##### This chunk solves the linreg matrix and assigns weights
+    guess <- mat.linreg2(pop, data, linreg.z, matsize, prec, precrd, b0star, b1star, b2star, b3star)
+    prec.max[counter] <- guess[[1, (matsize+1)]]
+    guess <- data.matrix(guess[, 1:matsize])
+    counter <- counter + 1
+    total <- sum(guess)
+    #### this sets each box below the measurement limit to zero and creates weights
+    for (i in 1:matsize){
+      for (j in 1:matsize){
+        guess[i,j] <- guess[i,j]/total
+      }
+    }
+    ### This multiplies the wieghts by the soe solution VL values
+    for (i in 1:length(d[,1])){
+      d[i,3] <- d[i,3]*guess[d[i,1], d[i,2]]
+    }
+    ### orders our soe solutions based on soe value * linreg weight
+    d <- d[order(d[,3], decreasing = TRUE),]
+    if (is.vector(d)){
+      d <- matrix(d, nrow=1, ncol=3)}
+    else{}
+    for (i in 1:min(length(d[,1]), tstperd)){
+      xerror[i] <- (x[[d[i,1],(matsize+d[i,2])]])/matsize
+      a <- d[i,1]
+      x$rows[a] <- x$rows[a] - xerror[i]
+      b <- d[i,2]
+      x$cols[b] <- x$cols[b] - xerror[i]
+      x[[a,(matsize+b)]] = 0
+      x[[a,b]] = 0
+      y[[a,b]] = 0
+      check <- rbind(check, c(a,b))
+    }
+    #### number of rounds of testing needed, includes the 2 to start
+    rounds = rounds+1
+    #### zeros out the column or row total and all corresponding elements if 
+    ### row/column total < cutoff/matsize
+    x <- zerocolrow(x,matsize,cutoff, lowlimit)
+    ### this tests whether all elements in a row or column have been tested
+    #### if so, it zeros out the row/column total
+    x <- checkrowcol(x,matsize)
+    t <- t + tstperd
+  }
+  prec.maxmax <- max(prec.max)
+  
+  return (data.frame(cbind(y,t, rounds, prev[1], prev[2], prev[3], prev[4],
+                           prev[5], prev[6], prev[7], prev[8], prev[9], prev[10],
+                           prev[11], prev[12], prec.maxmax)))
+}
+
+# NOT USED IN PAPER
+test.one.soelinreg <- function(pop, data, matsize, prec, precrd, b0star, b1star, b2star, b3star,
+                               cutoff, tstperd, SE, lowlimit){
+  
+  ## creates a matrix of random entries from the population
+  x <- one.matrix(pop, matsize, SE)
+  ## 2 exact copies of the original matrix with rows and cols columns
+  y <- x
+  z <- x
+  ## returns a matrix with zero'ed out boxes which were tested and 
+  ## number of tests as the last column (matsize + 3)
+  y <- reduce.mat.soelinreg(pop, data, x, y, matsize, cutoff, tstperd,
+                            prec, precrd, b0star, b1star, b2star, b3star, lowlimit)
+  t <- y[[1, (matsize*2 +3)]]
+  rounds <- y[[1, (matsize*2 +4)]]
+  x <- sens(y, z, matsize, cutoff)
+  tprev500 <- y[[1, (matsize*2 +5)]]
+  tprevfail <- y[[1, (matsize*2 +6)]]
+  eprev500 <- y[[1, (matsize*2 +7)]]
+  eprevfail <- y[[1, (matsize*2 +8)]]
+  tq90 <- y[[1, (matsize*2 +9)]]
+  tq95 <- y[[1, (matsize*2 +10)]]
+  tq99 <- y[[1, (matsize*2 +11)]]
+  tq1 <- y[[1, (matsize*2 +12)]]
+  eq90 <- y[[1, (matsize*2 +13)]]
+  eq95 <- y[[1, (matsize*2 +14)]]
+  eq99 <- y[[1, (matsize*2 +15)]]
+  eq1 <- y[[1, (matsize*2 +16)]]
+  prec.max <- y[[1, (matsize*2 +17)]]
+  return(c(x,t, rounds, tprev500, tprevfail, eprev500, eprevfail, tq90, tq95, tq99, tq1,
+           eq90, eq95, eq99, eq1, prec.max))
+}
+
+
+##### This is the linreg soe method (LRSOE).  It is the reverse of the soelinreg method
 ##### Here we assign weights based on linreg first
 ##### then we solve the soe matrix using those weights to choose solution
 
 ##### SOE Full with Linreg Method w/testing round limit
-
 reduce.mat.linregsoe <- function(data, x, y, guess, matsize, cutoff,
                                  prec, precrd, lowlimit){
   
@@ -1032,6 +1792,128 @@ test.one.linregsoe <- function(data, matsize, prec, precrd,
   return(result)  
 }
 
+##### SOE Full with Linreg Method w/testing round limit
+# NOT USED IN PAPER
+reduce.mat.linregsoe.lim <- function(pop, data, x, y, matsize, cutoff, tstperd,
+                                     prec, precrd, b0star, b1star, b2star, b3star, lowlimit = 0){
+  
+  
+  ## tracks number of trials
+  t <- matsize*2
+  # tracks number of rounds
+  rounds <- 1
+  prev <- prev(x, matsize, cutoff)
+  x <- zerocolrow(x,matsize,cutoff, lowlimit)
+  prec.max <- NULL
+  counter <- 1
+  check <- matrix(nrow=0, ncol=2)
+  
+  while (max(x$cols) > cutoff/matsize & max(x$rows) > cutoff/matsize){
+    # alters original matrix rows and cols for the soe method
+    z <- soe.matrix(x)
+    d <- matrix(nrow=0, ncol=3)
+    xerror = NULL
+    ##### This chunk solves the linreg matrix and assigns weights
+    guess <- mat.linreg2(pop, data, z, matsize, prec, precrd, b0star, b1star, b2star, b3star)
+    ### tracks the distance btwn the guess matrix row/col total and observed values
+    prec.max[counter] <- guess[[1, (matsize+1)]]
+    guess <- data.matrix(guess[, 1:matsize])
+    ### this counter is for prec.max tracking
+    counter <- counter + 1
+    ### sum of all guessed VL values
+    total <- sum(guess)
+    #### this converts VL values to weights and tracks the data in matrix d
+    for (i in 1:matsize){
+      for (j in 1:matsize){
+        guess[i,j] <- guess[i,j]/total
+        d <- rbind(d, c(i,j,guess[i,j]))
+      }
+    }
+    ### this orders matrix d by highest weight first
+    d <- d[order(d[,3], decreasing = TRUE),]
+    ### This code ensures that d is a matrix, even if only 1 row
+    if (is.vector(d)){
+      d <- matrix(d, nrow=1, ncol=3)}
+    else{}
+    #### this islves our soe matrix based on the weights
+    z <- soe.solve.weights(z, d, matsize, lowlimit)
+    
+    ### start of our code to test VL values
+    #### extracts only our solution matrix used to decide which boxes to test
+    testmat <- data.frame(z[,1:matsize])
+    ### tracks number of boxes > 0 in our solution (testable boxes)
+    over.limit <- testmat[testmat>lowlimit]
+    tstperd <- min(tstperd, length(over.limit))
+    index <- NULL
+    # loops over the number of tests this round where max tests in number in our solution
+    for (k in 1:tstperd){
+      ## extracts the list coordinates of the highest box and converts to matrix coords
+      index <- head(order(testmat, decreasing=TRUE))
+      ### this code converst the list coordinates into matrix coords
+      j <- ceiling(index[1]/matsize)
+      if (index[1] %% 10 == 0){i <- 10}
+      else{i <- index[1] %% 10}
+      ### zeros our our testmat box to ensure we do not test twice
+      testmat[i,j] <- 0
+      ### diagnostic code, keeps running total of all boxes checked
+      check <- rbind(check, c(i,j))
+      ### extracts the error value for the coordinate and divides by the matsize
+      xerror <- (x[[i,(matsize+j)]])/matsize
+      x$rows[i] <- x$rows[i] - xerror
+      x$cols[j] <- x$cols[j] - xerror
+      x[[i,(matsize+j)]] = 0
+      x[[i,j]] = 0
+      y[[i,j]] = 0
+    }
+    #### number of rounds of testing needed, includes the 2 to start
+    rounds = rounds+1
+    #### zeros out the column or row total and all corresponding elements if 
+    ### row/column total < cutoff/matsize
+    x <- zerocolrow(x,matsize,cutoff, lowlimit)
+    ### this tests whether all elements in a row or column have been tested
+    #### if so, it zeros out the row/column total
+    x <- checkrowcol(x,matsize)
+    t <- t + tstperd}
+  prec.maxmax <- max(prec.max)
+  
+  return (data.frame(cbind(y,t, rounds, prev[1], prev[2], prev[3], prev[4],
+                           prev[5], prev[6], prev[7], prev[8], prev[9], prev[10],
+                           prev[11], prev[12], prec.maxmax)))
+}
+
+# NOT USED IN PAPER
+test.one.linregsoe.lim <- function(pop, data, matsize, prec, precrd, b0star, b1star, b2star, b3star,
+                                   cutoff, tstperd, SE, lowlimit=0){
+  
+  ## creates a matrix of random entries from the population
+  x <- one.matrix(pop, matsize, SE)
+  ## 2 exact copies of the original matrix with rows and cols columns
+  y <- x
+  z <- x
+  ## returns a matrix with zero'ed out boxes which were tested and 
+  ## number of tests as the last column (matsize + 3)
+  y <- reduce.mat.linregsoe.lim(pop, data, x, y, matsize, cutoff, tstperd,
+                                prec, precrd, b0star, b1star, b2star, b3star, lowlimit)
+  t <- y[[1, (matsize*2 +3)]]
+  rounds <- y[[1, (matsize*2 +4)]]
+  x <- sens(y, z, matsize, cutoff)
+  tprev500 <- y[[1, (matsize*2 +5)]]
+  tprevfail <- y[[1, (matsize*2 +6)]]
+  eprev500 <- y[[1, (matsize*2 +7)]]
+  eprevfail <- y[[1, (matsize*2 +8)]]
+  tq90 <- y[[1, (matsize*2 +9)]]
+  tq95 <- y[[1, (matsize*2 +10)]]
+  tq99 <- y[[1, (matsize*2 +11)]]
+  tq1 <- y[[1, (matsize*2 +12)]]
+  eq90 <- y[[1, (matsize*2 +13)]]
+  eq95 <- y[[1, (matsize*2 +14)]]
+  eq99 <- y[[1, (matsize*2 +15)]]
+  eq1 <- y[[1, (matsize*2 +16)]]
+  prec.max <- y[[1, (matsize*2 +17)]]
+  
+  return(c(x,t, rounds, tprev500, tprevfail, eprev500, eprevfail, tq90, tq95, tq99, tq1,
+           eq90, eq95, eq99, eq1, prec.max))
+}
 
 
 #### This is the minipool method, using a full size matrix, but only
@@ -1041,6 +1923,7 @@ test.one.linregsoe <- function(data, matsize, prec, precrd,
 
 ##### Minipool w/covariates
 
+# zeroes out rows where the updated average is less than cutoff/n
 zero.row.mini <- function(x, matsize, cutoff){
   for (i in 1:matsize){
     if (x$rows[i] < cutoff/matsize){
@@ -1053,6 +1936,7 @@ zero.row.mini <- function(x, matsize, cutoff){
   return(x)
 }
 
+# zeroes out the row average of any row where all samples have been classified
 check.row.mini <- function(x, matsize){
   for (i in 1:matsize){
     if(sum(x[i,1:matsize]) == 0){x$rows[i] = 0}
@@ -1061,7 +1945,23 @@ check.row.mini <- function(x, matsize){
   return(x)
 }
 
+# NOT USED IN PAPER
+mat.linreg.mini <- function(pop, data, mat, matsize, b0star, b1star, b2star){
+  guess <- matrix(nrow=matsize, ncol=matsize)
+  
+  for(i in 1:matsize){
+    for (j in 1:matsize){
+      if (mat[i,j]==0){guess[i,j]=0}
+      else{
+        guess[i,j] <- 10^(b0star + b1star*data[match(mat[i,j], data$pop), 2] + 
+                            b2star*data[match(mat[i,j], data$pop), 3])
+      }}}
+  
+  return(guess)
+}
 
+# function which takes in a testing matrix, mat, and the matrix of original predictions, guess,
+# and reutrns a matrix of predictions where the classified subjects' predictions are zero.
 mat.linreg.mini2 <- function(data, mat, guess, matsize){
   guess1 <- guess
   
@@ -1075,6 +1975,7 @@ mat.linreg.mini2 <- function(data, mat, guess, matsize){
   return(guess1)
 }
 
+# classifies samples within a testing matrix for the MiniPred method
 reduce.mat.mini.cov <- function(data, x, y, guess, matsize, cutoff){
   ### tracks number of tests
   t <- matsize
@@ -1110,7 +2011,7 @@ reduce.mat.mini.cov <- function(data, x, y, guess, matsize, cutoff){
   return(result)
 }
 
-
+# tests one matrix for MiniPred and outputs results
 test.one.mini.cov <- function(data, matsize, cutoff, SE, filltyp, Uganda=FALSE){
   #### creates a matrix of VL values with row and colum totals
   x <- one.cov.matrix(data, matsize, SE, filltyp, Uganda)
@@ -1140,6 +2041,7 @@ test.one.mini.cov <- function(data, matsize, cutoff, SE, filltyp, Uganda=FALSE){
   return(result)  
 }
 
+# classifies samples within a testing matrix for the Mini+alg method
 reduce.mat.mini <- function(data, x, y, matsize, cutoff){
   ### tracks number of tests
   t <- matsize
@@ -1176,7 +2078,7 @@ reduce.mat.mini <- function(data, x, y, matsize, cutoff){
   return(result)
 }
 
-
+# tests one matrix for Mini+alg and outputs results
 test.one.mini <- function(data, matsize, cutoff, SE, Uganda=FALSE){
   #### creates a matrix of VL values with row and colum totals
   x <- one.cov.matrix(data, matsize, SE, filltype="rnd", Uganda)
@@ -1206,8 +2108,21 @@ test.one.mini <- function(data, matsize, cutoff, SE, Uganda=FALSE){
 }
 
 
-####################### The testing functions are below ############################
+####################### The functions for evaluating multiple methods are below ############################
 
+
+# this function reads in simulated data and evaluates 5 pooled testing methods using
+# identical matrices; the methods are linreg, MSS, LRSOE, Mini+alg and MiniPred
+# reps - number of matrices to classify with each method
+# data - a dataframe of data in the form of the simulated datasets
+# matsize - size of a square testing matrix (we used 10 for the paper)
+# prec and precrd - precision numbers used for fitting predictions to observed row/column averages
+# cutoff - VL above which is considered a failure
+# SE - the standard deviation of ME on the log10 scale
+# tstperd - number of individual tests per testing round (not aplicable to all methods)
+# lowlimit - the low limit of VL detection (we set it at 50 for all results in the paper)
+# filltyp - pattern for creating a matrix (we used random for results in paper)
+# Uganda - TRUE/FALSE for whether the data being used comes from Uganda NOT USED)
 pool.alg.cov <- function(reps, data, matsize, prec, precrd,
                                cutoff, SE, tstperd, lowlimit, filltyp, Uganda=FALSE){
   tstperrd <- tstperd
@@ -1218,12 +2133,14 @@ pool.alg.cov <- function(reps, data, matsize, prec, precrd,
   mini.cov <- NULL
   mini.pool <- NULL
   
-  #data$VLobs <- data$VL*10^(rnorm(length(data$VL), sd=SE))
-  
   for (i in 1:(reps)){
     check <- NULL
+    # random sample of matsize^2 samples
     index <- sample.int(n=length(data$VL), size=(matsize^2), replace=FALSE)
     data1 <- data[c(index),]
+    
+    # evaluating each of the 5 methods below using the same matrix (ensured by setting
+    # a seed before each method)
     set.seed(1)
     linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp, Uganda)
     
@@ -1242,37 +2159,19 @@ pool.alg.cov <- function(reps, data, matsize, prec, precrd,
     ### removes tested subjects from population    
     data <- data[-c(index),]
     
+    # cumulates the results for each matrix; one matrix per row
     linreg <- rbind(linreg, linreg1)
     smart <- rbind(smart, smart1)
     linregsoe <- rbind(linregsoe, linregsoe1)
     mini.cov <- rbind(mini.cov, mini.cov1)
     mini.pool <- rbind(mini.pool, mini.pool1)
     
+    # the commentd-out code below helps with diagnostics
     # check <- data.frame(cbind(linreg, smart, linregsoe, mini.cov, mini.pool))
     # write.table(check, file="C:/Users/Barny/Dropbox/KI_Project_4/Results/temp//Results_reverse_ME.5_rand.R")
   
     }
   
-  # check <- NULL
-  # index <- sample.int(n=length(data$VL), size=(matsize^2), replace=FALSE)
-  # data1 <- data[c(index),]
-  # set.seed(1)
-  # linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp)
-  # 
-  # set.seed(1)
-  # smart1 <- test.one.smt(data1, matsize, cutoff, SE, tstperrd, lowlimit)
-  # 
-  # set.seed(1)
-  # linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp)
-  # 
-  # set.seed(1)
-  # mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE)
-  # 
-  # set.seed(1)
-  # mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE)
-  # 
-  # ### removes tested subjects from population    
-  # data <- data[-c(index),]
 
   
   result <- data.frame(cbind(linreg, smart, 
@@ -1285,13 +2184,20 @@ pool.alg.cov <- function(reps, data, matsize, prec, precrd,
 
 
 ####### this function predicts VL based on the simulation model
+#### this is used for the hypred only as this method necessitates 
+#### predicting VL before creating a matrix
 
 predictVL <- function(data, b0star, b1star, b2star, b3star){
   data$predVL <- 10^(b0star + b1star*data$adhere + b2star*data$pf + b3star*data$adhere*data$pf)
   return(data)
 }
 
-
+#### this function evaluates performance of the hypred method specifically
+#### the arguments are the same as for pool.alg.cov except there are 2 new arguments
+#### top_percent is the cutoff between the top % of predicted VLs
+#### bot_percent is the cutoff for the bottom $ of predicted values
+#### this function evaluates performance of using each method within each
+#### risk tier
 hypred <- function(reps, data, matsize, prec, precrd,
                    cutoff, SE, tstperd, lowlimit, filltyp, top_percent, bot_percent){
   
@@ -1475,8 +2381,8 @@ hypred <- function(reps, data, matsize, prec, precrd,
 }
 
 
-
-
+### this function evaluates the hypred method specifically written for the
+### uganda data
 hypred_uganda <- function(reps, data, matsize, prec, precrd,
                    cutoff, SE, tstperd, lowlimit, filltyp, Uganda=FALSE){
   
