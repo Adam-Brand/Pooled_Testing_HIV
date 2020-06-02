@@ -27,7 +27,7 @@ library(ggplot2)
 library(dplyr)
 
 #### set working directory to location with data
-setwd("C:/Users/Barny/Dropbox/KI_Project_4/Data/data_uganda")
+setwd("")
 
 ### reading in raw data csv file
 raw <- read.csv("Raw_data_version1_2396.csv", header=T)
@@ -423,7 +423,7 @@ for (i in 1:length(mydata$study_id)){
 ##### End of cleaning and derivation code; this writes the dataset to a csv file
 
 ##set working directory to location to write clean_data, and uncomment below line
-setwd("")
+#setwd("")
 #write.csv2(mydata, paste0("Clean_data", format(Sys.time(),"%Y-%m-%d"), ".csv"))
 
 
@@ -497,14 +497,6 @@ hist(VLdata$VL10,
      prob=TRUE)
 
 lines(density(VLdata$VL10))
-
-hist(log10(check),
-     main="Distribution of simulated VLs",
-     xlab="Log 10 Viral Load",
-     breaks=25,
-     prob=TRUE)
-
-lines(density(log10(check)))
 
 
 
