@@ -208,7 +208,7 @@ prev <- function(x, matsize, cutoff){
   eprev500 <- length(xe[xe>=500])/(matsize^2)
   tprevfail <- length(xt[xt>=cutoff])
   eprevfail <- length(xe[xe>=cutoff])
- 
+  
   
   result <- data.frame(cbind(tprevfail, eprevfail))
   
@@ -854,23 +854,23 @@ diag.mat.fill <- function(VLdata, matsize){
 # this function also does.
 rnd.mat.fill <- function(data, matsize, SE, Uganda=FALSE){
   m <- matrix(nrow=matsize, ncol=matsize)
-#  e <- matrix(nrow=matsize, ncol=matsize)
+  #  e <- matrix(nrow=matsize, ncol=matsize)
   g <- matrix(nrow=matsize, ncol=matsize)
   
   for (i in 1:matsize){
     for(j in 1:matsize){
       index <- sample.int(length(data$VL),1,replace=FALSE)
       m[i,j] = data[index,"VL"]
-     # e[i,j] = data[index,"VLobs"]
+      # e[i,j] = data[index,"VLobs"]
       g[i,j] = data[index,"predVL"]
       data <- data[-index,]
     }}
   e <- data.frame(m)
-if (Uganda==FALSE){
-  for (i in 1:matsize){
-    for(j in 1:matsize){
-      e[i,j] = e[i,j]*(10^(rnorm(1, sd=SE)))}}
-}
+  if (Uganda==FALSE){
+    for (i in 1:matsize){
+      for(j in 1:matsize){
+        e[i,j] = e[i,j]*(10^(rnorm(1, sd=SE)))}}
+  }
   x <- data.frame(cbind(m,e,g))
   return(x)
 }
@@ -879,13 +879,13 @@ if (Uganda==FALSE){
 # fills in the matrix putting the highest VLs in the top, left corner
 corner.mat.fill <- function(data, matsize, SE){
   m <- matrix(nrow=matsize, ncol=matsize)
-#  e <- matrix(nrow=matsize, ncol=matsize)
+  #  e <- matrix(nrow=matsize, ncol=matsize)
   g <- matrix(nrow=matsize, ncol=matsize)
   for (z in 1:matsize){
     i <- 1
     for (j in z:1){
       m[i,j] = data[1,"VL"]
-    #  e[i,j] = data[1,"VLobs"]
+      #  e[i,j] = data[1,"VLobs"]
       g[i,j] = data[1,"predVL"]
       data <- data[-1,]
       i <- i+1}}
@@ -894,7 +894,7 @@ corner.mat.fill <- function(data, matsize, SE){
     i <- z
     for (j in matsize:z){
       m[i,j] = data[1,"VL"]
-     # e[i,j] = data[1,"VLobs"]
+      # e[i,j] = data[1,"VLobs"]
       g[i,j] = data[1,"predVL"]
       data <- data[-1,]
       i <- i+1}}
@@ -1314,7 +1314,7 @@ mat.linreg2 <- function(data, mat, guess, matsize, prec, precrd){
       if (guess1[i,j]==0){guess1[i,j]=0}
       else{
         guess1[i,j] <- (rowpercent[i,j]*matsize*mat$rows[i] + colpercent[i,j]*matsize*mat$cols[j]
-                       + totpercent[i,j]*matsize*sum(mat$rows))/3
+                        + totpercent[i,j]*matsize*sum(mat$rows))/3
       }}}
   for (i in 1:matsize){
     rows[i] <- sum(guess1[i,])/matsize
@@ -1403,7 +1403,7 @@ reduce.mat.linreg <- function(data, x, y, guess, matsize, prec, precrd,
     #### if so, it zeros out the row/column total
     x <- checkrowcol(x,matsize)
     t <- t + length(d[,1])}
-    prec.maxmax <- max(prec.max)
+  prec.maxmax <- max(prec.max)
   
   result <- data.frame(cbind(y,t, rounds, prev))
   
@@ -2124,7 +2124,7 @@ test.one.mini <- function(data, matsize, cutoff, SE, Uganda=FALSE){
 # filltyp - pattern for creating a matrix (we used random for results in paper)
 # Uganda - TRUE/FALSE for whether the data being used comes from Uganda NOT USED)
 pool.alg.cov <- function(reps, data, matsize, prec, precrd,
-                               cutoff, SE, tstperd, lowlimit, filltyp, Uganda=FALSE){
+                         cutoff, SE, tstperd, lowlimit, filltyp, Uganda=FALSE){
   tstperrd <- tstperd
   
   linreg <- NULL
@@ -2169,10 +2169,10 @@ pool.alg.cov <- function(reps, data, matsize, prec, precrd,
     # the commentd-out code below helps with diagnostics
     # check <- data.frame(cbind(linreg, smart, linregsoe, mini.cov, mini.pool))
     # write.table(check, file="C:/Users/Barny/Dropbox/KI_Project_4/Results/temp//Results_reverse_ME.5_rand.R")
+    
+  }
   
-    }
   
-
   
   result <- data.frame(cbind(linreg, smart, 
                              linregsoe, 
@@ -2278,16 +2278,16 @@ hypred <- function(reps, data, matsize, prec, precrd,
   mini_eprevfail <- NA
   
   temp <- data.frame(cbind(linreg_tsens, linreg_esens, linreg_t, linreg_rds, linreg_tprevfail, linreg_eprevfail,
-                                      mss_tsens, mss_esens, mss_t, mss_rds, mss_tprevfail, mss_eprevfail,
-                                      lrsoe_tsens, lrsoe_esens, lrsoe_t, lrsoe_rds, lrsoe_tprevfail, lrsoe_eprevfail,
-                                      mincov_tsens, mincov_esens, mincov_t, mincov_rds, mincov_tprevfail, mincov_eprevfail,
-                                      mini_tsens, mini_esens, mini_t, mini_rds, mini_tprevfail, mini_eprevfail))
+                           mss_tsens, mss_esens, mss_t, mss_rds, mss_tprevfail, mss_eprevfail,
+                           lrsoe_tsens, lrsoe_esens, lrsoe_t, lrsoe_rds, lrsoe_tprevfail, lrsoe_eprevfail,
+                           mincov_tsens, mincov_esens, mincov_t, mincov_rds, mincov_tprevfail, mincov_eprevfail,
+                           mini_tsens, mini_esens, mini_t, mini_rds, mini_tprevfail, mini_eprevfail))
   
   temp <- data.frame(lapply(temp, function(x) as.numeric(x)))
   
   
   result_top <- data.frame(cbind(temp,
-                                all_tsens, all_esens, all_t, all_rds, all_tprevfail, all_eprevfail, section))
+                                 all_tsens, all_esens, all_t, all_rds, all_tprevfail, all_eprevfail, section))
   
   for (i in 1:mid_tier_reps){
     check <- NULL
@@ -2303,7 +2303,7 @@ hypred <- function(reps, data, matsize, prec, precrd,
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp)
     
     set.seed(1)
-    mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE)
+    mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp)
     
     set.seed(1)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE)
@@ -2351,7 +2351,7 @@ hypred <- function(reps, data, matsize, prec, precrd,
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp)
     
     set.seed(1)
-    mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE)
+    mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp)
     
     set.seed(1)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE)
@@ -2384,7 +2384,7 @@ hypred <- function(reps, data, matsize, prec, precrd,
 ### this function evaluates the hypred method specifically written for the
 ### uganda data
 hypred_uganda <- function(reps, data, matsize, prec, precrd,
-                   cutoff, SE, tstperd, lowlimit, filltyp, Uganda=FALSE){
+                          cutoff, SE, tstperd, lowlimit, filltyp, Uganda=FALSE){
   
   
   tstperrd <- tstperd
@@ -2559,7 +2559,3 @@ hypred_uganda <- function(reps, data, matsize, prec, precrd,
   return(result)
   
 }
-
-
-
-
