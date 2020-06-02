@@ -5,7 +5,38 @@ This project contains all of the code used to produce the results in the paper t
 
 Below are descriptions of programs, documentation and datasets used on this project.
 
-IMPORTANT: the programs will not run as is. Many of the programs refer to/source other programs, so working directories need to be set appropriately to run. Make sure when you copy programs to your system to declare all of the working directories to point to the correct locations. There are comments noting where to set working directories in the programs. Search for 'setwd' to find them. Also, the method_eval programs need a location to write results to. In the 'write.table' statements in those programs, put the file path in the quotations before the name of the result.
+IMPORTANT: the programs will not run until the working directories and filenames are set up in each of the programs. Many of the programs refer to/source other programs, so working directories need to be set appropriately to run. Make sure when you copy programs to your system that you declare all of the working directories pointing to the correct locations. There are comments noting where to set working directories in the programs. Search for 'setwd' to find them. Also, the method_eval programs need a location to write results to. In the 'write.table' statements in those programs, put the desired file path in the quotations before the name of the result.
+
+The real data collected from Uganda is not included in the repository. All of the code for cleaning/formatting the Uganda data IS included, but will not run as expected without the course data file.
+
+In order to replicate the simulation results presented in the paper:
+
+    1) run data_gen.R. This will get you the 6 datasets needed to run the simulations. There will be errors as part of the data_gen.R program sources the data cleaning program for the real data, which is not included in this repository.
+      a) there are write.table statements which the user can fill in to save the datasets to the location of their choice.
+      b) the name of the 6 datasets as R objects are:
+         - simdata - simulation data with SD=1.0 used for method evaluation
+         - simdata_train - sim data with SD=1.0 used as training set to get estimated  model betas
+         - simdata_rev - this is the simdata_train dataset with direction of covariate association with VL reversed
+         - simdata2 - same as simdata, but with SD=0
+         - simdata2_train - same as simdata_train, but with SD=0
+         - simdata2_rev - same as simdata_rev, but with SD=0
+
+    2) run program sim_data_betas.R. This program uses the training set for simulation data, simdata_train, to estimate the betas of different models. For the simulations in the paper, we used only the estimated betas from the data where SD=1.0.
+
+    3) Run a method eval program from the 'Method_eval' folder. Each program sources the base method program, method_eval_source, which is a collection of defined R functions used to carry out the methods.
+      a) Each method_eval program evaluates the methods over 50,000 subjects in a variety of scenarios.
+      b) It is easy to see from the program which scenario each statement evaluates. The statement begins with a read.table command which tells us which data we are using, i.e., SD=1.0 or SD=0. Then the estimated betas are set which are the betas used to predict the VL based on the 2 covariates.
+      c) Then within each evaluation scenario, we set the number of matrices, matrix size, SE (which is the ME on log10 scale in the paper). prec and precrd have to do with prediction fitting precision variables, and we leave them at 10 and 20, respectively. Cutoff is left at 1000 and represents the VL cutoff for 'failure'. We leave tstperd at 5, lowlimit at 50 and filltype="rnd" for the evaluations in the paper.
+       - there are 3 main evaluation functions within the method_eval programs:
+            1) pool.alg.cov - this function evaluates the same matrices for all methods excluding the Hypred method. The output is a table of results where each row represents the performance of classifying 100 subjects.
+            2) hypred - this function does the same as pool.alg.cov except for only the Hypred method. There are additional arguments which are top_percent and bot_percent. These are the cutoffs (between 0 and 1) for the top tier and the bottom tier. One can adjust the hypred function to do different methods with the different tiers. Here they are set for individual testing on the top tier and MiniPred for the mid and bottom tiers.
+            3) hypred_uganda - the hypred method specifically for the uganda data. This was written to make sure that the number of subjects in the top tier/bottom tiers were divisible by 100.
+
+    4) Run a results_anal program. There are 3 of these programs, one for the simulations (except hypred), one for simulations (hypred only) and one for the actual uganda data. These programs read in the results table generated by the method_eval programs, combine the results into summary results and report the results in a LaTeX table. The code spits outs LaTeX code to make the tables. The actual tables in the paper were manually entered from the results in these tables.
+
+    Now you've replicated the simulation results! Again, you will not be able to replicate the results from the Uganda data without the actual data which we cannot upload to the repository.
+
+Below are specifics on the data and the programs included in this repository.
 
 Data Dictionary (DD):
   The data dictionary is an Excel workbook with a separate sheet for the datasets included in this repository. The dictionary for each dataset contains a row for each variable in that dataset and the source for the variable. If it is a derived variable it also includes the derivation for that variable. The datasets include the simulation datasets used in Section 4 as well as the raw, intermediate and final datasets containing real-world data from Uganda used in Section 5. The raw dataset from Uganda is not included in the repository.
