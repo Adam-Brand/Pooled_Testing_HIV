@@ -30,50 +30,30 @@ library(DescTools)
 setwd("")
 
 
-AGAIG_SD1.0_ME.05 <- read.table("Results_AGAIG_ME.05_rand.R")
-AGAIG_SD1.0_ME.12 <- read.table("Results_AGAIG_ME.12_rand.R")
-AGAIG_SD1.0_ME.25 <- read.table("Results_AGAIG_ME.25_rand.R")
-AGAIG_SD1.0_ME.5 <- read.table("Results_AGAIG_ME.5_rand.R")
+AGAIG_SD1.0_ME.05 <- read.table("Results_AGAIG_SD1_ME.05_rand.R")
+AGAIG_SD1.0_ME.12 <- read.table("Results_AGAIG_SD1_ME.12_rand.R")
+AGAIG_SD1.0_ME.25 <- read.table("Results_AGAIG_SD1_ME.25_rand.R")
+AGAIG_SD1.0_ME.5 <- read.table("Results_AGAIG_SD1_ME.5_rand.R")
 
-no_bin_SD1.0_ME.05 <- read.table("Results_no_bin_ME.05_rand.R")
-no_bin_SD1.0_ME.12 <- read.table("Results_no_bin_ME.12_rand.R")
-no_bin_SD1.0_ME.25 <- read.table("Results_no_bin_ME.25_rand.R")
-no_bin_SD1.0_ME.5 <- read.table("Results_no_bin_ME.5_rand.R")
-
-no_cont_SD1.0_ME.05 <- read.table("Results_no_cont_ME.05_rand.R")
-no_cont_SD1.0_ME.12 <- read.table("Results_no_cont_ME.12_rand.R")
-no_cont_SD1.0_ME.25 <- read.table("Results_no_cont_ME.25_rand.R")
-no_cont_SD1.0_ME.5 <- read.table("Results_no_cont_ME.5_rand.R")
-
-reverse_SD1.0_ME.05 <- read.table("Results_reverse_ME.05_rand.R")
-reverse_SD1.0_ME.12 <- read.table("Results_reverse_ME.12_rand.R")
-reverse_SD1.0_ME.25 <- read.table("Results_reverse_ME.25_rand.R")
-reverse_SD1.0_ME.5 <- read.table("Results_reverse_ME.5_rand.R")
+reverse_SD1.0_ME.05 <- read.table("Results_reverse_SD1_ME.05_rand.R")
+reverse_SD1.0_ME.12 <- read.table("Results_reverse_SD1_ME.12_rand.R")
+reverse_SD1.0_ME.25 <- read.table("Results_reverse_SD1_ME.25_rand.R")
+reverse_SD1.0_ME.5 <- read.table("Results_reverse_SD1_ME.5_rand.R")
 
                 ##############################
 
 # set working directory to location of results
 setwd("")
 
-AGAIG_SD0_ME0 <- read.table("Results_AGAIG_ME0_rand.R")
-AGAIG_SD0_ME.25 <- read.table("Results_AGAIG_ME.25_rand.R")
-AGAIG_SD0_ME.5 <- read.table("Results_AGAIG_ME.5_rand.R")
-AGAIG_SD0_ME.75 <- read.table("Results_AGAIG_ME.75_rand.R")
+AGAIG_SD0_ME0 <- read.table("Results_AGAIG_SD0_ME0_rand.R")
+AGAIG_SD0_ME.25 <- read.table("Results_AGAIG_SD0_ME.25_rand.R")
+AGAIG_SD0_ME.5 <- read.table("Results_AGAIG_SD0_ME.5_rand.R")
+AGAIG_SD0_ME.75 <- read.table("Results_AGAIG_SD0_ME.75_rand.R")
 
-no_bin_SD0_ME0 <- read.table("Results_no_bin_ME0_rand.R")
-no_bin_SD0_ME.25 <- read.table("Results_no_bin_ME.25_rand.R")
-no_bin_SD0_ME.5 <- read.table("Results_no_bin_ME.5_rand.R")
-no_bin_SD0_ME.75 <- read.table("Results_no_bin_ME.75_rand.R")
-
-no_cont_SD0_ME0 <- read.table("Results_no_cont_ME0_rand.R")
-no_cont_SD0_ME.25 <- read.table("Results_no_cont_ME.25_rand.R")
-no_cont_SD0_ME.5 <- read.table("Results_no_cont_ME.5_rand.R")
-no_cont_SD0_ME.75 <- read.table("Results_no_cont_ME.75_rand.R")
-
-reverse_SD0_ME0 <- read.table("Results_reverse_ME0_rand.R")
-reverse_SD0_ME.25 <- read.table("Results_reverse_ME.25_rand.R")
-reverse_SD0_ME.5 <- read.table("Results_reverse_ME.5_rand.R")
-reverse_SD0_ME.75 <- read.table("Results_reverse_ME.75_rand.R")
+reverse_SD0_ME0 <- read.table("Results_reverse_SD0_ME0_rand.R")
+reverse_SD0_ME.25 <- read.table("Results_reverse_SD0_ME.25_rand.R")
+reverse_SD0_ME.5 <- read.table("Results_reverse_SD0_ME.5_rand.R")
+reverse_SD0_ME.75 <- read.table("Results_reverse_SD0_ME.75_rand.R")
 
 
 
@@ -296,29 +276,6 @@ final_table(AGAIG_SD1.0_ME.12, caption="AGAIG, SD=1.0, ME=0.12, est betas")
 final_table(AGAIG_SD1.0_ME.25, caption="AGAIG, SD=1.0, ME=0.25, est betas")
 final_table(AGAIG_SD1.0_ME.5, caption="AGAIG, SD=1.0, ME=0.5, est betas")
 
-### No Continuous scenarios
-
-final_table(no_cont_SD0_ME0, caption="No continuous, SD=0, ME=0, est betas")
-final_table(no_cont_SD0_ME.25, caption="No continuous, SD=0, ME=0.25, est betas")
-final_table(no_cont_SD0_ME.5, caption="No continuous, SD=0, ME=0.5, est betas")
-final_table(no_cont_SD0_ME.75, caption="No continuous, SD=0, ME=0.75, est betas")
-
-final_table(no_cont_SD1.0_ME.05, caption="No continuous, SD=1.0, ME=0.05, est betas")
-final_table(no_cont_SD1.0_ME.12, caption="No continuous, SD=1.0, ME=0.12, est betas")
-final_table(no_cont_SD1.0_ME.25, caption="No continuous, SD=1.0, ME=0.25, est betas")
-final_table(no_cont_SD1.0_ME.5, caption="No continuous, SD=1.0, ME=0.5, est betas")
-
-### No binary scenarios
-
-final_table(no_bin_SD0_ME0, caption="No binary, SD=0, ME=0, est betas")
-final_table(no_bin_SD0_ME.25, caption="No binary, SD=0, ME=0.25, est betas")
-final_table(no_bin_SD0_ME.5, caption="No binary, SD=0, ME=0.5, est betas")
-final_table(no_bin_SD0_ME.75, caption="No binary, SD=0, ME=0.75, est betas")
-
-final_table(no_bin_SD1.0_ME.05, caption="No binary, SD=1.0, ME=0.05, est betas")
-final_table(no_bin_SD1.0_ME.12, caption="No binary, SD=1.0, ME=0.12, est betas")
-final_table(no_bin_SD1.0_ME.25, caption="No binary, SD=1.0, ME=0.25, est betas")
-final_table(no_bin_SD1.0_ME.5, caption="No binary, SD=1.0, ME=0.5, est betas")
 
 ### Reverse scenarios
 
