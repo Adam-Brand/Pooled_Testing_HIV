@@ -2166,12 +2166,8 @@ pool.alg.cov <- function(reps, data, matsize, prec, precrd,
     mini.cov <- rbind(mini.cov, mini.cov1)
     mini.pool <- rbind(mini.pool, mini.pool1)
     
-    # the commentd-out code below helps with diagnostics
-    # check <- data.frame(cbind(linreg, smart, linregsoe, mini.cov, mini.pool))
-    # write.table(check, file="C:/Users/Barny/Dropbox/KI_Project_4/Results/temp//Results_reverse_ME.5_rand.R")
     
   }
-  
   
   
   result <- data.frame(cbind(linreg, smart, 

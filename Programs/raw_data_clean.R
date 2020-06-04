@@ -8,7 +8,7 @@
 # UPDATED: 	
 
 # INPUT DATA: raw data form Uganda HIV clinic 			
-# OUTPUT: output dataset Clean_data2020-03-06	
+# OUTPUT: output dataset Clean_data	
 
 # R VERSION: 3.6.1
 #==============================================================================

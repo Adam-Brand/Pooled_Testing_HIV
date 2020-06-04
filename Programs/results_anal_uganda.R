@@ -1,7 +1,7 @@
 #==============================================================================
 # FILENAME: results_anal_uganda.R
 # PROJECT: 	Pooled testing in HIV
-# PURPOSE: compile the method evaluation results from the real uganda data into performance summaries
+# PURPOSE: compile the method evaluation results using the real uganda data into performance summaries
 #          and prints code for latex tables
 # AUTHOR: Adam Brand
 
@@ -30,6 +30,7 @@ library(DescTools)
 # set working directory to location of the results datasets
 setwd("")
 
+# reading in results from methods except HyPred
 uganda_ME0 <- read.table("Uganda_ME0.R")
 uganda_ME.05 <- read.table("Uganda_ME.05.R")
 uganda_ME.12 <- read.table("Uganda_ME.12.R")
@@ -37,7 +38,7 @@ uganda_ME.25 <- read.table("Uganda_ME.25.R")
 uganda_ME.5 <- read.table("Uganda_ME.5.R")
 uganda_ME.75 <- read.table("Uganda_ME.75.R")
 
-
+# reading in the HyPred results
 uganda_ME0_hypred <- read.table("Uganda_hypred_ME0.R")
 uganda_ME.05_hypred <- read.table("Uganda_hypred_ME.05.R")
 uganda_ME.12_hypred <- read.table("Uganda_hypred_ME.12.R")
@@ -126,7 +127,7 @@ reform <- function(df_name){
   return(temp2)
 }
 
-
+# creates 95% CIs for performance measures
 binCI <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson"){
     temp <- reform(dataset)
     temp <- temp[which(temp$method==pool_method),]
@@ -196,7 +197,7 @@ binCI <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson")
 return(summ)
 }
 
-
+# 95% CIs for the HyPred method
 binCI_hypred <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson"){
   temp <- reform(dataset)
   temp <- temp[which(temp$method==pool_method),]
@@ -323,11 +324,7 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
                caption.placement="top"))
 }
 
-###################### results for single methods #####################################
-
-#final_table(dataset=hypred_AGAIG_ME.05[hypred_AGAIG_ME.05$section=="mid",], 
-#            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.05, est betas")
-
+###################### results for methods except HyPred #####################################
 
 final_table(dataset=uganda_ME0, 
            caption="Uganda results: ME=0")
@@ -348,7 +345,7 @@ final_table(dataset=uganda_ME.75,
             caption="Uganda results: ME=0.75")
 
 
-#################################### Start of Hypred results #####################################
+####################################  Hypred results #####################################
 
 ## Hypred mid tier
 
@@ -390,3 +387,5 @@ final_table(dataset=uganda_ME.5_hypred[uganda_ME.5_hypred$section=="low",],
 
 final_table(dataset=uganda_ME.75_hypred[uganda_ME.75_hypred$section=="low",], 
             caption="Uganda results - Hypred low tier: ME=0.75")
+
+# the means combining all tiers are output in results_hypred.R

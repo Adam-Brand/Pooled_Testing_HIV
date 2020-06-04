@@ -1,6 +1,5 @@
-#### evaluting the methods; sourcing the functions I need through method_eval_source
-
-############ This is a rerun of method_eval1, using the corner matrix fill for the linreg and LRSOE methods
+### Evaluating the methods (except for Hypred) in the AGAIG and reverse scenarios using the 
+### simulated data with SD=0
 
 library(tidyverse)
 library(dplyr)
@@ -12,10 +11,13 @@ source("method_eval_source.R")
 setwd("")
 
 ##############################################################################################
-# METHOD_EVAL1
 
-##### AGAIG scenarios using SD=1.0 and estimated betas
+
+##### AGAIG scenarios using SD=0 and estimated betas
 data <- read.table("Uganda_SimData_SD0.R")
+#### these betas were estimated using the sim_data_betas program
+#### the betas are estimated using the training set with SD=1.0. Using the training set with SD=0
+#### provided 'too accurate' results due to the lack of variation
 data <- predictVL(data, b0star=0.4414945, b1star=0.1170119, b2star=1.9283680, b3star=0.1369999)
 
 
@@ -51,7 +53,7 @@ write.table(result1, file="Results_AGAIG_SD0_ME.75_rand.R")
 
 
 
-##### reverse scenarios using SD=1.0 and estimated betas from the reverse training set
+##### reverse scenarios using SD=0 and estimated betas from the reverse training set
 data <- read.table("Uganda_SimData_SD0.R")
 data <- predictVL(data, b0star=5.8155002, b1star=-0.2442230, b2star=-3.7203965, b3star=0.1260099)
 

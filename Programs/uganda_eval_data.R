@@ -31,10 +31,10 @@ library(useful)
 library(sbrl)
 library(pROC)
 
-setwd("C:/Users/Barny/Dropbox/KI_Project_4/Data/data_uganda/Clean_data")
+setwd("")
 
-test <- read.table("test_data2020-04-28.R")
-train <- read.table("train_data2020-04-28.R")
+test <- read.table("test_data.R")
+train <- read.table("train_data.R")
 
 ##### getting the model betas and the predicted cutoff values from the train set
 
@@ -183,8 +183,8 @@ for (i in 1:length(test_final$study_id)){
 #### using the cutoffs from the training set, we wind up with 5%, 45%, 50%
 
 ##### writing the final test dataset
-
-write.table(test_final, "C:/Users/Barny/Dropbox/KI_Project_4/Data/data_uganda/Clean_data/test_set_final.R")
+### make sure to include the filepath for the location you want the data
+write.table(test_final, "test_set_final.R")
 
 
 ########## getting the AUC in the test set

@@ -1,8 +1,7 @@
 #==============================================================================
 # FILENAME: results_anal_hypred.R
 # PROJECT: 	Pooled testing in HIV
-# PURPOSE: compile the method evaluation results for HyPred from the simulated data into performance summaries
-#          and prints code for latex tables
+# PURPOSE: Creates LaTeX code for summary result tables for the HyPred method
 # AUTHOR: Adam Brand
 
 
@@ -11,11 +10,11 @@
 
 # R VERSION: 3.6.1
 #==============================================================================
-#Notes: 
-
-
-
-
+#Notes: this program is different from results_anal in that it creates separate tables for the
+#       middle and bottom risk tier groups. Then in the last step this program combines results
+#       from all 3 risk tier groups (depending on which method you use for the middle and bottom tier)
+#       and outputs the mean of the 3 performance indicators. This is what is reported in tables 1-3
+#       for the HyPred method.
 
 # =============================================================================
 
@@ -448,28 +447,31 @@ comb_hypred <- function(dataset, mid_method, low_method){
   return(c(sens, eff, rds))
 }
 
-
+# AGAIG, SD=0
 comb_hypred(hypred_AGAIG_SD0_ME0, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.75, mid_method="mincov", low_method="mincov")
 
+# AGAIG, SD=1
 comb_hypred(hypred_AGAIG_SD1_ME.05, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD1_ME.12, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD1_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD1_ME.5, mid_method="mincov", low_method="mincov")
 
-debug(comb_hypred)
+# reverse, SD=0
 comb_hypred(hypred_reverse_SD0_ME0, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.75, mid_method="mincov", low_method="mincov")
 
+#reverse, SD=1
 comb_hypred(hypred_reverse_SD1_ME.05, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD1_ME.12, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD1_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD1_ME.5, mid_method="mincov", low_method="mincov")
 
+# uganda real data
 comb_hypred(hypred_uganda_ME0, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.05, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.12, mid_method="mincov", low_method="mincov")

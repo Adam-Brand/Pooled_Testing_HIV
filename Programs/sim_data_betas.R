@@ -15,21 +15,22 @@
 #==============================================================================
 #Notes: 
 
-
-
-
-
-# =============================================================================
-
-
-######### ###############################################
-
-#### this program is to get estimated betas for the simulated data using ridge regression
+#### this program is to estimate the betas for the simulated data using ridge regression
 
 #### we're going to estimate betas with the full model, ommitting the continuous variable
 #### and ommitting the binary variable
 
 #### we will estimate betas for each of our 2 datasets (SD=1.0 and SD=0)
+
+#### IMPORTANT: for the paper we only used the estimated betas using the full model from the 
+#               data with SD=1.0. When SD=0 the estimates were too perfect reflecting the lack 
+#               of individual variability. We used 2 sets of betas, one from the full model, SD=1.0
+#               from the standard training set, Uganda_SimData_train_SD1.0.R. The other used the 
+#               reverse training set, Uganda_SimData_train_SD1.0_reverse.R.
+
+
+# =============================================================================
+
 
 library(tidyverse)
 library(broom)
@@ -46,15 +47,18 @@ simdata0 <- read.table("Uganda_SimData_train_SD0.R")
 simdata1.0_rev <- read.table("Uganda_SimData_train_SD1.0_reverse.R")
 simdata0_rev <- read.table("Uganda_SimData_train_SD0_reverse.R")
 
+# creating the interaction variabe for the full model
 simdata1.0$int <- simdata1.0$adhere*simdata1.0$pf
 simdata0$int <- simdata0$adhere*simdata0$pf
 
 simdata1.0_rev$int <- simdata1.0_rev$adhere*simdata1.0_rev$pf
 simdata0_rev$int <- simdata0_rev$adhere*simdata0_rev$pf
 
+# setting the response variable
 y1.0 <- simdata1.0$log.VL
 y0 <- simdata0$log.VL
 
+# setting the predictor matrix
 x1.0 <- simdata1.0 %>% select(adhere, pf, int) %>% data.matrix()
 x0 <- simdata0 %>% select(adhere, pf, int) %>% data.matrix()
 
@@ -94,6 +98,7 @@ opt.lambda0_rev
 ### getting the betas from the optimal fit
 opt.fit1.0 <- glmnet(x1.0, y1.0, alpha = 0, lambda = opt.lambda1.0)
 summary(opt.fit1.0)
+## USED IN PAPER; no seed was set, so results may vary. The betas we used are recorded in the method_eval programs
 betas_ridge1.0 <- as.matrix(coef(opt.fit1.0))
 
 
@@ -109,6 +114,7 @@ betas_ridge0 <- as.matrix(coef(opt.fit0))
 ### getting the betas from the optimal fit from the reverse scenario
 opt.fit1.0_rev <- glmnet(x1.0_rev, y1.0, alpha = 0, lambda = opt.lambda1.0_rev)
 summary(opt.fit1.0_rev)
+## USED IN PAPER; no seed was set, so results may vary. The betas we used are recorded in the method_eval programs
 betas_ridge1.0_rev <- as.matrix(coef(opt.fit1.0_rev))
 
 #### now, using only the SD=1.0 data, we will estimate betas with misspecified models

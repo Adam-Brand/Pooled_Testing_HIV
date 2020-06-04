@@ -1,12 +1,13 @@
 #==============================================================================
 # FILENAME: results_anal.R
 # PROJECT: 	Pooled testing in HIV
-# PURPOSE: compile the method evaluation results from the simulated data  (minus HyPred) into performance summaries
-#          and prints code for latex tables
+# PURPOSE: Creates the summary stats reported in the tables in the paper for methods except HyPred.
+#          It creates one table per scenario for each of the data SD=1.0 and SD=0; the AGAIG and reverse
+#          scenarios at different MEs. This code produces LaTeX code for 16 tables.
 # AUTHOR: Adam Brand
 
 
-# INPUT datasets: the results datasets in the 'Results' folder
+# INPUT datasets: the results datasets in the 'Results' folder outputted by the method_eval programs
 
 
 # R VERSION: 3.6.1
@@ -266,11 +267,13 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 
 ### AGAIG scenarios
 
+# SD=0 data
 final_table(AGAIG_SD0_ME0, caption="AGAIG, SD=0, ME=0, est betas")
 final_table(AGAIG_SD0_ME.25, caption="AGAIG, SD=0, ME=0.25, est betas")
 final_table(AGAIG_SD0_ME.5, caption="AGAIG, SD=0, ME=0.5, est betas")
 final_table(AGAIG_SD0_ME.75, caption="AGAIG, SD=0, ME=0.75, est betas")
 
+# SD=1 data
 final_table(AGAIG_SD1.0_ME.05, caption="AGAIG, SD=1.0, ME=0.05, est betas")
 final_table(AGAIG_SD1.0_ME.12, caption="AGAIG, SD=1.0, ME=0.12, est betas")
 final_table(AGAIG_SD1.0_ME.25, caption="AGAIG, SD=1.0, ME=0.25, est betas")
@@ -279,11 +282,13 @@ final_table(AGAIG_SD1.0_ME.5, caption="AGAIG, SD=1.0, ME=0.5, est betas")
 
 ### Reverse scenarios
 
+# SD=0 data
 final_table(reverse_SD0_ME0, caption="Reverse, SD=0, ME=0, est betas")
 final_table(reverse_SD0_ME.25, caption="Reverse, SD=0, ME=0.25, est betas")
 final_table(reverse_SD0_ME.5, caption="Reverse, SD=0, ME=0.5, est betas")
 final_table(reverse_SD0_ME.75, caption="Reverse, SD=0, ME=0.75, est betas")
 
+# SD=1 data
 final_table(reverse_SD1.0_ME.05, caption="Reverse, SD=1.0, ME=0.05, est betas")
 final_table(reverse_SD1.0_ME.12, caption="Reverse, SD=1.0, ME=0.12, est betas")
 final_table(reverse_SD1.0_ME.25, caption="Reverse, SD=1.0, ME=0.25, est betas")

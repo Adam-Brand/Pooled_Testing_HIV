@@ -1386,7 +1386,7 @@ train.data$prev_fail3 <- ifelse(train.data$prev_fail==3,1,0)
 train.data$fail_draw <- ifelse(train.data$vl>=1000,1,0)
 
 
-#### adding a variable for high, low and medium ris groups based on VL we are trying to prdict
+#### adding a variable for high, low and medium risk groups based on VL we are trying to prdict
 #### low risk is VL < 0 (lower limit of detection), medium risk is 0 <= VL <= 10000, high risk is VL > 10000
 
 for (i in 1:length(train.data$study_id)){
@@ -1403,31 +1403,7 @@ for (i in 1:length(train.data$study_id)){
   else if (train.data$lastVL[i] > 10000){train.data$lastVLcat[i]="high"}
 }
 
-
-#### creating the sbrl variable which is the predicted risk level for the current draw
-#### this uses the following rule list from the sbrl package
-
-# The rules list is : 
-#   If      {lwamaggwa=0,enroll_t=0,lastVLcat=high} (rule[15650]) then positive probability = 0.60663507
-# else if {reg_D4T3TCNVP=1,lastVL_t=1,lastVLcat=high} (rule[20206]) then positive probability = 0.29139073
-# else if {prev_fail1=0,prev_fail2=0,enroll_t=0} (rule[19629]) then positive probability = 0.03968254
-# else  (default rule)  then positive probability = 0.12511962
-
-#             0.0396825396825397 0.12511961722488 0.291390728476821 0.606635071090047
-# high                   61              145                21               104
-# low                  6533             3656               213                82
-# medium                208              377                66                23
-
-#### This is the bayesian rule list that is no longer reproducible because sbrl no longer works
- 
-# for (i in 1:length(train.data$study_id)){
-#   if (train.data$lwamaggwa[i]==0 & train.data$enroll_t[i]==0 & train.data$lastVLcat[i]=="high"){train.data$sbrlcat[i]="high"}
-#   else if (train.data$reg_D4T3TCNVP[i]==1 & train.data$lastVL_t[i]==1 & train.data$lastVLcat[i]=="high"){train.data$sbrlcat[i]="high"}
-#   else if (train.data$prev_fail1[i]==0 & train.data$prev_fail2[i]==0 & train.data$enroll_t[i]==0){train.data$sbrlcat[i]="low"}
-#   else {train.data$sbrlcat[i]="medium"}
-# }
-
-
+# subsetting for only the variable we need
 train.data2 <- select(train.data, study_id, sex, male, female, ageyrs,  age16, age35, age50, age65, 
                       hub_name, buyamba, kabira, kakuuto, kaleere, kalisizo, kasaali, kasasa, kayanja,
                       kibaale, kifamba, kyabigondo, kyebe, lwamaggwa, lwanda, lyantonde, nabigasa, nakatoogo,
@@ -1440,6 +1416,7 @@ train.data2 <- select(train.data, study_id, sex, male, female, ageyrs,  age16, a
                       lastVL_t, enroll_t, vl, vllog, fail_draw, dub_fail, lastVLcat, label)
 
 # set working directory to location you want to write the dataset and uncomment below line
+setwd("")
 # write.table(train.data2, paste0("train_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
 
 
