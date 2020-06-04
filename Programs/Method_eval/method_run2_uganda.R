@@ -12,9 +12,10 @@ source("method_eval_source.R")
 setwd("")
 
 ##############################################################################################
-# METHOD_EVAL1
 
-##### AGAIG scenarios using SD=1.0 and
+
+##### Evaluation using the real Uganda data. The first set of statements evaluates the Hypred method
+##### which uses individual testing for the top risk tier, and MiniPred for the middle and bottom tiers
 data <- read.table("test_set_final.R")
 set.seed(1212)
 select <- sample.int(n=length(data$VL), size=3600, replace=FALSE)
