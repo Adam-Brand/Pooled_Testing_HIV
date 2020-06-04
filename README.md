@@ -1,7 +1,5 @@
 # Pooled_Testing_HIV
- Code used for Pooled Testing in HIV paper
-
-This project contains all of the code used to produce the results in the paper titled "Prediction-Driven Pooled Testing Methods: Application to HIV Treatment Monitoring in Kalisizo, Uganda".
+ This project contains all of the code used to produce the results in the paper titled "Prediction-Driven Pooled Testing Methods: Application to HIV Treatment Monitoring in Kalisizo, Uganda".
 
 Below are descriptions of programs, documentation and datasets used on this project.
 
