@@ -29,32 +29,33 @@ library(DescTools)
 # set working directory to location of results
 setwd("")
 
-hypred_AGAIG_ME.05 <- read.table("Results_Hypred_AGAIG_ME.05_rand.R")
-hypred_AGAIG_ME.12 <- read.table("Results_Hypred_AGAIG_ME.12_rand.R")
-hypred_AGAIG_ME.25 <- read.table("Results_Hypred_AGAIG_ME.25_rand.R")
-hypred_AGAIG_ME.5 <- read.table("Results_Hypred_AGAIG_ME.5_rand.R")
+hypred_AGAIG_SD1_ME.05 <- read.table("Results_Hypred_SD1_AGAIG_ME.05_rand.R")
+hypred_AGAIG_SD1_ME.12 <- read.table("Results_Hypred_SD1_AGAIG_ME.12_rand.R")
+hypred_AGAIG_SD1_ME.25 <- read.table("Results_Hypred_SD1_AGAIG_ME.25_rand.R")
+hypred_AGAIG_SD1_ME.5 <- read.table("Results_Hypred_SD1_AGAIG_ME.5_rand.R")
 
-hypred_reverse_ME.05 <- read.table("Results_Hypred_reverse_ME.05_rand.R")
-hypred_reverse_ME.12 <- read.table("Results_Hypred_reverse_ME.12_rand.R")
-hypred_reverse_ME.25 <- read.table("Results_Hypred_reverse_ME.25_rand.R")
-hypred_reverse_ME.5 <- read.table("Results_Hypred_reverse_ME.5_rand.R")
+hypred_reverse_SD1_ME.05 <- read.table("Results_Hypred_SD1_reverse_ME.05_rand.R")
+hypred_reverse_SD1_ME.12 <- read.table("Results_Hypred_SD1_reverse_ME.12_rand.R")
+hypred_reverse_SD1_ME.25 <- read.table("Results_Hypred_SD1_reverse_ME.25_rand.R")
+hypred_reverse_SD1_ME.5 <- read.table("Results_Hypred_SD1_reverse_ME.5_rand.R")
 
                 ##############################
 
 # set working directory to location of results
 setwd("")
 
-hypred_AGAIG_SD0_ME0 <- read.table("Results_Hypred_AGAIG_ME0_rand.R")
-hypred_AGAIG_SD0_ME.25 <- read.table("Results_Hypred_AGAIG_ME.25_rand.R")
-hypred_AGAIG_SD0_ME.5 <- read.table("Results_Hypred_AGAIG_ME.5_rand.R")
-hypred_AGAIG_SD0_ME.75 <- read.table("Results_Hypred_AGAIG_ME.75_rand.R")
+hypred_AGAIG_SD0_ME0 <- read.table("Results_Hypred_SD0_AGAIG_ME0_rand.R")
+hypred_AGAIG_SD0_ME.25 <- read.table("Results_Hypred_SD0_AGAIG_ME.25_rand.R")
+hypred_AGAIG_SD0_ME.5 <- read.table("Results_Hypred_SD0_AGAIG_ME.5_rand.R")
+hypred_AGAIG_SD0_ME.75 <- read.table("Results_Hypred_SD0_AGAIG_ME.75_rand.R")
 
-hypred_reverse_SD0_ME0 <- read.table("Results_Hypred_reverse_ME0_rand.R")
-hypred_reverse_SD0_ME.25 <- read.table("Results_Hypred_reverse_ME.25_rand.R")
-hypred_reverse_SD0_ME.5 <- read.table("Results_Hypred_reverse_ME.5_rand.R")
-hypred_reverse_SD0_ME.75 <- read.table("Results_Hypred_reverse_ME.75_rand.R")
+hypred_reverse_SD0_ME0 <- read.table("Results_Hypred_SD0_reverse_ME0_rand.R")
+hypred_reverse_SD0_ME.25 <- read.table("Results_Hypred_SD0_reverse_ME.25_rand.R")
+hypred_reverse_SD0_ME.5 <- read.table("Results_Hypred_SD0_reverse_ME.5_rand.R")
+hypred_reverse_SD0_ME.75 <- read.table("Results_Hypred_SD0_reverse_ME.75_rand.R")
 
-setwd("C:/Users/Barny/Dropbox/KI_Project_4/Results/Uganda")
+# set working directory to location of uganda results
+setwd("")
 hypred_uganda_ME0 <- read.table("Uganda_hypred_ME0.R")
 hypred_uganda_ME.05 <- read.table("Uganda_hypred_ME.05.R")
 hypred_uganda_ME.12 <- read.table("Uganda_hypred_ME.12.R")
@@ -142,7 +143,7 @@ reform <- function(df_name){
   return(temp2)
 }
 
-
+# computing 95% CIs for the 3 performance criteria
 binCI <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson"){
     temp <- reform(dataset)
     temp <- temp[which(temp$method==pool_method),]
@@ -223,7 +224,7 @@ italic <- function(x){
 }
 
 
-
+# creates results tables for each of the 3 tiers of risk groups separately for each method within the tier
 final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson"){
   temp <- dataset
   
@@ -269,10 +270,12 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
                caption.placement="top"))
 }
 
-
-
+# the below result using final_table outputs latex code for a table of summary results for 
+# the mid and low tiers separately. Based on these simulations we decided which method to use for
+# each tier on the real Uganda data.
+# combined results are below this code.
 final_table(dataset=hypred_AGAIG_SD0_ME0[hypred_AGAIG_SD0_ME0$section=="mid",], 
-              caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0, est betas")
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0, est betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.25, est betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="mid",], 
@@ -352,7 +355,12 @@ final_table(dataset=hypred_reverse_ME.25[hypred_reverse_ME.25$section=="low",],
 final_table(dataset=hypred_reverse_ME.5[hypred_reverse_ME.5$section=="low",], 
             caption = "Hypred low Tier, Reverse, SD=1 ME=0.5, est betas")
 
-            
+
+
+# combines results for the 3 tier risk groups for the hypred method; user must define which method
+# to use for the mid and low tier. High tier is assumed individual testing
+# function only outputs means, no CIs
+# this is what is reported in Tables 1-3 in the paper
 comb_hypred <- function(dataset, mid_method, low_method){
   temp <- dataset
   
@@ -446,10 +454,10 @@ comb_hypred(hypred_AGAIG_SD0_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.75, mid_method="mincov", low_method="mincov")
 
-comb_hypred(hypred_AGAIG_ME.05, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_AGAIG_ME.12, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_AGAIG_ME.25, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_AGAIG_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.12, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.25, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.5, mid_method="mincov", low_method="mincov")
 
 debug(comb_hypred)
 comb_hypred(hypred_reverse_SD0_ME0, mid_method="mincov", low_method="mincov")
@@ -457,10 +465,10 @@ comb_hypred(hypred_reverse_SD0_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.75, mid_method="mincov", low_method="mincov")
 
-comb_hypred(hypred_reverse_ME.05, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_reverse_ME.12, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_reverse_ME.25, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_reverse_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.12, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.25, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.5, mid_method="mincov", low_method="mincov")
 
 comb_hypred(hypred_uganda_ME0, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.05, mid_method="mincov", low_method="mincov")
