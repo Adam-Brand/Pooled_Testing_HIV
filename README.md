@@ -3,23 +3,24 @@
 
 Below are descriptions of programs, documentation and datasets used on this project.
 
-IMPORTANT: the programs will not run until the working directories and filenames are set up in each of the programs. Many of the programs refer to/source other programs, so working directories need to be set appropriately to run. Make sure when you copy programs to your system that you declare all of the working directories pointing to the correct locations. There are comments noting where to set working directories in the programs. Search for 'setwd' to find them. Also, the method_eval programs need a location to write results to. In the 'write.table' statements in those programs, put the desired file path in the quotations before the name of the result file.
+IMPORTANT: the programs will not run until the working directories and filenames are set up in each of the programs. Many of the programs refer to/source other programs, so working directories need to be set appropriately to run. Make sure when copying programs to your system that you declare all of the working directories pointing to the correct locations. There are comments noting where to set working directories in the programs. Search for 'setwd' to find them. Also, the method_eval programs need a location to write results to. In the 'write.table' statements in those programs, put the desired file path in the quotations before the name of the result file.
 
-The real data collected from Uganda is not included in the repository. All of the code for cleaning/formatting the Uganda data IS included, but will not run as expected without the course data file.
+The real data collected from Uganda is not included in the repository. All of the code for cleaning/formatting the Uganda data is included, but will not run as expected without the course data file.
 
 In order to replicate the simulation results presented in the paper:
 
-1) run data_gen.R. This will get you the 6 datasets needed to run the simulations. There will be errors as part of the data_gen.R program sources the data cleaning program for the real data, which is not included in this repository. There is also a shiny program we used for visualizing distributions of VLs. The shiny folder is called shinypopfit, and is included in this respository. Play with this shiny program is optional though. It is not needed for reproducing results.
+1) run data_gen.R. This will create 6 datasets needed to run the simulations. There will be errors as part of the data_gen.R program sources the data cleaning program for the real data, which is not included in this repository. There is also a shiny program we used for visualizing distributions of VLs. The shiny folder is called shinypopfit, and is included in this repository. Downloading/using this shiny program is optional though. It is not needed for reproducing results.
 
-    a) there are write.table statements which the user can fill in to save the datasets to the location of their choice. They are commented out, so uncomment them when you set the working directory for their saved location.
+    a) there are write.table statements which the user needs to fill in to save the datasets to the location of their choice. They are commented out, so uncomment them when you set the working directory for their saved location.
 
     b) the name of the 6 datasets as R objects are:
-         - simdata - simulation data with SD=1.0 used for method evaluation
-         - simdata_train - sim data with SD=1.0 used as training set to get estimated  model betas
-         - simdata_rev - this is the simdata_train dataset with direction of covariate association with VL reversed
-         - simdata2 - same as simdata, but with SD=0
-         - simdata2_train - same as simdata_train, but with SD=0
-         - simdata2_rev - same as simdata_rev, but with SD=0
+    
+      simdata - simulation data with SD=1.0 used for method evaluation
+      simdata_train - sim data with SD=1.0 used as training set to get estimated  model betas
+      simdata_rev - this is the simdata_train dataset with direction of covariate association with VL reversed
+      simdata2 - same as simdata, but with SD=0
+      simdata2_train - same as simdata_train, but with SD=0
+      simdata2_rev - same as simdata_rev, but with SD=0
 
 2) run program sim_data_betas.R. This program uses the training set for simulation data, simdata_train, to estimate the betas of different models. For the simulations in the paper, we used only the estimated betas from the data where SD=1.0 to predict VL. We did not set seeds for ridge regression, so betas may vary slightly. The betas we used are included in the method_eval programs (more on these below).
 
@@ -39,7 +40,7 @@ In order to replicate the simulation results presented in the paper:
 4) Run a results_anal program. These programs read in the results datasets produced by the method_eval programs, and creates LaTeX code for tables of summary stats for method performance. There are 3 of these programs:
 
     a) results_anal.R - this program creates LaTeX code for 16 tables; 8 using SD=1 data and 8 using SD=0 data. All of these are reported in tables 1 and 2.
-    
+
         b) results_anal_hypred.R - creates LaTeX code for the Hypred method. The tables created are risk tier specific, i.e., one for just the middle tier and another for just the bottom tier. It also compiles results from all 3 tiers and outputs mean performance summaries which are reported in tables 1-3.
         c) results_anal_uganda.R - creates LaTeX code for summary tables using the uganda data reported in table 3. The mean performance measures reported for HyPred in table 3 are output in resulta_anal_hypred.R
 
