@@ -24,32 +24,34 @@ In order to replicate the simulation results presented in the paper:
       simdata2 - same as simdata, but with SD=0
 
       simdata2_train - same as simdata_train, but with SD=0
-      
+
       simdata2_rev - same as simdata_rev, but with SD=0
 
 2) run program sim_data_betas.R. This program uses the training set for simulation data, simdata_train, to estimate the betas of different models. For the simulations in the paper, we used only the estimated betas from the data where SD=1.0 to predict VL. We did not set seeds for ridge regression, so betas may vary slightly. The betas we used are included in the method_eval programs (more on these below).
 
 3) Run a method_eval program from the 'Method_eval' folder. Each program sources the program containing the needed functions, method_eval_source. This program must be downloaded and the working directory set to point to it before running. Nothing in method_eval_source needs to be changed.
-    a) Each method_eval program evaluates the methods over 50,000 samples (500, 10 x 10 matrices) in a variety of scenarios.
 
-    b) Which scenario each statement evaluates should be recognizable by the name of the result file in the write.table statement below the function call. The statement begins with a read.table command which tells us which data we are using, i.e., SD=1.0 or SD=0. Then the estimated betas are set which are the betas used to predict the VL based on the 2 covariates. (These are where the betas are recorded that we obtained from sim_data_betas program.)
+  a) Each method_eval program evaluates the methods over 50,000 samples (500, 10 x 10 matrices) in a variety of scenarios.
 
-    c) Within each evaluation scenario, we set the number of matrices, matrix size, SE (which is the ME on log10 scale in the paper). prec and precrd have to do with prediction fitting precision variables, and we leave them at 10 and 20, respectively. Cutoff is left at 1000 and represents the VL cutoff for 'failure'. We leave tstperd at 5, lowlimit at 50 and filltype="rnd" for the evaluations in the paper. There are 3 main evaluation functions within the method_eval programs:
+  b) Which scenario each statement evaluates should be recognizable by the name of the result file in the write.table statement below the function call. The statement begins with a read.table command which tells us which data we are using, i.e., SD=1.0 or SD=0. Then the estimated betas are set which are the betas used to predict the VL based on the 2 covariates. (These are where the betas are recorded that we obtained from sim_data_betas program.)
 
-      1) pool.alg.cov - this function evaluates the same matrices for all methods excluding the Hypred method. The output is a table of results where each row represents the performance of classifying 100 subjects.
+  c) Within each evaluation scenario, we set the number of matrices, matrix size, SE (which is the ME on log10 scale in the paper). prec and precrd have to do with prediction fitting precision variables, and we leave them at 10 and 20, respectively. Cutoff is left at 1000 and represents the VL cutoff for 'failure'. We leave tstperd at 5, lowlimit at 50 and filltype="rnd" for the evaluations in the paper. There are 3 main evaluation functions within the method_eval programs:
 
-      2) hypred - this function does the same as pool.alg.cov except for only the Hypred method. There are additional arguments which are top_percent and bot_percent. These are the cutoffs (between 0 and 1) for the top tier and the bottom tier. The Hypred function simulates individual testing for the top tier (we set it at the top 10% of predicted VLs). Hypred also simulates each of the pooled testing methods discussed in the paper for both the middle and bottom tier (we reported MiniPred for both tiers based on simulation results). To get results for 50,000 samples using Hypred, you must choose which method to use for each the middle and bottom tier, and compile those results with individual testing.
+    1) pool.alg.cov - this function evaluates the same matrices for all methods excluding the Hypred method. The output is a table of results where each row represents the performance of classifying 100 subjects.
 
-      3) hypred_uganda - the hypred method specifically for the uganda data. This was written to make sure that the number of subjects in the top tier/bottom tiers were divisible by 100. We rounded the top tier down, so there are less than 10% in the top tier (300 out of 3600).
+    2) hypred - this function does the same as pool.alg.cov except for only the Hypred method. There are additional arguments which are top_percent and bot_percent. These are the cutoffs (between 0 and 1) for the top tier and the bottom tier. The Hypred function simulates individual testing for the top tier (we set it at the top 10% of predicted VLs). Hypred also simulates each of the pooled testing methods discussed in the paper for both the middle and bottom tier (we reported MiniPred for both tiers based on simulation results). To get results for 50,000 samples using Hypred, you must choose which method to use for each the middle and bottom tier, and compile those results with individual testing.
+
+    3) hypred_uganda - the hypred method specifically for the uganda data. This was written to make sure that the number of subjects in the top tier/bottom tiers were divisible by 100. We rounded the top tier down, so there are less than 10% in the top tier (300 out of 3600).
 
 4) Run a results_anal program. These programs read in the results datasets produced by the method_eval programs, and creates LaTeX code for tables of summary stats for method performance. There are 3 of these programs:
 
-    a) results_anal.R - this program creates LaTeX code for 16 tables; 8 using SD=1 data and 8 using SD=0 data. All of these are reported in tables 1 and 2.
+  a) results_anal.R - this program creates LaTeX code for 16 tables; 8 using SD=1 data and 8 using SD=0 data. All of these are reported in tables 1 and 2.
 
-        b) results_anal_hypred.R - creates LaTeX code for the Hypred method. The tables created are risk tier specific, i.e., one for just the middle tier and another for just the bottom tier. It also compiles results from all 3 tiers and outputs mean performance summaries which are reported in tables 1-3.
-        c) results_anal_uganda.R - creates LaTeX code for summary tables using the uganda data reported in table 3. The mean performance measures reported for HyPred in table 3 are output in resulta_anal_hypred.R
+  b) results_anal_hypred.R - creates LaTeX code for the Hypred method. The tables created are risk tier specific, i.e., one for just the middle tier and another for just the bottom tier. It also compiles results from all 3 tiers and outputs mean performance summaries which are reported in tables 1-3.
 
-    This will replicate the simulation results. Again, you will not be able to replicate the results from the Uganda data without the actual data which we cannot upload to the repository.
+  c) results_anal_uganda.R - creates LaTeX code for summary tables using the uganda data reported in table 3. The mean performance measures reported for HyPred in table 3 are output in resulta_anal_hypred.R
+
+This will replicate the simulation results. Again, you will not be able to replicate the results from the Uganda data without the actual data which we cannot upload to the repository.
 
 Below are specifics on the data and the programs included in this repository.
 
