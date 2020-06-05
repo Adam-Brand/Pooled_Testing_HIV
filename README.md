@@ -14,12 +14,17 @@ In order to replicate the simulation results presented in the paper:
     a) there are write.table statements which the user needs to fill in to save the datasets to the location of their choice. They are commented out, so uncomment them when you set the working directory for their saved location.
 
     b) the name of the 6 datasets as R objects are:
-    
+
       simdata - simulation data with SD=1.0 used for method evaluation
+
       simdata_train - sim data with SD=1.0 used as training set to get estimated  model betas
+
       simdata_rev - this is the simdata_train dataset with direction of covariate association with VL reversed
+
       simdata2 - same as simdata, but with SD=0
+
       simdata2_train - same as simdata_train, but with SD=0
+      
       simdata2_rev - same as simdata_rev, but with SD=0
 
 2) run program sim_data_betas.R. This program uses the training set for simulation data, simdata_train, to estimate the betas of different models. For the simulations in the paper, we used only the estimated betas from the data where SD=1.0 to predict VL. We did not set seeds for ridge regression, so betas may vary slightly. The betas we used are included in the method_eval programs (more on these below).
