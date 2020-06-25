@@ -47,10 +47,11 @@ test2 <- test[,-which(names(test) == "dub_fail")]
 test2 <- test2[complete.cases(test2),]
 
 
-### defining the response variable
+### defining the response variables
 y <- train2$vllog
 y_bin <- train2$fail_draw
 
+y_test <- test2$vllog
 y_bin_test <- test2$fail_draw
 
 #### defining the predictor matrix
@@ -104,7 +105,7 @@ betas_ridge <- as.matrix(coef(opt.fit))
 ### predicting outcomes on the training set based on model with optimal lambda
 y_pred <- predict(opt.fit, s=opt.lambda, newx=x)
 
-### getting R squared for y and predicted y values - not good at 0.114; correlation at 0.34
+### getting R squared for y and predicted y values - not good at 0.118; correlation at 0.34
 cor(y, y_pred)^2
 
 
@@ -123,18 +124,22 @@ act_pred_rnk <- act_pred %>%
 #### plotting the actual and predicted ranks
 plot(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)
 
-# R squared for the ranks, even worse at 0.056
+# R squared for the ranks, even worse at 0.059
 cor(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)^2
 
 
 ##### getting the quantile cutoffs per the train data predicted VLs
-
 cutoffs <- quantile(y_pred, probs=c(0.60, 0.90))
 
 
 #### creating variable for the test set, which is the predicted VL value
-
 test_pred <- predict(opt.fit, s=opt.lambda, newx=x_test)
+
+#### getig the correlation in the test set - 0.20
+cor(y_test, test_pred)^2
+
+#### getting the auc within the test set - 0.93
+auc(y_bin_test, test_pred)
 
 
 #### putting together final testing dataset

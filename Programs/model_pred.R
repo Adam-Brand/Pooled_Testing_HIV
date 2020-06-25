@@ -33,7 +33,7 @@ library(pROC)
 # set working directory to location of the Uganda training set
 setwd("")
 
-train.data2 <- read.table("train_data2020-04-28.R")
+train.data2 <- read.table("train_data.R")
 
 ### code to find how many NAs are included for each variable
 sum(is.na(train.data2$vllog))
@@ -105,7 +105,7 @@ betas_ridge <- as.matrix(coef(opt.fit))
 ### predicting outcomes on the training set based on model with optimal lambda
 y_pred <- predict(opt.fit, s=opt.lambda, newx=x)
 
-### getting R squared for y and predicted y values - not good at 0.114; correlation at 0.34
+### getting R squared for y and predicted y values - not good at 0.118; correlation at 0.34
 cor(y, y_pred)^2
 
 
@@ -127,7 +127,8 @@ plot(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)
 # R squared for the ranks, even worse at 0.056
 cor(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)^2
 
-
+#### getting the auc for the continuous predictions - good at 0.77
+auc(y_bin, y_pred)
 
 
 #### MODELLING binary outcome with ridge regression

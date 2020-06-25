@@ -26,32 +26,32 @@ library(PropCIs)
 library(DescTools)
 
 # set working directory to location of results
-setwd("")
+setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults")
 
-hypred_AGAIG_SD1_ME.05 <- read.table("Results_Hypred_SD1_AGAIG_ME.05_rand.R")
-hypred_AGAIG_SD1_ME.12 <- read.table("Results_Hypred_SD1_AGAIG_ME.12_rand.R")
-hypred_AGAIG_SD1_ME.25 <- read.table("Results_Hypred_SD1_AGAIG_ME.25_rand.R")
-hypred_AGAIG_SD1_ME.5 <- read.table("Results_Hypred_SD1_AGAIG_ME.5_rand.R")
+hypred_AGAIG_SD1_ME.05 <- read.table("Results_Hypred_AGAIG_SD1_ME.05_rand.R")
+hypred_AGAIG_SD1_ME.12 <- read.table("Results_Hypred_AGAIG_SD1_ME.12_rand.R")
+hypred_AGAIG_SD1_ME.25 <- read.table("Results_Hypred_AGAIG_SD1_ME.25_rand.R")
+hypred_AGAIG_SD1_ME.5 <- read.table("Results_Hypred_AGAIG_SD1_ME.5_rand.R")
 
-hypred_reverse_SD1_ME.05 <- read.table("Results_Hypred_SD1_reverse_ME.05_rand.R")
-hypred_reverse_SD1_ME.12 <- read.table("Results_Hypred_SD1_reverse_ME.12_rand.R")
-hypred_reverse_SD1_ME.25 <- read.table("Results_Hypred_SD1_reverse_ME.25_rand.R")
-hypred_reverse_SD1_ME.5 <- read.table("Results_Hypred_SD1_reverse_ME.5_rand.R")
+hypred_reverse_SD1_ME.05 <- read.table("Results_Hypred_reverse_SD1_ME.05_rand.R")
+hypred_reverse_SD1_ME.12 <- read.table("Results_Hypred_reverse_SD1_ME.12_rand.R")
+hypred_reverse_SD1_ME.25 <- read.table("Results_Hypred_reverse_SD1_ME.25_rand.R")
+hypred_reverse_SD1_ME.5 <- read.table("Results_Hypred_reverse_SD1_ME.5_rand.R")
 
                 ##############################
 
 # set working directory to location of results
 setwd("")
 
-hypred_AGAIG_SD0_ME0 <- read.table("Results_Hypred_SD0_AGAIG_ME0_rand.R")
-hypred_AGAIG_SD0_ME.25 <- read.table("Results_Hypred_SD0_AGAIG_ME.25_rand.R")
-hypred_AGAIG_SD0_ME.5 <- read.table("Results_Hypred_SD0_AGAIG_ME.5_rand.R")
-hypred_AGAIG_SD0_ME.75 <- read.table("Results_Hypred_SD0_AGAIG_ME.75_rand.R")
+hypred_AGAIG_SD0_ME0 <- read.table("Results_Hypred_AGAIG_SD0_ME0_rand.R")
+hypred_AGAIG_SD0_ME.25 <- read.table("Results_Hypred_AGAIG_SD0_ME.25_rand.R")
+hypred_AGAIG_SD0_ME.5 <- read.table("Results_Hypred_AGAIG_SD0_ME.5_rand.R")
+hypred_AGAIG_SD0_ME.75 <- read.table("Results_Hypred_AGAIG_SD0_ME.75_rand.R")
 
-hypred_reverse_SD0_ME0 <- read.table("Results_Hypred_SD0_reverse_ME0_rand.R")
-hypred_reverse_SD0_ME.25 <- read.table("Results_Hypred_SD0_reverse_ME.25_rand.R")
-hypred_reverse_SD0_ME.5 <- read.table("Results_Hypred_SD0_reverse_ME.5_rand.R")
-hypred_reverse_SD0_ME.75 <- read.table("Results_Hypred_SD0_reverse_ME.75_rand.R")
+hypred_reverse_SD0_ME0 <- read.table("Results_Hypred_reverse_SD0_ME0_rand.R")
+hypred_reverse_SD0_ME.25 <- read.table("Results_Hypred_reverse_SD0_ME.25_rand.R")
+hypred_reverse_SD0_ME.5 <- read.table("Results_Hypred_reverse_SD0_ME.5_rand.R")
+hypred_reverse_SD0_ME.75 <- read.table("Results_Hypred_reverse_SD0_ME.75_rand.R")
 
 # set working directory to location of uganda results
 setwd("")
@@ -206,8 +206,8 @@ binCI <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson")
     if (pool_method=="linreg"){names(summ)[1] <- "Linreg"}
     if (pool_method=="mss"){names(summ)[1] <- "MSS"}
     if (pool_method=="lrsoe"){names(summ)[1] <- "LRSOE"}
-    if (pool_method=="mincov"){names(summ)[1] <- "MiniCov"}
-    if (pool_method=="mini"){names(summ)[1] <- "Mini"}
+    if (pool_method=="mincov"){names(summ)[1] <- "MiniPred"}
+    if (pool_method=="mini"){names(summ)[1] <- "Mini+alg"}
     
 return(summ)
 }
@@ -274,7 +274,7 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 # each tier on the real Uganda data.
 # combined results are below this code.
 final_table(dataset=hypred_AGAIG_SD0_ME0[hypred_AGAIG_SD0_ME0$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0, est betas")
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0, Estimated Betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.25, est betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="mid",], 
@@ -381,19 +381,19 @@ comb_hypred <- function(dataset, mid_method, low_method){
   }
   else if (mid_method=="lrsoe"){
     mid$eprevfail <- mid$lrsoe_eprevfail
-    mid$edet <- mid$mss_esens*mid$lrsoe_eprevfail
+    mid$edet <- mid$lrsoe_esens*mid$lrsoe_eprevfail
     mid$t <- mid$lrsoe_t
     mid$rds <- mid$lrsoe_rds
   }
   else if (mid_method=="mincov"){
     mid$eprevfail <- mid$mincov_eprevfail
-    mid$edet <- mid$mss_esens*mid$mincov_eprevfail
+    mid$edet <- mid$mincov_esens*mid$mincov_eprevfail
     mid$t <- mid$mincov_t
     mid$rds <- mid$mincov_rds
   }
   else if (mid_method=="mini"){
     mid$eprevfail <- mid$mini_eprevfail
-    mid$edet <- mid$mss_esens*mid$mini_eprevfail
+    mid$edet <- mid$mini_esens*mid$mini_eprevfail
     mid$t <- mid$mini_t
     mid$rds <- mid$mini_rds
   }
@@ -412,19 +412,19 @@ comb_hypred <- function(dataset, mid_method, low_method){
   }
   else if (low_method=="lrsoe"){
     low$eprevfail <- low$lrsoe_eprevfail
-    low$edet <- low$mss_esens*low$lrsoe_eprevfail
+    low$edet <- low$lrsoe_esens*low$lrsoe_eprevfail
     low$t <- low$lrsoe_t
     low$rds <- low$lrsoe_rds
   }
   else if (low_method=="mincov"){
     low$eprevfail <- low$mincov_eprevfail
-    low$edet <- low$mss_esens*low$mincov_eprevfail
+    low$edet <- low$mincov_esens*low$mincov_eprevfail
     low$t <- low$mincov_t
     low$rds <- low$mincov_rds
   }
   else if (low_method=="mini"){
     low$eprevfail <- low$mini_eprevfail
-    low$edet <- low$mss_esens*low$mini_eprevfail
+    low$edet <- low$mini_esens*low$mini_eprevfail
     low$t <- low$mini_t
     low$rds <- low$mini_rds
   }
