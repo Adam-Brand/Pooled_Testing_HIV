@@ -55,11 +55,11 @@ y_test <- test2$vllog
 y_bin_test <- test2$fail_draw
 
 #### defining the predictor matrix
-#### reference population is female, age 16 or younger, from a region not listed below, basewho=0, basereg was not one of the 4 common, with prev_fail=0,
+#### reference population is female, age 35 or younger, from a region not listed below, basewho=0, basereg was not one of the 4 common, with prev_fail=0,
 #### whose last VL was over 6 months, and who was enrolled over 12 months ago
 #### I am including only the 4 base regimens represented commonly in the training set (at least 50 records)
 #### also only including regions with at least 50 records
-x <- train2 %>% select(male, age35, age50, age65,
+x <- train2 %>% select(male, age50, age65,
                             buyamba, kabira, kakuuto, kalisizo, kasaali, kasasa,
                             kibaale, kifamba, kyebe, lwamaggwa, 
                             lwanda, lyantonde, nabigasa,
@@ -69,7 +69,7 @@ x <- train2 %>% select(male, age35, age50, age65,
                             prev_fail1, prev_fail2, prev_fail3,
                             bascd4log, basvllog, lastVLlog, lastVL_t, enroll_t) %>% data.matrix()
 
-x_test <- test2 %>% select(male, age35, age50, age65,
+x_test <- test2 %>% select(male, age50, age65,
                             buyamba, kabira, kakuuto, kalisizo, kasaali, kasasa,
                             kibaale, kifamba, kyebe, lwamaggwa, 
                             lwanda, lyantonde, nabigasa,
@@ -105,7 +105,7 @@ betas_ridge <- as.matrix(coef(opt.fit))
 ### predicting outcomes on the training set based on model with optimal lambda
 y_pred <- predict(opt.fit, s=opt.lambda, newx=x)
 
-### getting R squared for y and predicted y values - not good at 0.118; correlation at 0.34
+### getting R squared for y and predicted y values - not good at 0.112; correlation at 0.34
 cor(y, y_pred)^2
 
 
@@ -124,7 +124,7 @@ act_pred_rnk <- act_pred %>%
 #### plotting the actual and predicted ranks
 plot(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)
 
-# R squared for the ranks, even worse at 0.059
+# R squared for the ranks, even worse at 0.053
 cor(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)^2
 
 
@@ -135,11 +135,11 @@ cutoffs <- quantile(y_pred, probs=c(0.60, 0.90))
 #### creating variable for the test set, which is the predicted VL value
 test_pred <- predict(opt.fit, s=opt.lambda, newx=x_test)
 
-#### getig the correlation in the test set - 0.20
+#### getting the correlation in the test set - 0.17
 cor(y_test, test_pred)^2
 
-#### getting the auc within the test set - 0.93
-auc(y_bin_test, test_pred)
+#### getting the auc within the test set - 0.98
+auc(y_test, test_pred)
 
 
 #### putting together final testing dataset
@@ -189,41 +189,9 @@ for (i in 1:length(test_final$study_id)){
 
 ##### writing the final test dataset
 ### make sure to include the filepath for the location you want the data
-write.table(test_final, "test_set_final.R")
+#write.table(test_final, "test_set_final.R")
 
 
-########## getting the AUC in the test set
-
-#### MODELLING binary outcome with ridge regression of the training set
-
-#### use cross validation to fit a logistic model
-cv.fit_bin <- cv.glmnet(x, y_bin, family="binomial", alpha = 0, lambda = lambdas)
-plot(cv.fit_bin)
-
-### grabing the optimal lambda
-opt.lambda_bin <- cv.fit_bin$lambda.min
-opt.lambda_bin
-
-### grabbing the fit with best lambda
-opt.fit_bin <- glmnet(x, y_bin, family="binomial", alpha = 0, lambda = opt.lambda_bin)
-summary(opt.fit_bin)
-
-### getting the predicted probabilities for each obs
-probabilities <- opt.fit_bin %>% predict(newx=x, type="response")
-
-probs <- as.vector(probabilities)
-
-#### getting the AUC in the training set
-#### AUC is 0.78
-auc(y_bin, probs)
-
-probs_test <- opt.fit_bin %>% predict(newx=x_test, type="response")
-
-probs_test <- as.vector(probs_test)
-
-#### getting the AUC in the test set
-#### AUC is 0.92
-auc(y_bin_test, probs_test)
 
 
 

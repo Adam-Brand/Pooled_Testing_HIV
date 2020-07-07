@@ -38,6 +38,8 @@ names(raw)
 ##### getting data type of each variable
 sapply(raw, class)
 
+raw <- raw[raw$ageyrs>=18,]
+
 ### checking for duplicate study_id numbers
 length(unique(raw$study_id))
 length(unique(raw$study_id)) == nrow(raw)
@@ -110,8 +112,7 @@ length(which(mydata$basevl==-1)) # 80 subjects has undetectable VL at baseline
 length(which(mydata$basevl< 1000 )) # 121 subjects have VL below 1000 at baseline
 
 ### creating variables for age categories
-mydata$age16 <- ifelse(mydata$ageyrs<=16,1,0)
-mydata$age35 <- ifelse(mydata$ageyrs>16 & mydata$ageyrs<=35,1,0)
+mydata$age35 <- ifelse(mydata$ageyrs>=18 & mydata$ageyrs<=35,1,0)
 mydata$age50 <- ifelse(mydata$ageyrs>35 & mydata$ageyrs<=50,1,0)
 mydata$age65 <- ifelse(mydata$ageyrs>50,1,0)
 

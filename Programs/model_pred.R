@@ -63,11 +63,11 @@ y <- train.data3$vllog
 y_bin <- train.data3$fail_draw
 
 #### defining the predictor matrix
-#### reference population is female, age 16 or younger, from a region not listed below, basewho=0, basereg was not one of the 4 common, with prev_fail=0,
+#### reference population is female, age 35 or younger, from a region not listed below, basewho=0, basereg was not one of the 4 common, with prev_fail=0,
 #### whose last VL was over 6 months, and who was enrolled over 12 months ago
 #### I am including only the 4 base regimens represented commonly in the training set (at least 50 records)
 #### also only including regions with at least 50 records
-x <- train.data3 %>% select(male, age35, age50, age65,
+x <- train.data3 %>% select(male, age50, age65,
                             buyamba, kabira, kakuuto, kalisizo, kasaali, kasasa,
                             kibaale, kifamba, kyebe, lwamaggwa, 
                             lwanda, lyantonde, nabigasa,
@@ -105,7 +105,7 @@ betas_ridge <- as.matrix(coef(opt.fit))
 ### predicting outcomes on the training set based on model with optimal lambda
 y_pred <- predict(opt.fit, s=opt.lambda, newx=x)
 
-### getting R squared for y and predicted y values - not good at 0.118; correlation at 0.34
+### getting R squared for y and predicted y values - not good at 0.112; correlation at 0.34
 cor(y, y_pred)^2
 
 
@@ -124,11 +124,11 @@ act_pred_rnk <- act_pred %>%
 #### plotting the actual and predicted ranks
 plot(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)
 
-# R squared for the ranks, even worse at 0.056
+# R squared for the ranks, even worse at 0.053
 cor(act_pred_rnk$rank_order_y, act_pred_rnk$rank_order_y_pred)^2
 
-#### getting the auc for the continuous predictions - good at 0.77
-auc(y_bin, y_pred)
+#### getting the auc for the continuous predictions - good at 0.84
+auc(y, y_pred)
 
 
 #### MODELLING binary outcome with ridge regression

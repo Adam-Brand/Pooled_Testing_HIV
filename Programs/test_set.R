@@ -1405,7 +1405,7 @@ for (i in 1:length(test.data$study_id)){
 
 
 # subsetting for only the variable we need
-test.data2 <- select(test.data, study_id, sex, male, female, ageyrs,  age16, age35, age50, age65, 
+test.data2 <- select(test.data, study_id, sex, male, female, ageyrs,  age35, age50, age65, 
                       hub_name, buyamba, kabira, kakuuto, kaleere, kalisizo, kasaali, kasasa, kayanja,
                       kibaale, kifamba, kyabigondo, kyebe, lwamaggwa, lwanda, lyantonde, nabigasa, nakatoogo,
                       basewho, basewho0, basewho1, basewho2, basewho3, basewho4, 
@@ -1417,8 +1417,8 @@ test.data2 <- select(test.data, study_id, sex, male, female, ageyrs,  age16, age
                       lastVL_t, enroll_t, vl, vllog, fail_draw, dub_fail, lastVLcat, label)
 
 # set working directory to location you want to write the dataset and uncomment below line
-setwd("")
-# write.table(test.data2, paste0("test_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
+#setwd("")
+#write.table(test.data2, paste0("test_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
 
 
 

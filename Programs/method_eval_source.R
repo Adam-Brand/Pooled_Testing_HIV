@@ -2403,7 +2403,7 @@ hypred_uganda <- function(reps, data, matsize, prec, precrd,
   
   top_tier <- data[1:300,]
   mid_tier <- data[301:1300,]
-  low_tier <- data[1301:3600,]
+  low_tier <- data[1301:3300,]
   
   mid_tier_reps <- floor(length(mid_tier$VL)/(matsize^2))
   low_tier_reps <- floor(length(low_tier$VL)/(matsize^2))

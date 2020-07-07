@@ -26,7 +26,7 @@ library(PropCIs)
 library(DescTools)
 
 # set working directory to location of results
-setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults")
+setwd("")
 
 hypred_AGAIG_SD1_ME.05 <- read.table("Results_Hypred_AGAIG_SD1_ME.05_rand.R")
 hypred_AGAIG_SD1_ME.12 <- read.table("Results_Hypred_AGAIG_SD1_ME.12_rand.R")
@@ -354,6 +354,50 @@ final_table(dataset=hypred_reverse_ME.25[hypred_reverse_ME.25$section=="low",],
 final_table(dataset=hypred_reverse_ME.5[hypred_reverse_ME.5$section=="low",], 
             caption = "Hypred low Tier, Reverse, SD=1 ME=0.5, est betas")
 
+###########################################################################################
+
+####################################  Hypred results #####################################
+
+## Hypred mid tier
+
+final_table(dataset=hypred_uganda_ME0[hypred_uganda_ME0$section=="mid",], 
+            caption="Uganda results - Hypred mid tier: ME=0")
+
+final_table(dataset=hypred_uganda_ME.05[hypred_uganda_ME.05$section=="mid",], 
+            caption="Uganda results - Hypred mid tier: ME=0.05")
+
+final_table(dataset=hypred_uganda_ME.12[hypred_uganda_ME.12$section=="mid",], 
+            caption="Uganda results - Hypred mid tier: ME=0.12")
+
+final_table(dataset=hypred_uganda_ME.25[hypred_uganda_ME.25$section=="mid",], 
+            caption="Uganda results - Hypred mid tier: ME=0.25")
+
+final_table(dataset=hypred_uganda_ME.5[hypred_uganda_ME.5$section=="mid",], 
+            caption="Uganda results - Hypred mid tier: ME=0.5")
+
+final_table(dataset=hypred_uganda_ME.75[hypred_uganda_ME.75$section=="mid",], 
+            caption="Uganda results - Hypred mid tier: ME=0.75")
+
+
+## Low tier
+
+final_table(dataset=hypred_uganda_ME0[hypred_uganda_ME0$section=="low",], 
+            caption="Uganda results - Hypred low tier: ME=0")
+
+final_table(dataset=hypred_uganda_ME.05[hypred_uganda_ME.05$section=="low",], 
+            caption="Uganda results - Hypred low tier: ME=0.05")
+
+final_table(dataset=hypred_uganda_ME.12[hypred_uganda_ME.12$section=="low",], 
+            caption="Uganda results - Hypred low tier: ME=0.12")
+
+final_table(dataset=hypred_uganda_ME.25[hypred_uganda_ME.25$section=="low",], 
+            caption="Uganda results - Hypred low tier: ME=0.25")
+
+final_table(dataset=hypred_uganda_ME.5[hypred_uganda_ME.5$section=="low",], 
+            caption="Uganda results - Hypred low tier: ME=0.5")
+
+final_table(dataset=hypred_uganda_ME.75[hypred_uganda_ME.75$section=="low",], 
+            caption="Uganda results - Hypred low tier: ME=0.75")
 
 
 # combines results for the 3 tier risk groups for the hypred method; user must define which method
