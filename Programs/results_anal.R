@@ -28,7 +28,7 @@ library(PropCIs)
 library(DescTools)
 
 # set working directory to location of results
-setwd("")
+setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2")
 
 
 AGAIG_SD1.0_ME.05 <- read.table("Results_AGAIG_SD1_ME.05_rand.R")
@@ -44,7 +44,7 @@ reverse_SD1.0_ME.5 <- read.table("Results_reverse_SD1_ME.5_rand.R")
                 ##############################
 
 # set working directory to location of results
-setwd("")
+setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2")
 
 AGAIG_SD0_ME0 <- read.table("Results_AGAIG_SD0_ME0_rand.R")
 AGAIG_SD0_ME.25 <- read.table("Results_AGAIG_SD0_ME.25_rand.R")

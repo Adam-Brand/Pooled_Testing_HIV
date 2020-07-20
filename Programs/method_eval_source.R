@@ -1586,7 +1586,7 @@ reduce.mat.soelinreg <- function(pop, data, x, y, matsize, cutoff, tstperd,
     ##### This chunk solves the linreg matrix and assigns weights
     guess <- mat.linreg2(pop, data, linreg.z, matsize, prec, precrd, b0star, b1star, b2star, b3star)
     prec.max[counter] <- guess[[1, (matsize+1)]]
-    guess <- data.matrix(guess[, 1:matsize])
+    guess <- guess[, 1:matsize]
     counter <- counter + 1
     total <- sum(guess)
     #### this sets each box below the measurement limit to zero and creates weights
@@ -1695,7 +1695,7 @@ reduce.mat.linregsoe <- function(data, x, y, guess, matsize, cutoff,
     guess <- mat.linreg2(data, z, guess_first, matsize, prec, precrd)
     ### tracks the distance btwn the guess matrix row/col total and observed values
     prec.max[counter] <- guess[[1, (matsize+1)]]
-    guess <- data.matrix(guess[, 1:matsize])
+    guess <- guess[, 1:matsize]
     ### this counter is for prec.max tracking
     counter <- counter + 1
     ### sum of all guessed VL values

@@ -5,10 +5,10 @@ library(tidyverse)
 library(dplyr)
 
 # set working directory of location of source program
-setwd("")
+setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Programs")
 source("method_eval_source.R")
 # set working directory to location to store the data
-setwd("")
+setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/SimData")
 
 ##############################################################################################
 
@@ -27,7 +27,7 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_AGAIG_SD0_ME0_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_AGAIG_SD0_ME0_rand.R")
 
 
 set.seed(18)
@@ -35,21 +35,21 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.25, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_AGAIG_SD0_ME.25_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_AGAIG_SD0_ME.25_rand.R")
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.5, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_AGAIG_SD0_ME.5_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_AGAIG_SD0_ME.5_rand.R")
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_AGAIG_SD0_ME.75_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_AGAIG_SD0_ME.75_rand.R")
 
 
 
@@ -63,7 +63,7 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_reverse_SD0_ME0_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_reverse_SD0_ME0_rand.R")
 
 
 set.seed(18)
@@ -71,18 +71,18 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.25, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_reverse_SD0_ME.25_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_reverse_SD0_ME.25_rand.R")
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.5, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_reverse_SD0_ME.5_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_reverse_SD0_ME.5_rand.R")
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-write.table(result1, file="Results_reverse_SD0_ME.75_rand.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2/Results_reverse_SD0_ME.75_rand.R")

@@ -7,10 +7,10 @@ library(tidyverse)
 library(dplyr)
 
 # set working directory of location of source program
-setwd("")
+setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Programs")
 source("method_eval_source.R")
 # set working directory to location to store the data
-setwd("")
+setwd("C:/Users/Barny/Documents/KI_project_4/data_uganda/Clean_data")
 
 ##############################################################################################
 
@@ -30,7 +30,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_hypred_ME0.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME0.R")
 
 
 set.seed(18)
@@ -38,7 +38,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=0.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_hypred_ME.05.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.05.R")
 
 
 
@@ -47,7 +47,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_hypred_ME.12.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.12.R")
 
 
 
@@ -56,7 +56,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.25, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_hypred_ME.25.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.25.R")
 
 
 set.seed(18)
@@ -64,7 +64,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.5, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_hypred_ME.5.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.5.R")
 
 
 set.seed(18)
@@ -72,7 +72,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_hypred_ME.75.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.75.R")
 
 
 ######################################################################################################
@@ -83,7 +83,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_ME0.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME0.R")
 
 
 
@@ -92,7 +92,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_ME.05.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.05.R")
 
 
 
@@ -101,7 +101,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_ME.12.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.12.R")
 
 
 
@@ -110,7 +110,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.25, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_ME.25.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.25.R")
 
 
 set.seed(18)
@@ -118,7 +118,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.5, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_ME.5.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.5.R")
 
 
 set.seed(18)
@@ -126,4 +126,4 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="Uganda_ME.75.R")
+write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.75.R")
