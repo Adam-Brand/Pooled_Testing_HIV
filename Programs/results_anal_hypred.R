@@ -276,83 +276,83 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 final_table(dataset=hypred_AGAIG_SD0_ME0[hypred_AGAIG_SD0_ME0$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0, Estimated Betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.25, est betas")
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.25, Estimated betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.5, est betas")
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.5, Estimated betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.75[hypred_AGAIG_SD0_ME.75$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.75, est betas")
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.75, Estimated betas")
 
 
-final_table(dataset=hypred_AGAIG_ME.05[hypred_AGAIG_ME.05$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.05, est betas")
-final_table(dataset=hypred_AGAIG_ME.12[hypred_AGAIG_ME.12$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.12, est betas")
-final_table(dataset=hypred_AGAIG_ME.25[hypred_AGAIG_ME.25$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.25, est betas")
-final_table(dataset=hypred_AGAIG_ME.5[hypred_AGAIG_ME.5$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.5, est betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.05, Estimated betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.12[hypred_AGAIG_SD1_ME.12$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.12, Estimated betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
 
 
 final_table(dataset=hypred_AGAIG_SD0_ME0[hypred_AGAIG_SD0_ME0$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0, est betas")
+            caption = "Hypred low Tier, AGAIG, SD=0 ME=0, Estimated betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.25, est betas")
+            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.25, Estimated betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.5, est betas")
+            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.5, Estimated betas")
 final_table(dataset=hypred_AGAIG_SD0_ME.75[hypred_AGAIG_SD0_ME.75$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.75, est betas")
+            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.75, Estimated betas")
 
 
-final_table(dataset=hypred_AGAIG_ME.05[hypred_AGAIG_ME.05$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.05, est betas")
-final_table(dataset=hypred_AGAIG_ME.12[hypred_AGAIG_ME.12$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.12, est betas")
-final_table(dataset=hypred_AGAIG_ME.25[hypred_AGAIG_ME.25$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.25, est betas")
-final_table(dataset=hypred_AGAIG_ME.5[hypred_AGAIG_ME.5$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.5, est betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="low",], 
+            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.05, Estimated betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.12[hypred_AGAIG_SD1_ME.12$section=="low",], 
+            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.12, Estimated betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="low",], 
+            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="low",], 
+            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
 
 #####################################################################################################
 
 final_table(dataset=hypred_reverse_SD0_ME0[hypred_reverse_SD0_ME0$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0, est betas")
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0, Estimated betas")
 final_table(dataset=hypred_reverse_SD0_ME.25[hypred_reverse_SD0_ME.25$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.25, est betas")
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.25, Estimated betas")
 final_table(dataset=hypred_reverse_SD0_ME.5[hypred_reverse_SD0_ME.5$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.5, est betas")
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.5, Estimated betas")
 final_table(dataset=hypred_reverse_SD0_ME.75[hypred_reverse_SD0_ME.75$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.75, est betas")
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.75, Estimated betas")
 
 
-final_table(dataset=hypred_reverse_ME.05[hypred_reverse_ME.05$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.05, est betas")
-final_table(dataset=hypred_reverse_ME.12[hypred_reverse_ME.12$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.12, est betas")
-final_table(dataset=hypred_reverse_ME.25[hypred_reverse_ME.25$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.25, est betas")
-final_table(dataset=hypred_reverse_ME.5[hypred_reverse_ME.5$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.5, est betas")
+final_table(dataset=hypred_reverse_SD1_ME.05[hypred_reverse_SD1_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.05, Estimated betas")
+final_table(dataset=hypred_reverse_SD1_ME.12[hypred_reverse_SD1_ME.12$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.12, Estimated betas")
+final_table(dataset=hypred_reverse_SD1_ME.25[hypred_reverse_SD1_ME.25$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.25, Estimated betas")
+final_table(dataset=hypred_reverse_SD1_ME.5[hypred_reverse_SD1_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.5, Estimated betas")
 
 
 
 final_table(dataset=hypred_reverse_SD0_ME0[hypred_reverse_SD0_ME0$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0, est betas")
+            caption = "Hypred low Tier, Reverse, SD=0 ME=0, Estimated betas")
 final_table(dataset=hypred_reverse_SD0_ME.25[hypred_reverse_SD0_ME.25$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0.25, est betas")
+            caption = "Hypred low Tier, Reverse, SD=0 ME=0.25, Estimated betas")
 final_table(dataset=hypred_reverse_SD0_ME.5[hypred_reverse_SD0_ME.5$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0.5, est betas")
+            caption = "Hypred low Tier, Reverse, SD=0 ME=0.5, Estimated betas")
 final_table(dataset=hypred_reverse_SD0_ME.75[hypred_reverse_SD0_ME.75$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0.75, est betas")
+            caption = "Hypred low Tier, Reverse, SD=0 ME=0.75, Estimated betas")
 
 
-final_table(dataset=hypred_reverse_ME.05[hypred_reverse_ME.05$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.05, est betas")
-final_table(dataset=hypred_reverse_ME.12[hypred_reverse_ME.12$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.12, est betas")
-final_table(dataset=hypred_reverse_ME.25[hypred_reverse_ME.25$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.25, est betas")
-final_table(dataset=hypred_reverse_ME.5[hypred_reverse_ME.5$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.5, est betas")
+final_table(dataset=hypred_reverse_SD1_ME.05[hypred_reverse_SD1_ME.05$section=="low",], 
+            caption = "Hypred low Tier, Reverse, SD=1 ME=0.05, Estimated betas")
+final_table(dataset=hypred_reverse_SD1_ME.12[hypred_reverse_SD1_ME.12$section=="low",], 
+            caption = "Hypred low Tier, Reverse, SD=1 ME=0.12, Estimated betas")
+final_table(dataset=hypred_reverse_SD1_ME.25[hypred_reverse_SD1_ME.25$section=="low",], 
+            caption = "Hypred low Tier, Reverse, SD=1 ME=0.25, Estimated betas")
+final_table(dataset=hypred_reverse_SD1_ME.5[hypred_reverse_SD1_ME.5$section=="low",], 
+            caption = "Hypred low Tier, Reverse, SD=1 ME=0.5, Estimated betas")
 
 ###########################################################################################
 
