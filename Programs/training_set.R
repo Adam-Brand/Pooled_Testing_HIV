@@ -21,16 +21,16 @@
 #
 #
 # =============================================================================
-### set working directory to the location of the training_set.R program; location
-### should also have the raw_data_clean.R program
-setwd("")
-source("raw_data_clean.R")
+
+
+source("Programs/raw_data_clean.R")
 library(tidyverse)
 library(broom)
 library(glmnet)
 library(ggplot2)
 library(useful)
 library(sbrl)
+library(here)
 ### running the data cleaning program
 
 
@@ -39,7 +39,7 @@ library(sbrl)
 ### deriving the train set; minimum 6 month tes date was 2004-12-03
 ### maximum 6 month train date was 2011-12-19. 
 
-## declaring the 6 month window for the training set; grabbing all dates prior to 2010-04-01
+## declaring the window for the training set; grabbing all dates prior to 2010-06-30
 date1 <- as.Date("2000-01-01")
 date2 <- as.Date("2010-06-30")
 
@@ -109,9 +109,6 @@ for (i in 1:length(train.data12$study_id)) {
   else {train.data12$dub_fail[i] = NA}
 }
 
-check <- train.data12[is.na(train.data12$dub_fail),]
-check2 <- train.data12[!is.na(train.data12$dub_fail),]
-check3 <- train.data12[train.data12$dub_fail==1 & !is.na(train.data12$dub_fail),]
 
 # repeating for 18 month values
 train.data18 <- mydata[(!is.na(mydata$visitdate18) & !is.na(mydata$vl_mth18) & mydata$visitdate18 <= date2 & mydata$visitdate18 >= date1),]
@@ -161,10 +158,6 @@ for (i in 1:length(train.data18$study_id)) {
   {train.data18$dub_fail[i] = 0}
   else {train.data18$dub_fail[i] = NA}
 }
-
-check <- train.data18[is.na(train.data18$dub_fail),]
-check2 <- train.data18[!is.na(train.data18$dub_fail),]
-check3 <- train.data18[train.data18$dub_fail==1 & !is.na(train.data18$dub_fail),]
 
 
 # repeating for 24 month values
@@ -226,9 +219,6 @@ for (i in 1:length(train.data24$study_id)) {
   else {train.data24$dub_fail[i] = NA}
 }
 
-check <- train.data24[is.na(train.data24$dub_fail),]
-check2 <- train.data24[!is.na(train.data24$dub_fail),]
-check3 <- train.data24[train.data24$dub_fail==1 & !is.na(train.data24$dub_fail),]
 
 # repeating for 30 month values
 train.data30 <- mydata[(!is.na(mydata$visitdate30) & !is.na(mydata$vl_mth30) & mydata$visitdate30 <= date2 & mydata$visitdate30 >= date1),]
@@ -303,9 +293,6 @@ for (i in 1:length(train.data30$study_id)) {
   else {train.data30$dub_fail[i] = NA}
 }
 
-check <- train.data30[is.na(train.data30$dub_fail),]
-check2 <- train.data30[!is.na(train.data30$dub_fail),]
-check3 <- train.data30[train.data30$dub_fail==1 & !is.na(train.data30$dub_fail),]
 
 # repeating for 36 month values
 train.data36 <- mydata[(!is.na(mydata$visitdate36) & !is.na(mydata$vl_mth36) & mydata$visitdate36 <= date2 & mydata$visitdate36 >= date1),]
@@ -393,11 +380,6 @@ for (i in 1:length(train.data36$study_id)) {
   {train.data36$dub_fail[i] = 0}
   else {train.data36$dub_fail[i] = NA}
 }
-
-check <- train.data36[is.na(train.data36$dub_fail),]
-check2 <- train.data36[!is.na(train.data36$dub_fail),]
-check3 <- train.data36[train.data36$dub_fail==1 & !is.na(train.data36$dub_fail),]
-
 
 
 # repeating for 42 month values
@@ -501,11 +483,6 @@ for (i in 1:length(train.data42$study_id)) {
   {train.data42$dub_fail[i] = 0}
   else {train.data42$dub_fail[i] = NA}
 }
-
-check <- train.data42[is.na(train.data42$dub_fail),]
-check2 <- train.data42[!is.na(train.data42$dub_fail),]
-check3 <- train.data42[train.data42$dub_fail==1 & !is.na(train.data42$dub_fail),]
-
 
 # repeating for 48 month values
 train.data48 <- mydata[(!is.na(mydata$visitdate48) & !is.na(mydata$vl_mth48) & mydata$visitdate48 <= date2 & mydata$visitdate48 >= date1),]
@@ -624,12 +601,6 @@ for (i in 1:length(train.data48$study_id)) {
   {train.data48$dub_fail[i] = 0}
   else {train.data48$dub_fail[i] = NA}
 }
-
-check <- train.data48[is.na(train.data48$dub_fail),]
-check2 <- train.data48[!is.na(train.data48$dub_fail),]
-check3 <- train.data48[train.data48$dub_fail==1 & !is.na(train.data48$dub_fail),]
-
-
 
 
 # repeating for 54 month values
@@ -766,10 +737,6 @@ for (i in 1:length(train.data54$study_id)) {
   {train.data54$dub_fail[i] = 0}
   else {train.data54$dub_fail[i] = NA}
 }
-
-check <- train.data54[is.na(train.data54$dub_fail),]
-check2 <- train.data54[!is.na(train.data54$dub_fail),]
-check3 <- train.data54[train.data54$dub_fail==1 & !is.na(train.data54$dub_fail),]
 
 
 # repeating for 60 month values
@@ -924,10 +891,6 @@ for (i in 1:length(train.data60$study_id)) {
   {train.data60$dub_fail[i] = 0}
   else {train.data60$dub_fail[i] = NA}
 }
-
-check <- train.data60[is.na(train.data60$dub_fail),]
-check2 <- train.data60[!is.na(train.data60$dub_fail),]
-check3 <- train.data60[train.data60$dub_fail==1 & !is.na(train.data60$dub_fail),]
 
 
 # repeating for 66 month values
@@ -1101,11 +1064,6 @@ for (i in 1:length(train.data66$study_id)) {
   {train.data66$dub_fail[i] = 0}
   else {train.data66$dub_fail[i] = NA}
 }
-
-check <- train.data66[is.na(train.data66$dub_fail),]
-check2 <- train.data66[!is.na(train.data66$dub_fail),]
-check3 <- train.data66[train.data66$dub_fail==1 & !is.na(train.data66$dub_fail),]
-
 
 
 # repeating for 72 month values
@@ -1300,11 +1258,6 @@ for (i in 1:length(train.data72$study_id)) {
   else {train.data72$dub_fail[i] = NA}
 }
 
-check <- train.data72[is.na(train.data72$dub_fail),]
-check2 <- train.data72[!is.na(train.data72$dub_fail),]
-check3 <- train.data72[train.data72$dub_fail==1 & !is.na(train.data72$dub_fail),]
-
-
 ##### putting all of the individual timepoint dataset together
 
 train.data <- rbind(train.data6, train.data12, train.data18, train.data24, train.data30, train.data36, train.data42, train.data48,
@@ -1415,9 +1368,8 @@ train.data2 <- select(train.data, study_id, sex, male, female, ageyrs,  age35, a
                       basecd4, bascd4log, basevl, basvllog, lastVL, lastVLlog,
                       lastVL_t, enroll_t, vl, vllog, fail_draw, dub_fail, lastVLcat, label)
 
-# set working directory to location you want to write the dataset and uncomment below line
-#setwd("")
-#write.table(train.data2, paste0("train_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
+
+saveRDS(train.data2, "UgandaData/train_data.rds")
 
 
 

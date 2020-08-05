@@ -1478,6 +1478,8 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
       
       ### if the row is higher, we use the col total
       num <- z$cols[d[counter2,2]]
+      ### fixing the box with highest predicted viral load
+      fixed <- rbind(fixed, c(d[counter2,1], d[counter2,2]))
       ### this applies the col total to the appropriate box and zeros out the other boxes
       for (i in 1:matsize){
         ### This ensures we don't zero a box we've already fixed in our solution
@@ -1487,12 +1489,11 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
           z[i, d[counter2,2]] = lowlimit
           ### tracks number of boxes zeroed
           num.boxes.zero <- num.boxes.zero + 1
-          ### alters each row total by our lower VL limit/matsize for each box zeroed
-          z$rows[i] <- z$rows[i] - lowlimit/matsize
+          ### adds the lowlimit sample to fixed
           fixed <- rbind(fixed, c(i,  d[counter2,2]))}
       }
       
-      box.num <- (num*matsize) - (lowlimit*(num.boxes.zero - 1))
+      box.num <- (num - ((lowlimit/matsize)*num.boxes.zero))*matsize
       #### applies our solution VL number to the appropriate box
       z[[d[counter2,1], d[counter2,2]]]= box.num
       ##### also zeros out the corresponding 'error values' (Probably not relevant)
@@ -1500,7 +1501,7 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
       #### zeros out the col total
       z$cols[d[counter2,2]] <- 0
       ### subtracts the num from the row total and adds back in lowlimit/count.rowz that was subtracted earlier
-      z$rows[d[counter2,1]] <- z$rows[d[counter2,1]] - (box.num/matsize) + lowlimit/matsize
+      z$rows[d[counter2,1]] <- z$rows[d[counter2,1]] - (box.num/matsize) - (num.boxes.zero*(lowlimit/matsize))
       #### clears all coordinates in matrix d with the same col coordinate
       d <- subset(d, d[,2] != d[counter2,2])
       ### reorders matrix d by weight
@@ -1516,6 +1517,7 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
       
       #### extracts the row average
       num <- z$rows[d[counter2,1]]
+      fixed <- rbind(fixed, c(d[counter2,1], d[counter2,2]))
       for (i in 1:matsize){
         #### ensrues we do not touch boxes where we have fixed values of 0 or otherwise
         if(check.indices(fixed, c(d[counter2,1], i))){}
@@ -1524,15 +1526,13 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
           z[d[counter2,1],i] = lowlimit
           ### tracks number of boxes zeroed
           num.boxes.zero <- num.boxes.zero + 1
-          ### alters each row total by our lower VL limit/matsize for each box zeroed
-          z$cols[i] <- z$cols[i] - lowlimit/matsize
           fixed <- rbind(fixed, c(d[counter2,1], i))}
       }
-      box.num <- (num*matsize) - (lowlimit*(num.boxes.zero - 1))
+      box.num <- (num - ((lowlimit/matsize)*num.boxes.zero))*matsize
       z[[d[counter2,1], d[counter2,2]]]= box.num
       z[[d[counter2,1],(matsize+d[counter2,2])]] = 0
       z$rows[d[counter2,1]] <- 0
-      z$cols[d[counter2,2]] <- z$cols[d[counter2,2]] - (box.num/matsize) + lowlimit/matsize
+      z$cols[d[counter2,2]] <- z$cols[d[counter2,2]] - (box.num/matsize) - (num.boxes.zero*(lowlimit/matsize))
       d <- subset(d, d[,1] != d[counter2,1])
       d <- d[order(d[,3], decreasing = TRUE),]
       if (is.vector(d)){
@@ -2139,21 +2139,22 @@ pool.alg.cov <- function(reps, data, matsize, prec, precrd,
     index <- sample.int(n=length(data$VL), size=(matsize^2), replace=FALSE)
     data1 <- data[c(index),]
     
+    sd <- sample(10001:99999,1)
     # evaluating each of the 5 methods below using the same matrix (ensured by setting
     # a seed before each method)
-    set.seed(1)
+    set.seed(sd)
     linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     smart1 <- test.one.smt(data1, matsize, cutoff, SE, tstperrd, lowlimit, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE, Uganda)
     
     ### removes tested subjects from population    
@@ -2289,19 +2290,20 @@ hypred <- function(reps, data, matsize, prec, precrd,
     check <- NULL
     index <- sample.int(n=length(mid_tier$VL), size=(matsize^2), replace=FALSE)
     data1 <- mid_tier[c(index),]
-    set.seed(1)
+    sd <- sample(10001:99999,1)
+    set.seed(sd)
     linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp)
     
-    set.seed(1)
+    set.seed(sd)
     smart1 <- test.one.smt(data1, matsize, cutoff, SE, tstperrd, lowlimit)
     
-    set.seed(1)
+    set.seed(sd)
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp)
     
-    set.seed(1)
+    set.seed(sd)
     mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp)
     
-    set.seed(1)
+    set.seed(sd)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE)
     
     ### removes tested subjects from population    
@@ -2337,19 +2339,21 @@ hypred <- function(reps, data, matsize, prec, precrd,
     check <- NULL
     index <- sample.int(n=length(low_tier$VL), size=(matsize^2), replace=FALSE)
     data1 <- low_tier[c(index),]
-    set.seed(1)
+    sd <- sample(10001:99999,1)
+    
+    set.seed(sd)
     linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp)
     
-    set.seed(1)
+    set.seed(sd)
     smart1 <- test.one.smt(data1, matsize, cutoff, SE, tstperrd, lowlimit)
     
-    set.seed(1)
+    set.seed(sd)
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp)
     
-    set.seed(1)
+    set.seed(sd)
     mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp)
     
-    set.seed(1)
+    set.seed(sd)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE)
     
     ### removes tested subjects from population    
@@ -2469,19 +2473,21 @@ hypred_uganda <- function(reps, data, matsize, prec, precrd,
     check <- NULL
     index <- sample.int(n=length(mid_tier$VL), size=(matsize^2), replace=FALSE)
     data1 <- mid_tier[c(index),]
-    set.seed(1)
+    sd <- sample(10001:99999,1)
+    
+    set.seed(sd)
     linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     smart1 <- test.one.smt(data1, matsize, cutoff, SE, tstperrd, lowlimit, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE, Uganda)
     
     ### removes tested subjects from population    
@@ -2517,19 +2523,21 @@ hypred_uganda <- function(reps, data, matsize, prec, precrd,
     check <- NULL
     index <- sample.int(n=length(low_tier$VL), size=(matsize^2), replace=FALSE)
     data1 <- low_tier[c(index),]
-    set.seed(1)
+    sd <- sample(10001:99999,1)
+    
+    set.seed(sd)
     linreg1 <- test.one.linreg(data1, matsize, prec, precrd, cutoff, tstperd, SE, lowlimit, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     smart1 <- test.one.smt(data1, matsize, cutoff, SE, tstperrd, lowlimit, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     linregsoe1 <- test.one.linregsoe(data1, matsize, prec, precrd, cutoff, SE, lowlimit, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     mini.cov1 <- test.one.mini.cov(data1, matsize, cutoff, SE, filltyp, Uganda)
     
-    set.seed(1)
+    set.seed(sd)
     mini.pool1 <- test.one.mini(data1, matsize, cutoff, SE, Uganda)
     
     ### removes tested subjects from population    

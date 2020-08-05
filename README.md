@@ -3,7 +3,6 @@
 
 Below are descriptions of programs, documentation and datasets used on this project.
 
-IMPORTANT: the programs will not run until the working directories and filenames are set up in each of the programs. Many of the programs refer to/source other programs, so working directories need to be set appropriately to run. Make sure when copying programs to your system that you declare all of the working directories pointing to the correct locations. There are comments noting where to set working directories in the programs. Search for 'setwd' to find them. Also, the method_eval programs need a location to write results to. In the 'write.table' statements in those programs, put the desired file path in the quotations before the name of the result file.
 
 The real data collected from Uganda is not included in the repository. All of the code for cleaning/formatting the Uganda data is included, but will not run as expected without the course data file.
 
@@ -11,7 +10,7 @@ In order to replicate the simulation results presented in the paper:
 
 1) run data_gen.R. This will create 6 datasets needed to run the simulations. There will be errors as part of the data_gen.R program sources the data cleaning program for the real data, which is not included in this repository. There is also a shiny program we used for visualizing distributions of VLs. The shiny folder is called shinypopfit, and is included in this repository. Downloading/using this shiny program is optional though. It is not needed for reproducing results.
 
-    a) there are write.table statements which the user needs to fill in to save the datasets to the location of their choice. They are commented out, so uncomment them when you set the working directory for their saved location.
+    a) the datasets will save in the SimData folder
 
     b) the name of the 6 datasets as R objects are:
 
@@ -27,13 +26,13 @@ In order to replicate the simulation results presented in the paper:
 
       simdata2_rev - same as simdata_rev, but with SD=0
 
-2) run program sim_data_betas.R. This program uses the training set for simulation data, simdata_train, to estimate the betas of different models. For the simulations in the paper, we used only the estimated betas from the data where SD=1.0 to predict VL. We did not set seeds for ridge regression, so betas may vary slightly. The betas we used are included in the method_eval programs (more on these below).
+2) run program sim_data_betas.R. This program uses the training set for simulation data, simdata_train, to estimate the betas using different models. For the simulations in the paper, we used only the estimated betas from the data where SD=1.0 to predict VL using ridge regression. We did not set seeds for ridge regression, so betas may vary slightly. The betas we used are included in the method_eval programs (more on these below).
 
-3) Run a method_eval program from the 'Method_eval' folder. Each program sources the program containing the needed functions, method_eval_source. This program must be downloaded and the working directory set to point to it before running. Nothing in method_eval_source needs to be changed.
+3) Run a method_eval program from the 'Method_eval' folder. Each program sources the program containing the needed functions, method_eval_source. This program must be downloaded and the working directory set to point to it before running.
 
     a) Each method_eval program evaluates the methods on 50,000 samples (500, 10 x 10 matrices) in a variety of scenarios.
 
-    b) Which scenario each statement evaluates should be recognizable by the name of the result file in the write.table statement below the function call. The statement begins with a read.table command which tells us which data we are using, i.e., SD=1.0 or SD=0. Then the estimated betas are set which are the betas used to predict the VL based on the 2 covariates. (This is where the betas are recorded that we obtained from sim_data_betas program.)
+    b) Which scenario each statement evaluates should be recognizable by the name of the result file. The statement begins with a readRDS command which tells us which data we are using, i.e., SD=1.0 or SD=0. Then the estimated betas are set which are the betas used to predict the VL based on the 2 covariates. (This is where the betas are recorded that we obtained from sim_data_betas program.)
 
     c) Within each evaluation scenario, we set the number of matrices, matrix size, SE (the ME on log10 scale in the paper). prec and precrd have to do with prediction fitting precision variables, and we leave them at 10 and 20, respectively. Cutoff is left at 1000 and represents the VL cutoff for 'failure'. We leave tstperd at 5, lowlimit at 50 and filltype="rnd" for the evaluations in the paper. There are 3 main evaluation functions within the method_eval programs:
 

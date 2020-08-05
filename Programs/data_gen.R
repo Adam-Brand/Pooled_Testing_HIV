@@ -28,10 +28,13 @@
 ##### Testing
 library(shiny)
 library(dplyr)
+library(here)
 
-# set working directory to location of the program
-setwd("")
-source("raw_data_clean.R")
+# the below source program will only work with access to the real Uganda data
+# this will produce errors when running without the uganda data, but
+# the simulation data will still be generated. It was used to compare the VL distributions
+# of the real data to the simulated data to ensure similarity
+source(here("Programs","raw_data_clean.R"))
 
 # This function simulates viral load (VL) values under 500 copies/mL
 # n is the number of values to simulate
@@ -143,8 +146,7 @@ lines(density(log10(check)))
 ## the VLs in Uganda using a supposed prediction model with simulated predictors.
 
 ## to run the app, set the working directory to the location of the shinypopfit folder
-setwd("")
-runApp("shinypopfit")
+runApp(here("Programs","shinypopfit"))
 
 # Simulates a dataframe with adherence, PFS and viral load for n patients
 # based on the covariate model, described in detail later
@@ -185,11 +187,6 @@ for (i in 1:length(simdata$VL)){
   if (simdata$VL[i] > 3000000) {simdata$VL[i] = 3000000 + rnorm(n=1, mean=0, sd = 10000)}
 }
 
-
-check <- simdata %>%
-  arrange(
-    desc(model.VL)
-  )
 
 # creating a categorical classification of VL
 for (i in 1:length(simdata$VL)){
@@ -260,19 +257,17 @@ sum(simdata$VL >=1000)/length(simdata$VL)
 summary(simdata$VL)
 summary(VLdata$VL)
 
-# set working directory for where you want to store the data and uncomment the
-# below lines for writing
-setwd("")
-# write.table(simdata, file="Uganda_SimData_SD1.0.R")
-# write.table(simdata_train, file="Uganda_SimData_train_SD1.0.R")
-# write.table(simdata_rev, file="Uganda_SimData_train_SD1.0_reverse.R")
+
+saveRDS(simdata, "SimData/Uganda_SimData_SD1.0.rds")
+saveRDS(simdata_train, "SimData/Uganda_SimData_train_SD1.0.rds")
+saveRDS(simdata_rev, "SimData/Uganda_SimData_train_SD1.0_reverse.rds")
 
 
 ### checking that the model isnt too overly predictive. We set the sd at 1.0 on log10 scale to get 0.327 R2
-check <- read.table("Uganda_SimData_SD1.0.R")
+check <- readRDS("SimData/Uganda_SimData_SD1.0.rds")
 plot(check$log.VL ~ check$model.VL)
 
-### R squared between model and actual data = 0.327. SD=1.0
+### R squared between model and actual data = 0.32. SD=1.0
 cor(check$log.VL, check$model.VL)^2
 
 
@@ -325,10 +320,8 @@ for (i in 1:length(simdata2_rev$VL)){
 sum(simdata2$VL >=1000)/length(simdata2$VL)
 sum(simdata2_train$VL >=1000)/length(simdata2_train$VL)
 
-# set working directory to location to store data
-setwd("")
-# uncomment below lines and write the datasets
- # write.table(simdata2, file="Uganda_SimData_SD0.R")
- # write.table(simdata2_train, file="Uganda_SimData_train_SD0.R")
- # write.table(simdata2_rev, file="Uganda_SimData_train_SD0_reverse.R")
+
+saveRDS(simdata2, "SimData/Uganda_SimData_SD0.rds")
+saveRDS(simdata2_train, "SimData/Uganda_SimData_train_SD0.rds")
+saveRDS(simdata2_rev,  "SimData/Uganda_SimData_train_SD0_reverse.rds")
 

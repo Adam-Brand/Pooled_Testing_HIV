@@ -24,43 +24,38 @@ library(rlang)
 library(xtable)
 library(PropCIs)
 library(DescTools)
+library(here)
 
-# set working directory to location of results
-setwd("")
+hypred_AGAIG_SD1_ME.05 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.05_rand.rds")
+hypred_AGAIG_SD1_ME.12 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.12_rand.rds")
+hypred_AGAIG_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.25_rand.rds")
+hypred_AGAIG_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.5_rand.rds")
 
-hypred_AGAIG_SD1_ME.05 <- read.table("Results_Hypred_AGAIG_SD1_ME.05_rand.R")
-hypred_AGAIG_SD1_ME.12 <- read.table("Results_Hypred_AGAIG_SD1_ME.12_rand.R")
-hypred_AGAIG_SD1_ME.25 <- read.table("Results_Hypred_AGAIG_SD1_ME.25_rand.R")
-hypred_AGAIG_SD1_ME.5 <- read.table("Results_Hypred_AGAIG_SD1_ME.5_rand.R")
-
-hypred_reverse_SD1_ME.05 <- read.table("Results_Hypred_reverse_SD1_ME.05_rand.R")
-hypred_reverse_SD1_ME.12 <- read.table("Results_Hypred_reverse_SD1_ME.12_rand.R")
-hypred_reverse_SD1_ME.25 <- read.table("Results_Hypred_reverse_SD1_ME.25_rand.R")
-hypred_reverse_SD1_ME.5 <- read.table("Results_Hypred_reverse_SD1_ME.5_rand.R")
+hypred_reverse_SD1_ME.05 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.05_rand.rds")
+hypred_reverse_SD1_ME.12 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.12_rand.rds")
+hypred_reverse_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.25_rand.rds")
+hypred_reverse_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.5_rand.rds")
 
                 ##############################
 
-# set working directory to location of results
-setwd("")
+hypred_AGAIG_SD0_ME0 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME0_rand.rds")
+hypred_AGAIG_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.25_rand.rds")
+hypred_AGAIG_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.5_rand.rds")
+hypred_AGAIG_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.75_rand.rds")
 
-hypred_AGAIG_SD0_ME0 <- read.table("Results_Hypred_AGAIG_SD0_ME0_rand.R")
-hypred_AGAIG_SD0_ME.25 <- read.table("Results_Hypred_AGAIG_SD0_ME.25_rand.R")
-hypred_AGAIG_SD0_ME.5 <- read.table("Results_Hypred_AGAIG_SD0_ME.5_rand.R")
-hypred_AGAIG_SD0_ME.75 <- read.table("Results_Hypred_AGAIG_SD0_ME.75_rand.R")
+hypred_reverse_SD0_ME0 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME0_rand.rds")
+hypred_reverse_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.25_rand.rds")
+hypred_reverse_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.5_rand.rds")
+hypred_reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.75_rand.rds")
 
-hypred_reverse_SD0_ME0 <- read.table("Results_Hypred_reverse_SD0_ME0_rand.R")
-hypred_reverse_SD0_ME.25 <- read.table("Results_Hypred_reverse_SD0_ME.25_rand.R")
-hypred_reverse_SD0_ME.5 <- read.table("Results_Hypred_reverse_SD0_ME.5_rand.R")
-hypred_reverse_SD0_ME.75 <- read.table("Results_Hypred_reverse_SD0_ME.75_rand.R")
+####################################################################################
 
-# set working directory to location of uganda results
-setwd("")
-hypred_uganda_ME0 <- read.table("Uganda_hypred_ME0.R")
-hypred_uganda_ME.05 <- read.table("Uganda_hypred_ME.05.R")
-hypred_uganda_ME.12 <- read.table("Uganda_hypred_ME.12.R")
-hypred_uganda_ME.25 <- read.table("Uganda_hypred_ME.25.R")
-hypred_uganda_ME.5 <- read.table("Uganda_hypred_ME.5.R")
-hypred_uganda_ME.75 <- read.table("Uganda_hypred_ME.75.R")
+hypred_uganda_ME0 <- readRDS("Results/UgandaResults/Uganda_hypred_ME0.rds")
+hypred_uganda_ME.05 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.05.rds")
+hypred_uganda_ME.12 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.12.rds")
+hypred_uganda_ME.25 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.25.rds")
+hypred_uganda_ME.5 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.5.rds")
+hypred_uganda_ME.75 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.75.rds")
 
 
 ### reforming the data frame into long format with the method name as a variable
@@ -356,7 +351,7 @@ final_table(dataset=hypred_reverse_SD1_ME.5[hypred_reverse_SD1_ME.5$section=="lo
 
 ###########################################################################################
 
-####################################  Hypred results #####################################
+####################################  Hypred Uganda results #####################################
 
 ## Hypred mid tier
 

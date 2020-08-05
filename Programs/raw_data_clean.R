@@ -12,7 +12,7 @@
 
 # R VERSION: 3.6.1
 #==============================================================================
-#Notes: 
+#Notes: the raw data file is not included on GitHub
 
 
 
@@ -25,12 +25,11 @@
 library(lubridate)
 library(ggplot2)
 library(dplyr)
+library(here)
 
-#### set working directory to location with data
-setwd("")
 
 ### reading in raw data csv file
-raw <- read.csv("Raw_data_version1_2396.csv", header=T)
+raw <- read.csv("UgandaData/Raw_data_version1_2396.csv", header=T)
 
 #### checking the names of all variables in the raw data
 names(raw)
@@ -421,11 +420,10 @@ for (i in 1:length(mydata$study_id)){
 
 
 
-##### End of cleaning and derivation code; this writes the dataset to a csv file
+##### End of cleaning and derivation code; this writes the dataset to an rds file
 
-##set working directory to location to write clean_data, and uncomment below line
-#setwd("")
-#write.csv2(mydata, paste0("Clean_data", format(Sys.time(),"%Y-%m-%d"), ".csv"))
+
+saveRDS(mydata, "UgandaData/Clean_data.rds")
 
 
 

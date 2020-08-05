@@ -21,16 +21,15 @@
 #
 #
 # =============================================================================
-### set working directory to the location of the test_set.R program; location
-### should also have the raw_data_clean.R program
-setwd("")
-source("raw_data_clean.R")
+
+source("Programs/raw_data_clean.R")
 library(tidyverse)
 library(broom)
 library(glmnet)
 library(ggplot2)
 library(useful)
 library(sbrl)
+library(here)
 ### running the data cleaning program
 
 
@@ -39,7 +38,7 @@ library(sbrl)
 ### deriving the test set; minimum 6 month tes date was 2004-12-03
 ### maximum 6 month test date was 2011-12-19. 
 
-## declaring the 6 month window for the testing set; grabbing all dates prior to 2010-04-01
+## declaring the window for the testing set; grabbing all dates after 2010-06-30
 date1 <- as.Date("2010-07-01")
 date2 <- as.Date("2018-01-01")
 
@@ -109,9 +108,6 @@ for (i in 1:length(test.data12$study_id)) {
   else {test.data12$dub_fail[i] = NA}
 }
 
-check <- test.data12[is.na(test.data12$dub_fail),]
-check2 <- test.data12[!is.na(test.data12$dub_fail),]
-check3 <- test.data12[test.data12$dub_fail==1 & !is.na(test.data12$dub_fail),]
 
 # repeating for 18 month values
 test.data18 <- mydata[(!is.na(mydata$visitdate18) & !is.na(mydata$vl_mth18) & mydata$visitdate18 <= date2 & mydata$visitdate18 >= date1),]
@@ -161,10 +157,6 @@ for (i in 1:length(test.data18$study_id)) {
   {test.data18$dub_fail[i] = 0}
   else {test.data18$dub_fail[i] = NA}
 }
-
-check <- test.data18[is.na(test.data18$dub_fail),]
-check2 <- test.data18[!is.na(test.data18$dub_fail),]
-check3 <- test.data18[test.data18$dub_fail==1 & !is.na(test.data18$dub_fail),]
 
 
 # repeating for 24 month values
@@ -225,10 +217,6 @@ for (i in 1:length(test.data24$study_id)) {
   {test.data24$dub_fail[i] = 0}
   else {test.data24$dub_fail[i] = NA}
 }
-
-check <- test.data24[is.na(test.data24$dub_fail),]
-check2 <- test.data24[!is.na(test.data24$dub_fail),]
-check3 <- test.data24[test.data24$dub_fail==1 & !is.na(test.data24$dub_fail),]
 
 # repeating for 30 month values
 test.data30 <- mydata[(!is.na(mydata$visitdate30) & !is.na(mydata$vl_mth30) & mydata$visitdate30 <= date2 & mydata$visitdate30 >= date1),]
@@ -303,9 +291,6 @@ for (i in 1:length(test.data30$study_id)) {
   else {test.data30$dub_fail[i] = NA}
 }
 
-check <- test.data30[is.na(test.data30$dub_fail),]
-check2 <- test.data30[!is.na(test.data30$dub_fail),]
-check3 <- test.data30[test.data30$dub_fail==1 & !is.na(test.data30$dub_fail),]
 
 # repeating for 36 month values
 test.data36 <- mydata[(!is.na(mydata$visitdate36) & !is.na(mydata$vl_mth36) & mydata$visitdate36 <= date2 & mydata$visitdate36 >= date1),]
@@ -393,12 +378,6 @@ for (i in 1:length(test.data36$study_id)) {
   {test.data36$dub_fail[i] = 0}
   else {test.data36$dub_fail[i] = NA}
 }
-
-check <- test.data36[is.na(test.data36$dub_fail),]
-check2 <- test.data36[!is.na(test.data36$dub_fail),]
-check3 <- test.data36[test.data36$dub_fail==1 & !is.na(test.data36$dub_fail),]
-
-
 
 # repeating for 42 month values
 test.data42 <- mydata[(!is.na(mydata$visitdate42) & !is.na(mydata$vl_mth42) & mydata$visitdate42 <= date2 & mydata$visitdate42 >= date1),]
@@ -501,11 +480,6 @@ for (i in 1:length(test.data42$study_id)) {
   {test.data42$dub_fail[i] = 0}
   else {test.data42$dub_fail[i] = NA}
 }
-
-check <- test.data42[is.na(test.data42$dub_fail),]
-check2 <- test.data42[!is.na(test.data42$dub_fail),]
-check3 <- test.data42[test.data42$dub_fail==1 & !is.na(test.data42$dub_fail),]
-
 
 # repeating for 48 month values
 test.data48 <- mydata[(!is.na(mydata$visitdate48) & !is.na(mydata$vl_mth48) & mydata$visitdate48 <= date2 & mydata$visitdate48 >= date1),]
@@ -624,12 +598,6 @@ for (i in 1:length(test.data48$study_id)) {
   {test.data48$dub_fail[i] = 0}
   else {test.data48$dub_fail[i] = NA}
 }
-
-check <- test.data48[is.na(test.data48$dub_fail),]
-check2 <- test.data48[!is.na(test.data48$dub_fail),]
-check3 <- test.data48[test.data48$dub_fail==1 & !is.na(test.data48$dub_fail),]
-
-
 
 
 # repeating for 54 month values
@@ -766,10 +734,6 @@ for (i in 1:length(test.data54$study_id)) {
   {test.data54$dub_fail[i] = 0}
   else {test.data54$dub_fail[i] = NA}
 }
-
-check <- test.data54[is.na(test.data54$dub_fail),]
-check2 <- test.data54[!is.na(test.data54$dub_fail),]
-check3 <- test.data54[test.data54$dub_fail==1 & !is.na(test.data54$dub_fail),]
 
 
 # repeating for 60 month values
@@ -924,10 +888,6 @@ for (i in 1:length(test.data60$study_id)) {
   {test.data60$dub_fail[i] = 0}
   else {test.data60$dub_fail[i] = NA}
 }
-
-check <- test.data60[is.na(test.data60$dub_fail),]
-check2 <- test.data60[!is.na(test.data60$dub_fail),]
-check3 <- test.data60[test.data60$dub_fail==1 & !is.na(test.data60$dub_fail),]
 
 
 # repeating for 66 month values
@@ -1101,11 +1061,6 @@ for (i in 1:length(test.data66$study_id)) {
   {test.data66$dub_fail[i] = 0}
   else {test.data66$dub_fail[i] = NA}
 }
-
-check <- test.data66[is.na(test.data66$dub_fail),]
-check2 <- test.data66[!is.na(test.data66$dub_fail),]
-check3 <- test.data66[test.data66$dub_fail==1 & !is.na(test.data66$dub_fail),]
-
 
 
 # repeating for 72 month values
@@ -1300,10 +1255,6 @@ for (i in 1:length(test.data72$study_id)) {
   else {test.data72$dub_fail[i] = NA}
 }
 
-check <- test.data72[is.na(test.data72$dub_fail),]
-check2 <- test.data72[!is.na(test.data72$dub_fail),]
-check3 <- test.data72[test.data72$dub_fail==1 & !is.na(test.data72$dub_fail),]
-
 
 ##### putting all of the individual timepoint dataset together
 
@@ -1416,9 +1367,8 @@ test.data2 <- select(test.data, study_id, sex, male, female, ageyrs,  age35, age
                       basecd4, bascd4log, basevl, basvllog, lastVL, lastVLlog,
                       lastVL_t, enroll_t, vl, vllog, fail_draw, dub_fail, lastVLcat, label)
 
-# set working directory to location you want to write the dataset and uncomment below line
-#setwd("")
-#write.table(test.data2, paste0("test_data", format(Sys.time(),"%Y-%m-%d"), ".R"))
+
+saveRDS(test.data2, "UgandaData/test_data.rds")
 
 
 

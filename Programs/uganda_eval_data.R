@@ -30,11 +30,11 @@ library(ggplot2)
 library(useful)
 library(sbrl)
 library(pROC)
+library(here)
 
-setwd("")
 
-test <- read.table("test_data.R")
-train <- read.table("train_data.R")
+test <- readRDS("UgandaData/test_data.rds")
+train <- readRDS("UgandaData/train_data.rds")
 
 ##### getting the model betas and the predicted cutoff values from the train set
 
@@ -189,7 +189,7 @@ for (i in 1:length(test_final$study_id)){
 
 ##### writing the final test dataset
 ### make sure to include the filepath for the location you want the data
-#write.table(test_final, "test_set_final.R")
+saveRDS(test_final, "UgandaData/test_set_final.rds")
 
 
 

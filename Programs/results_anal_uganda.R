@@ -26,17 +26,15 @@ library(rlang)
 library(xtable)
 library(PropCIs)
 library(DescTools)
-
-# set working directory to location of the results datasets
-setwd("")
+library(here)
 
 # reading in results from methods except HyPred
-uganda_ME0 <- read.table("Uganda_ME0.R")
-uganda_ME.05 <- read.table("Uganda_ME.05.R")
-uganda_ME.12 <- read.table("Uganda_ME.12.R")
-uganda_ME.25 <- read.table("Uganda_ME.25.R")
-uganda_ME.5 <- read.table("Uganda_ME.5.R")
-uganda_ME.75 <- read.table("Uganda_ME.75.R")
+uganda_ME0 <- readRDS("Results/UgandaResults/Uganda_ME0.rds")
+uganda_ME.05 <- readRDS("Results/UgandaResults/Uganda_ME.05.rds")
+uganda_ME.12 <- readRDS("Results/UgandaResults/Uganda_ME.12.rds")
+uganda_ME.25 <- readRDS("Results/UgandaResults/Uganda_ME.25.rds")
+uganda_ME.5 <- readRDS("Results/UgandaResults/Uganda_ME.5.rds")
+uganda_ME.75 <- readRDS("Results/UgandaResults/Uganda_ME.75.rds")
 
 
 

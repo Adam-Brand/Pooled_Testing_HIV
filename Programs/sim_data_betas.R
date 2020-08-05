@@ -38,14 +38,14 @@ library(glmnet)
 library(ggplot2)
 library(useful)
 library(sbrl)
+library(here)
 
-# set working directory to location of data
-setwd("")
-simdata1.0 <- read.table("Uganda_SimData_train_SD1.0.R")
-simdata0 <- read.table("Uganda_SimData_train_SD0.R")
 
-simdata1.0_rev <- read.table("Uganda_SimData_train_SD1.0_reverse.R")
-simdata0_rev <- read.table("Uganda_SimData_train_SD0_reverse.R")
+simdata1.0 <- readRDS("SimData/Uganda_SimData_train_SD1.0.rds")
+simdata0 <- readRDS("SimData/Uganda_SimData_train_SD0.rds")
+
+simdata1.0_rev <- readRDS("SimData/Uganda_SimData_train_SD1.0_reverse.rds")
+simdata0_rev <- readRDS("SimData/Uganda_SimData_train_SD0_reverse.rds")
 
 # creating the interaction variabe for the full model
 simdata1.0$int <- simdata1.0$adhere*simdata1.0$pf

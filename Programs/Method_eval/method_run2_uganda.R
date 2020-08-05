@@ -5,12 +5,10 @@
 
 library(tidyverse)
 library(dplyr)
+library(here)
 
-# set working directory of location of source program
-setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Programs")
-source("method_eval_source.R")
-# set working directory to location to store the data
-setwd("C:/Users/Barny/Documents/KI_project_4/data_uganda/Clean_data")
+#### sourcing the main source file with all the needed functions
+source("Programs/method_eval_source.R")
 
 ##############################################################################################
 
@@ -18,7 +16,7 @@ setwd("C:/Users/Barny/Documents/KI_project_4/data_uganda/Clean_data")
 ##### Evaluation using the real Uganda data. The first set of statements evaluates the Hypred method
 ##### which uses individual testing for the top risk tier, and MiniPred for the middle and bottom tiers
 ##### the below dataset does not exist inthe repository as we did not include the real data
-data <- read.table("test_set_final.R")
+data <- readRDS("UgandaData/test_set_final.rds")
 set.seed(1212)
 ## there are 3607 records in the test set, we choose 3600 to have a number divisible by 100
 select <- sample.int(n=length(data$VL), size=3300, replace=FALSE)
@@ -30,7 +28,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME0.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME0.rds")
 
 
 set.seed(18)
@@ -38,7 +36,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=0.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.05.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.05.rds")
 
 
 
@@ -47,7 +45,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.12.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.12.rds")
 
 
 
@@ -56,7 +54,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.25, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.25.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.25.rds")
 
 
 set.seed(18)
@@ -64,7 +62,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.5, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.5.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.5.rds")
 
 
 set.seed(18)
@@ -72,7 +70,7 @@ result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_hypred_ME.75.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.75.rds")
 
 
 ######################################################################################################
@@ -83,7 +81,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME0.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME0.rds")
 
 
 
@@ -92,7 +90,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.05.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.05.rds")
 
 
 
@@ -101,7 +99,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.12.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.12.rds")
 
 
 
@@ -110,7 +108,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.25, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.25.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.25.rds")
 
 
 set.seed(18)
@@ -118,7 +116,7 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.5, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.5.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.5.rds")
 
 
 set.seed(18)
@@ -126,4 +124,4 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-write.table(result1, file="C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/UgandaResults/round2/Uganda_ME.75.R")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.75.rds")

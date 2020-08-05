@@ -29,11 +29,9 @@ library(ggplot2)
 library(useful)
 library(sbrl)
 library(pROC)
+library(here)
 
-# set working directory to location of the Uganda training set
-setwd("")
-
-train.data2 <- read.table("train_data.R")
+train.data2 <- readRDS("UgandaData/train_data.rds")
 
 ### code to find how many NAs are included for each variable
 sum(is.na(train.data2$vllog))

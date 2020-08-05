@@ -26,35 +26,30 @@ library(rlang)
 library(xtable)
 library(PropCIs)
 library(DescTools)
-
-# set working directory to location of results
-setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2")
+library(here)
 
 
-AGAIG_SD1.0_ME.05 <- read.table("Results_AGAIG_SD1_ME.05_rand.R")
-AGAIG_SD1.0_ME.12 <- read.table("Results_AGAIG_SD1_ME.12_rand.R")
-AGAIG_SD1.0_ME.25 <- read.table("Results_AGAIG_SD1_ME.25_rand.R")
-AGAIG_SD1.0_ME.5 <- read.table("Results_AGAIG_SD1_ME.5_rand.R")
+AGAIG_SD1.0_ME.05 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.05_rand.rds")
+AGAIG_SD1.0_ME.12 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.12_rand.rds")
+AGAIG_SD1.0_ME.25 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.25_rand.rds")
+AGAIG_SD1.0_ME.5 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.5_rand.rds")
 
-reverse_SD1.0_ME.05 <- read.table("Results_reverse_SD1_ME.05_rand.R")
-reverse_SD1.0_ME.12 <- read.table("Results_reverse_SD1_ME.12_rand.R")
-reverse_SD1.0_ME.25 <- read.table("Results_reverse_SD1_ME.25_rand.R")
-reverse_SD1.0_ME.5 <- read.table("Results_reverse_SD1_ME.5_rand.R")
+reverse_SD1.0_ME.05 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.05_rand.rds")
+reverse_SD1.0_ME.12 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.12_rand.rds")
+reverse_SD1.0_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.25_rand.rds")
+reverse_SD1.0_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.5_rand.rds")
 
                 ##############################
 
-# set working directory to location of results
-setwd("C:/Users/Barny/Documents/GitHub/Pooled_Testing_HIV/Results/SimResults/round2")
+AGAIG_SD0_ME0 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME0_rand.rds")
+AGAIG_SD0_ME.25 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.25_rand.rds")
+AGAIG_SD0_ME.5 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.5_rand.rds")
+AGAIG_SD0_ME.75 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.75_rand.rds")
 
-AGAIG_SD0_ME0 <- read.table("Results_AGAIG_SD0_ME0_rand.R")
-AGAIG_SD0_ME.25 <- read.table("Results_AGAIG_SD0_ME.25_rand.R")
-AGAIG_SD0_ME.5 <- read.table("Results_AGAIG_SD0_ME.5_rand.R")
-AGAIG_SD0_ME.75 <- read.table("Results_AGAIG_SD0_ME.75_rand.R")
-
-reverse_SD0_ME0 <- read.table("Results_reverse_SD0_ME0_rand.R")
-reverse_SD0_ME.25 <- read.table("Results_reverse_SD0_ME.25_rand.R")
-reverse_SD0_ME.5 <- read.table("Results_reverse_SD0_ME.5_rand.R")
-reverse_SD0_ME.75 <- read.table("Results_reverse_SD0_ME.75_rand.R")
+reverse_SD0_ME0 <- readRDS("Results/SimResults/Results_reverse_SD0_ME0_rand.rds")
+reverse_SD0_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.25_rand.rds")
+reverse_SD0_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.5_rand.rds")
+reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.75_rand.rds")
 
 
 
