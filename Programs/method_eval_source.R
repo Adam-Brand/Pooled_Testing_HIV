@@ -1501,7 +1501,7 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
       #### zeros out the col total
       z$cols[d[counter2,2]] <- 0
       ### subtracts the num from the row total and adds back in lowlimit/count.rowz that was subtracted earlier
-      z$rows[d[counter2,1]] <- z$rows[d[counter2,1]] - (box.num/matsize) - (num.boxes.zero*(lowlimit/matsize))
+      z$rows[d[counter2,1]] <- z$rows[d[counter2,1]] - (box.num/matsize)
       #### clears all coordinates in matrix d with the same col coordinate
       d <- subset(d, d[,2] != d[counter2,2])
       ### reorders matrix d by weight
@@ -1532,7 +1532,7 @@ soe.solve.weights <- function(z, d, matsize, lowlimit){
       z[[d[counter2,1], d[counter2,2]]]= box.num
       z[[d[counter2,1],(matsize+d[counter2,2])]] = 0
       z$rows[d[counter2,1]] <- 0
-      z$cols[d[counter2,2]] <- z$cols[d[counter2,2]] - (box.num/matsize) - (num.boxes.zero*(lowlimit/matsize))
+      z$cols[d[counter2,2]] <- z$cols[d[counter2,2]] - (box.num/matsize)
       d <- subset(d, d[,1] != d[counter2,1])
       d <- d[order(d[,3], decreasing = TRUE),]
       if (is.vector(d)){

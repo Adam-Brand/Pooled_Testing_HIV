@@ -267,9 +267,77 @@ saveRDS(simdata_rev, "SimData/Uganda_SimData_train_SD1.0_reverse.rds")
 check <- readRDS("SimData/Uganda_SimData_SD1.0.rds")
 plot(check$log.VL ~ check$model.VL)
 
-### R squared between model and actual data = 0.32. SD=1.0
+### R squared between model and actual data = 0.32 on log10 scale, 0.47 on the raw scale. SD=1.0
 cor(check$log.VL, check$model.VL)^2
+check$model10 <- 10^check$model.VL
+cor(check$VL, check$model10)^2
 
+##prevalence of treatment failure is 5.7%
+sum(check$VL>=1000)/length(check$VL)
+
+### checking the difference in treatment failures between true and observed using measurement error
+add_me <- function(data, ME){
+  n <- length(data[,1])
+  me <- rnorm(n, mean=0, sd=ME)
+  obs <- 10^(me+data$log.VL)
+  return(cbind(data, me, obs))
+}
+
+check.05 <- add_me(check, ME=.05)
+check.1 <- add_me(check, ME=.1)
+check.15 <- add_me(check, ME=.15)
+check.2 <- add_me(check, ME=.2)
+check.25 <- add_me(check, ME=.25)
+check.5 <- add_me(check, ME=.5)
+check.75 <- add_me(check, ME=.75)
+
+assay_sens <- function(data){
+  denom <- sum(data$VL>=1000)
+  num <- sum(data$VL>=1000 & data$obs>=1000)
+  sens <- num/denom
+  return(sens)
+}
+
+assay_spec <- function(data){
+  denom <- sum(data$VL<1000)
+  num <- sum(data$VL<1000 & data$obs<1000)
+  spec <- num/denom
+  return(spec)
+}
+## 0.9778
+assay_sens(check.05)
+# 0.9986
+assay_spec(check.05)
+
+## 0.9580
+assay_sens(check.1)
+# 0.9970
+assay_spec(check.1)
+
+## 0.9370
+assay_sens(check.15)
+# 0.9954
+assay_spec(check.15)
+
+## 0.9205
+assay_sens(check.2)
+# 0.9937
+assay_spec(check.2)
+
+## 0.9024
+assay_sens(check.25)
+# 0.9918
+assay_spec(check.25)
+
+## 0.8274
+assay_sens(check.5)
+# 0.9801
+assay_spec(check.5)
+
+## 0.7717
+assay_sens(check.75)
+# 0.9634
+assay_spec(check.75)
 
 
 ##### getting and outputting data with no vairation; variation will all be due to ME
@@ -325,3 +393,57 @@ saveRDS(simdata2, "SimData/Uganda_SimData_SD0.rds")
 saveRDS(simdata2_train, "SimData/Uganda_SimData_train_SD0.rds")
 saveRDS(simdata2_rev,  "SimData/Uganda_SimData_train_SD0_reverse.rds")
 
+
+check <- readRDS("SimData/Uganda_SimData_SD0.rds")
+
+### R squared between model and actual data
+cor(check$log.VL, check$model.VL)^2
+
+
+##prevalence of treatment failure is 5.8%
+sum(check$VL>=1000)/length(check$VL)
+
+
+check.05 <- add_me(check, ME=.05)
+check.1 <- add_me(check, ME=.1)
+check.15 <- add_me(check, ME=.15)
+check.2 <- add_me(check, ME=.2)
+check.25 <- add_me(check, ME=.25)
+check.5 <- add_me(check, ME=.5)
+check.75 <- add_me(check, ME=.75)
+
+
+## 0.9674
+assay_sens(check.05)
+# 0.9979
+assay_spec(check.05)
+
+## 0.9367
+assay_sens(check.1)
+# 0.9958
+assay_spec(check.1)
+
+## 0.9069
+assay_sens(check.15)
+# 0.9934
+assay_spec(check.15)
+
+## 0.8804
+assay_sens(check.2)
+# 0.9916
+assay_spec(check.2)
+
+## 0.8542
+assay_sens(check.25)
+# 0.9900
+assay_spec(check.25)
+
+## 0.7655
+assay_sens(check.5)
+# 0.9845
+assay_spec(check.5)
+
+## 0.7046
+assay_sens(check.75)
+# 0.9793
+assay_spec(check.75)

@@ -30,8 +30,15 @@ library(here)
 
 # reading in results from methods except HyPred
 uganda_ME0 <- readRDS("Results/UgandaResults/Uganda_ME0.rds")
+uganda_ME.025 <- readRDS("Results/UgandaResults/Uganda_ME.025.rds")
 uganda_ME.05 <- readRDS("Results/UgandaResults/Uganda_ME.05.rds")
-uganda_ME.12 <- readRDS("Results/UgandaResults/Uganda_ME.12.rds")
+uganda_ME.075 <- readRDS("Results/UgandaResults/Uganda_ME.075.rds")
+uganda_ME.1 <- readRDS("Results/UgandaResults/Uganda_ME.1.rds")
+uganda_ME.125 <- readRDS("Results/UgandaResults/Uganda_ME.125.rds")
+uganda_ME.15 <- readRDS("Results/UgandaResults/Uganda_ME.15.rds")
+uganda_ME.175 <- readRDS("Results/UgandaResults/Uganda_ME.175.rds")
+uganda_ME.2 <- readRDS("Results/UgandaResults/Uganda_ME.2.rds")
+uganda_ME.225 <- readRDS("Results/UgandaResults/Uganda_ME.225.rds")
 uganda_ME.25 <- readRDS("Results/UgandaResults/Uganda_ME.25.rds")
 uganda_ME.5 <- readRDS("Results/UgandaResults/Uganda_ME.5.rds")
 uganda_ME.75 <- readRDS("Results/UgandaResults/Uganda_ME.75.rds")
@@ -118,74 +125,75 @@ reform <- function(df_name){
   return(temp2)
 }
 
-# creates 95% CIs for performance measures
+
+
 binCI <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson"){
-    temp <- reform(dataset)
-    temp <- temp[which(temp$method==pool_method),]
+  temp <- reform(dataset)
+  temp <- temp[which(temp$method==pool_method),]
   
-    sens <- data.frame(BinomCI(sum(temp$esense*temp$eprevfail, na.rm=TRUE),
-        sum(temp$eprevfail),
-        conf.level=0.95,
-        method=ci_method))
-
-    sens.est <- paste0(round(sens$est*100, digits=1), c("%"))
-    sens.LCL <- paste0(c("("), round(sens$lwr.ci*100, digits=1), c("%"), c(","))
-    sens.UCL <- paste0(round(sens$upr.ci*100, digits=1), c("%"), c(")"))
-
-    sens.summ <- paste(sens.est, sens.LCL, sens.UCL, sep=" ", collapse=NULL)
+  sens <- data.frame(BinomCI(sum(temp$esense*temp$eprevfail, na.rm=TRUE),
+                             sum(temp$eprevfail),
+                             conf.level=0.95,
+                             method=ci_method))
   
-    eff <- data.frame(BinomCI(sum(temp$eff*(matsize^2), na.rm=TRUE),
+  sens.est <- paste0(round(sens$est*100, digits=1), c("%"))
+  sens.LCL <- paste0(c("("), round(sens$lwr.ci*100, digits=1), c("%"), c(","))
+  sens.UCL <- paste0(round(sens$upr.ci*100, digits=1), c("%"), c(")"))
+  
+  sens.summ <- paste(sens.est, sens.LCL, sens.UCL, sep=" ", collapse=NULL)
+  
+  eff <- data.frame(BinomCI(sum(temp$eff*(matsize^2), na.rm=TRUE),
                             length(temp$t)*(matsize^2),
                             conf.level=0.95,
                             method=ci_method))
-    eff.est <- paste0(round(eff$est*100, digits=1), c("%"))
-    eff.LCL <- paste0(c("("), round(eff$lwr.ci*100, digits=1), c("%"), c(","))
-    eff.UCL <- paste0(round(eff$upr.ci*100, digits=1), c("%"), c(")"))
-    
-    eff.summ <- paste(eff.est, eff.LCL, eff.UCL, sep=" ", collapse=NULL)
-    
-    eff.quant <- quantile(temp$eff)
-    Q1 <- paste0(c("("), round(eff.quant[2]*100, digits=1), c("%"), c(","))
-    Q3 <- paste0(round(eff.quant[4]*100, digits=1), c("%"), c(")"))
-    med <- paste0(round(eff.quant[3]*100, digits=1), c("%"))
-    eff.quant.summ <- paste(med, Q1, Q3, sep=" ", collapse=NULL)
-    
-    min <- paste0(min(temp$eff)*100, c("%"), c(","))
-    max <- paste0(max(temp$eff)*100, c("%"))
-    eff.min <- paste(min, max, sep=" ", collapse=NULL)
-    
-    rds.mean <- mean(temp$rds)
-    rds.stdev <- sd(temp$rds)
-    rds.n = length(temp$rds)
-    error <- qt(0.975,df=rds.n-1)*rds.stdev/sqrt(rds.n)
-    UL <- rds.mean+error
-    LL <- rds.mean-error
-    
-    rds.summ <- paste0(round(rds.mean, digits=1), c(" ("), 
-                       round(LL, digits=1), c(", "), round(UL, digits=1), c(")"))
-    
-    rds.quant <- quantile(temp$rds)
-    rds.Q1 <- paste0(c("("),rds.quant[2],c(","))
-    rds.med <- rds.quant[3]
-    rds.Q3 <- paste0(rds.quant[4], c(")"))
-    rds.summ.quant <- paste(rds.med, rds.Q1, rds.Q3, sep=" ", collapse=NULL)
-    
-    rds.min <- paste(min(temp$rds), max(temp$rds), sep=", ", collapse=NULL)
-    
-    temp_blank <- matrix(nrow=1,ncol=1)
-    
-    
-    summ <- data.frame(rbind(temp_blank, sens.summ, temp_blank, eff.summ, eff.quant.summ, eff.min, 
-                             temp_blank, rds.summ, rds.summ.quant, rds.min))
-    
-    
-    if (pool_method=="linreg"){names(summ)[1] <- "Linreg"}
-    if (pool_method=="mss"){names(summ)[1] <- "MSS"}
-    if (pool_method=="lrsoe"){names(summ)[1] <- "LRSOE"}
-    if (pool_method=="mincov"){names(summ)[1] <- "MiniCov"}
-    if (pool_method=="mini"){names(summ)[1] <- "Mini"}
-    
-return(summ)
+  eff.est <- paste0(round(eff$est*100, digits=1), c("%"))
+  eff.LCL <- paste0(c("("), round(eff$lwr.ci*100, digits=1), c("%"), c(","))
+  eff.UCL <- paste0(round(eff$upr.ci*100, digits=1), c("%"), c(")"))
+  
+  eff.summ <- paste(eff.est, eff.LCL, eff.UCL, sep=" ", collapse=NULL)
+  
+  eff.quant <- quantile(temp$eff)
+  Q1 <- paste0(c("("), round(eff.quant[2]*100, digits=1), c("%"), c(","))
+  Q3 <- paste0(round(eff.quant[4]*100, digits=1), c("%"), c(")"))
+  med <- paste0(round(eff.quant[3]*100, digits=1), c("%"))
+  eff.quant.summ <- paste(med, Q1, Q3, sep=" ", collapse=NULL)
+  
+  min <- paste0(min(temp$eff)*100, c("%"), c(","))
+  max <- paste0(max(temp$eff)*100, c("%"))
+  eff.min <- paste(min, max, sep=" ", collapse=NULL)
+  
+  rds.mean <- mean(temp$rds)
+  rds.stdev <- sd(temp$rds)
+  rds.n = length(temp$rds)
+  error <- qt(0.975,df=rds.n-1)*rds.stdev/sqrt(rds.n)
+  UL <- rds.mean+error
+  LL <- rds.mean-error
+  
+  rds.summ <- paste0(round(rds.mean, digits=1), c(" ("), 
+                     round(LL, digits=1), c(", "), round(UL, digits=1), c(")"))
+  
+  rds.quant <- quantile(temp$rds)
+  rds.Q1 <- paste0(c("("),rds.quant[2],c(","))
+  rds.med <- rds.quant[3]
+  rds.Q3 <- paste0(rds.quant[4], c(")"))
+  rds.summ.quant <- paste(rds.med, rds.Q1, rds.Q3, sep=" ", collapse=NULL)
+  
+  rds.min <- paste(min(temp$rds), max(temp$rds), sep=", ", collapse=NULL)
+  
+  temp_blank <- matrix(nrow=1,ncol=1)
+  
+  
+  summ <- data.frame(rbind(temp_blank, sens.summ, temp_blank, eff.summ, eff.quant.summ, eff.min, 
+                           temp_blank, rds.summ, rds.summ.quant, rds.min))
+  
+  
+  if (pool_method=="linreg"){names(summ)[1] <- "Linreg"}
+  if (pool_method=="mss"){names(summ)[1] <- "MSS"}
+  if (pool_method=="lrsoe"){names(summ)[1] <- "LRSOE"}
+  if (pool_method=="mincov"){names(summ)[1] <- "MiniPred"}
+  if (pool_method=="mini"){names(summ)[1] <- "Mini+alg"}
+  
+  return(summ)
 }
 
 large <- function(x){
@@ -245,23 +253,45 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
                caption.placement="top"))
 }
 
+
 ###################### results for methods except HyPred #####################################
 
 final_table(dataset=uganda_ME0, 
-           caption="Uganda results: ME=0")
+            caption="Uganda Results: ME=0")
+
+final_table(dataset=uganda_ME.025, 
+            caption="Uganda Results: ME=0.025")
 
 final_table(dataset=uganda_ME.05, 
-            caption="Uganda results: ME=0.05")
+            caption="Uganda Results: ME=0.05")
 
-final_table(dataset=uganda_ME.12, 
-            caption="Uganda results: ME=0.12")
+final_table(dataset=uganda_ME.075, 
+            caption="Uganda Results: ME=0.075")
+
+final_table(dataset=uganda_ME.1, 
+            caption="Uganda Results: ME=0.1")
+
+final_table(dataset=uganda_ME.125, 
+            caption="Uganda Results: ME=0.125")
+
+final_table(dataset=uganda_ME.15, 
+            caption="Uganda Results: ME=0.15")
+
+final_table(dataset=uganda_ME.175, 
+            caption="Uganda Results: ME=0.175")
+
+final_table(dataset=uganda_ME.2, 
+            caption="Uganda Results: ME=0.2")
+
+final_table(dataset=uganda_ME.225, 
+            caption="Uganda Results: ME=0.225")
 
 final_table(dataset=uganda_ME.25, 
-            caption="Uganda results: ME=0.25")
+            caption="Uganda Results: ME=0.25")
 
 final_table(dataset=uganda_ME.5, 
-            caption="Uganda results: ME=0.5")
+            caption="Uganda Results: ME=0.5")
 
 final_table(dataset=uganda_ME.75, 
-            caption="Uganda results: ME=0.75")
+            caption="Uganda Results: ME=0.75")
 

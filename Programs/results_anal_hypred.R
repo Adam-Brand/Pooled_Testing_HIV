@@ -26,24 +26,66 @@ library(PropCIs)
 library(DescTools)
 library(here)
 
+### AGAIG, SD=1
+hypred_AGAIG_SD1_ME0 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME0_rand.rds")
+hypred_AGAIG_SD1_ME.025 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.025_rand.rds")
 hypred_AGAIG_SD1_ME.05 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.05_rand.rds")
-hypred_AGAIG_SD1_ME.12 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.12_rand.rds")
+hypred_AGAIG_SD1_ME.075 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.075_rand.rds")
+hypred_AGAIG_SD1_ME.1 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.1_rand.rds")
+hypred_AGAIG_SD1_ME.125 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.125_rand.rds")
+hypred_AGAIG_SD1_ME.15 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.15_rand.rds")
+hypred_AGAIG_SD1_ME.175 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.175_rand.rds")
+hypred_AGAIG_SD1_ME.2 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.2_rand.rds")
+hypred_AGAIG_SD1_ME.225 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.225_rand.rds")
 hypred_AGAIG_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.25_rand.rds")
 hypred_AGAIG_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.5_rand.rds")
+hypred_AGAIG_SD1_ME.75 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD1_ME.75_rand.rds")
 
+
+# Reverse, SD=1
+hypred_reverse_SD1_ME0 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME0_rand.rds")
+hypred_reverse_SD1_ME.025 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.025_rand.rds")
 hypred_reverse_SD1_ME.05 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.05_rand.rds")
-hypred_reverse_SD1_ME.12 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.12_rand.rds")
+hypred_reverse_SD1_ME.075 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.075_rand.rds")
+hypred_reverse_SD1_ME.1 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.1_rand.rds")
+hypred_reverse_SD1_ME.125 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.125_rand.rds")
+hypred_reverse_SD1_ME.15 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.15_rand.rds")
+hypred_reverse_SD1_ME.175 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.175_rand.rds")
+hypred_reverse_SD1_ME.2 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.2_rand.rds")
+hypred_reverse_SD1_ME.225 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.225_rand.rds")
 hypred_reverse_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.25_rand.rds")
 hypred_reverse_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.5_rand.rds")
+hypred_reverse_SD1_ME.75 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.75_rand.rds")
 
                 ##############################
 
+### AGAIG, SD=0
 hypred_AGAIG_SD0_ME0 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME0_rand.rds")
+hypred_AGAIG_SD0_ME.025 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.025_rand.rds")
+hypred_AGAIG_SD0_ME.05 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.05_rand.rds")
+hypred_AGAIG_SD0_ME.075 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.075_rand.rds")
+hypred_AGAIG_SD0_ME.1 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.1_rand.rds")
+hypred_AGAIG_SD0_ME.125 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.125_rand.rds")
+hypred_AGAIG_SD0_ME.15 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.15_rand.rds")
+hypred_AGAIG_SD0_ME.175 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.175_rand.rds")
+hypred_AGAIG_SD0_ME.2 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.2_rand.rds")
+hypred_AGAIG_SD0_ME.225 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.225_rand.rds")
 hypred_AGAIG_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.25_rand.rds")
 hypred_AGAIG_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.5_rand.rds")
 hypred_AGAIG_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_AGAIG_SD0_ME.75_rand.rds")
 
+
+# Reverse, SD=0
 hypred_reverse_SD0_ME0 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME0_rand.rds")
+hypred_reverse_SD0_ME.025 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.025_rand.rds")
+hypred_reverse_SD0_ME.05 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.05_rand.rds")
+hypred_reverse_SD0_ME.075 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.075_rand.rds")
+hypred_reverse_SD0_ME.1 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.1_rand.rds")
+hypred_reverse_SD0_ME.125 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.125_rand.rds")
+hypred_reverse_SD0_ME.15 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.15_rand.rds")
+hypred_reverse_SD0_ME.175 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.175_rand.rds")
+hypred_reverse_SD0_ME.2 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.2_rand.rds")
+hypred_reverse_SD0_ME.225 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.225_rand.rds")
 hypred_reverse_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.25_rand.rds")
 hypred_reverse_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.5_rand.rds")
 hypred_reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.75_rand.rds")
@@ -51,8 +93,15 @@ hypred_reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_reverse_S
 ####################################################################################
 
 hypred_uganda_ME0 <- readRDS("Results/UgandaResults/Uganda_hypred_ME0.rds")
+hypred_uganda_ME.025 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.025.rds")
 hypred_uganda_ME.05 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.05.rds")
-hypred_uganda_ME.12 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.12.rds")
+hypred_uganda_ME.075 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.075.rds")
+hypred_uganda_ME.1 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.1.rds")
+hypred_uganda_ME.125 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.125.rds")
+hypred_uganda_ME.15 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.15.rds")
+hypred_uganda_ME.175 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.175.rds")
+hypred_uganda_ME.2 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.2.rds")
+hypred_uganda_ME.225 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.225.rds")
 hypred_uganda_ME.25 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.25.rds")
 hypred_uganda_ME.5 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.5.rds")
 hypred_uganda_ME.75 <- readRDS("Results/UgandaResults/Uganda_hypred_ME.75.rds")
@@ -268,86 +317,337 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 # the mid and low tiers separately. Based on these simulations we decided which method to use for
 # each tier on the real Uganda data.
 # combined results are below this code.
+
+## AGAIG, SD=0, mid tier
 final_table(dataset=hypred_AGAIG_SD0_ME0[hypred_AGAIG_SD0_ME0$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.025[hypred_AGAIG_SD0_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.05[hypred_AGAIG_SD0_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.075[hypred_AGAIG_SD0_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.1[hypred_AGAIG_SD0_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.125[hypred_AGAIG_SD0_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.15[hypred_AGAIG_SD0_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.175[hypred_AGAIG_SD0_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.2[hypred_AGAIG_SD0_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.225[hypred_AGAIG_SD0_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.225, Estimated Betas")
+
 final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.25, Estimated betas")
+
 final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.5, Estimated betas")
+
 final_table(dataset=hypred_AGAIG_SD0_ME.75[hypred_AGAIG_SD0_ME.75$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=0 ME=0.75, Estimated betas")
 
 
+
+# AGAIG, SD=1, mid tier
+final_table(dataset=hypred_AGAIG_SD1_ME0[hypred_AGAIG_SD1_ME0$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.025[hypred_AGAIG_SD1_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.025, Estimated Betas")
+
 final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.05, Estimated betas")
-final_table(dataset=hypred_AGAIG_SD1_ME.12[hypred_AGAIG_SD1_ME.12$section=="mid",], 
-            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.12, Estimated betas")
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.075[hypred_AGAIG_SD1_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.1[hypred_AGAIG_SD1_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.125[hypred_AGAIG_SD1_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.15[hypred_AGAIG_SD1_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.175[hypred_AGAIG_SD1_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.2[hypred_AGAIG_SD1_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.225[hypred_AGAIG_SD1_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.225, Estimated Betas")
+
 final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+
 final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="mid",], 
             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
 
+final_table(dataset=hypred_AGAIG_SD1_ME.75[hypred_AGAIG_SD1_ME.75$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.75, Estimated betas")
 
+
+## AGAIG, SD=0, low tier
 final_table(dataset=hypred_AGAIG_SD0_ME0[hypred_AGAIG_SD0_ME0$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0, Estimated betas")
-final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.25, Estimated betas")
-final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.5, Estimated betas")
-final_table(dataset=hypred_AGAIG_SD0_ME.75[hypred_AGAIG_SD0_ME.75$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=0 ME=0.75, Estimated betas")
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0, Estimated Betas")
 
+final_table(dataset=hypred_AGAIG_SD0_ME.025[hypred_AGAIG_SD0_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.05[hypred_AGAIG_SD0_ME.05$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.075[hypred_AGAIG_SD0_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.1[hypred_AGAIG_SD0_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.125[hypred_AGAIG_SD0_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.15[hypred_AGAIG_SD0_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.175[hypred_AGAIG_SD0_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.2[hypred_AGAIG_SD0_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.225[hypred_AGAIG_SD0_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.25[hypred_AGAIG_SD0_ME.25$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.5[hypred_AGAIG_SD0_ME.5$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_AGAIG_SD0_ME.75[hypred_AGAIG_SD0_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=0 ME=0.75, Estimated betas")
+
+
+## AGAIG, SD=1, low tier
+final_table(dataset=hypred_AGAIG_SD1_ME0[hypred_AGAIG_SD1_ME0$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.025[hypred_AGAIG_SD1_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.025, Estimated Betas")
 
 final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.05, Estimated betas")
-final_table(dataset=hypred_AGAIG_SD1_ME.12[hypred_AGAIG_SD1_ME.12$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.12, Estimated betas")
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.075[hypred_AGAIG_SD1_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.1[hypred_AGAIG_SD1_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.125[hypred_AGAIG_SD1_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.15[hypred_AGAIG_SD1_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.175[hypred_AGAIG_SD1_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.2[hypred_AGAIG_SD1_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.225[hypred_AGAIG_SD1_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.225, Estimated Betas")
+
 final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+
 final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="low",], 
-            caption = "Hypred low Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_AGAIG_SD1_ME.75[hypred_AGAIG_SD1_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.75, Estimated betas")
 
 #####################################################################################################
 
+## Reverse, SD=0, mid tier
 final_table(dataset=hypred_reverse_SD0_ME0[hypred_reverse_SD0_ME0$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0, Estimated betas")
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.025[hypred_reverse_SD0_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.05[hypred_reverse_SD0_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.075[hypred_reverse_SD0_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.1[hypred_reverse_SD0_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.125[hypred_reverse_SD0_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.15[hypred_reverse_SD0_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.175[hypred_reverse_SD0_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.2[hypred_reverse_SD0_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.225[hypred_reverse_SD0_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.225, Estimated Betas")
+
 final_table(dataset=hypred_reverse_SD0_ME.25[hypred_reverse_SD0_ME.25$section=="mid",], 
             caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.25, Estimated betas")
+
 final_table(dataset=hypred_reverse_SD0_ME.5[hypred_reverse_SD0_ME.5$section=="mid",], 
             caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.5, Estimated betas")
+
 final_table(dataset=hypred_reverse_SD0_ME.75[hypred_reverse_SD0_ME.75$section=="mid",], 
             caption = "Hypred Mid Tier, Reverse, SD=0 ME=0.75, Estimated betas")
 
 
+
+# Reverse, SD=1, mid tier
+final_table(dataset=hypred_reverse_SD1_ME0[hypred_reverse_SD1_ME0$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.025[hypred_reverse_SD1_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.025, Estimated Betas")
+
 final_table(dataset=hypred_reverse_SD1_ME.05[hypred_reverse_SD1_ME.05$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.05, Estimated betas")
-final_table(dataset=hypred_reverse_SD1_ME.12[hypred_reverse_SD1_ME.12$section=="mid",], 
-            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.12, Estimated betas")
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.075[hypred_reverse_SD1_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.1[hypred_reverse_SD1_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.125[hypred_reverse_SD1_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.15[hypred_reverse_SD1_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.175[hypred_reverse_SD1_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.2[hypred_reverse_SD1_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.225[hypred_reverse_SD1_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.225, Estimated Betas")
+
 final_table(dataset=hypred_reverse_SD1_ME.25[hypred_reverse_SD1_ME.25$section=="mid",], 
             caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.25, Estimated betas")
+
 final_table(dataset=hypred_reverse_SD1_ME.5[hypred_reverse_SD1_ME.5$section=="mid",], 
             caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.5, Estimated betas")
 
+final_table(dataset=hypred_reverse_SD1_ME.75[hypred_reverse_SD1_ME.75$section=="mid",], 
+            caption = "Hypred Mid Tier, Reverse, SD=1 ME=0.75, Estimated betas")
 
 
+## Reverse, SD=0, low tier
 final_table(dataset=hypred_reverse_SD0_ME0[hypred_reverse_SD0_ME0$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0, Estimated betas")
-final_table(dataset=hypred_reverse_SD0_ME.25[hypred_reverse_SD0_ME.25$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0.25, Estimated betas")
-final_table(dataset=hypred_reverse_SD0_ME.5[hypred_reverse_SD0_ME.5$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0.5, Estimated betas")
-final_table(dataset=hypred_reverse_SD0_ME.75[hypred_reverse_SD0_ME.75$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=0 ME=0.75, Estimated betas")
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0, Estimated Betas")
 
+final_table(dataset=hypred_reverse_SD0_ME.025[hypred_reverse_SD0_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.05[hypred_reverse_SD0_ME.05$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.075[hypred_reverse_SD0_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.1[hypred_reverse_SD0_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.125[hypred_reverse_SD0_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.15[hypred_reverse_SD0_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.175[hypred_reverse_SD0_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.2[hypred_reverse_SD0_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.225[hypred_reverse_SD0_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.25[hypred_reverse_SD0_ME.25$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.5[hypred_reverse_SD0_ME.5$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_reverse_SD0_ME.75[hypred_reverse_SD0_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=0 ME=0.75, Estimated betas")
+
+
+## Reverse, SD=1, low tier
+final_table(dataset=hypred_reverse_SD1_ME0[hypred_reverse_SD1_ME0$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.025[hypred_reverse_SD1_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.025, Estimated Betas")
 
 final_table(dataset=hypred_reverse_SD1_ME.05[hypred_reverse_SD1_ME.05$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.05, Estimated betas")
-final_table(dataset=hypred_reverse_SD1_ME.12[hypred_reverse_SD1_ME.12$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.12, Estimated betas")
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.075[hypred_reverse_SD1_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.1[hypred_reverse_SD1_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.125[hypred_reverse_SD1_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.15[hypred_reverse_SD1_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.175[hypred_reverse_SD1_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.2[hypred_reverse_SD1_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.225[hypred_reverse_SD1_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.225, Estimated Betas")
+
 final_table(dataset=hypred_reverse_SD1_ME.25[hypred_reverse_SD1_ME.25$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.25, Estimated betas")
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.25, Estimated betas")
+
 final_table(dataset=hypred_reverse_SD1_ME.5[hypred_reverse_SD1_ME.5$section=="low",], 
-            caption = "Hypred low Tier, Reverse, SD=1 ME=0.5, Estimated betas")
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_reverse_SD1_ME.75[hypred_reverse_SD1_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, Reverse, SD=1 ME=0.75, Estimated betas")
+
 
 ###########################################################################################
 
@@ -356,43 +656,85 @@ final_table(dataset=hypred_reverse_SD1_ME.5[hypred_reverse_SD1_ME.5$section=="lo
 ## Hypred mid tier
 
 final_table(dataset=hypred_uganda_ME0[hypred_uganda_ME0$section=="mid",], 
-            caption="Uganda results - Hypred mid tier: ME=0")
+            caption="Uganda Results - Hypred Mid Tier: ME=0")
+
+final_table(dataset=hypred_uganda_ME.025[hypred_uganda_ME.025$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.025")
 
 final_table(dataset=hypred_uganda_ME.05[hypred_uganda_ME.05$section=="mid",], 
-            caption="Uganda results - Hypred mid tier: ME=0.05")
+            caption="Uganda Results - Hypred Mid Tier: ME=0.05")
 
-final_table(dataset=hypred_uganda_ME.12[hypred_uganda_ME.12$section=="mid",], 
-            caption="Uganda results - Hypred mid tier: ME=0.12")
+final_table(dataset=hypred_uganda_ME.075[hypred_uganda_ME.075$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.075")
+
+final_table(dataset=hypred_uganda_ME.1[hypred_uganda_ME.1$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.1")
+
+final_table(dataset=hypred_uganda_ME.125[hypred_uganda_ME.125$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.125")
+
+final_table(dataset=hypred_uganda_ME.15[hypred_uganda_ME.15$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.15")
+
+final_table(dataset=hypred_uganda_ME.175[hypred_uganda_ME.175$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.175")
+
+final_table(dataset=hypred_uganda_ME.2[hypred_uganda_ME.2$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.2")
+
+final_table(dataset=hypred_uganda_ME.225[hypred_uganda_ME.225$section=="mid",], 
+            caption="Uganda Results - Hypred Mid Tier: ME=0.225")
 
 final_table(dataset=hypred_uganda_ME.25[hypred_uganda_ME.25$section=="mid",], 
-            caption="Uganda results - Hypred mid tier: ME=0.25")
+            caption="Uganda Results - Hypred Mid Tier: ME=0.25")
 
 final_table(dataset=hypred_uganda_ME.5[hypred_uganda_ME.5$section=="mid",], 
-            caption="Uganda results - Hypred mid tier: ME=0.5")
+            caption="Uganda Results - Hypred Mid Tier: ME=0.5")
 
 final_table(dataset=hypred_uganda_ME.75[hypred_uganda_ME.75$section=="mid",], 
-            caption="Uganda results - Hypred mid tier: ME=0.75")
+            caption="Uganda Results - Hypred Mid Tier: ME=0.75")
 
 
 ## Low tier
 
 final_table(dataset=hypred_uganda_ME0[hypred_uganda_ME0$section=="low",], 
-            caption="Uganda results - Hypred low tier: ME=0")
+            caption="Uganda Results - Hypred Low Tier: ME=0")
+
+final_table(dataset=hypred_uganda_ME.025[hypred_uganda_ME.025$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.025")
 
 final_table(dataset=hypred_uganda_ME.05[hypred_uganda_ME.05$section=="low",], 
-            caption="Uganda results - Hypred low tier: ME=0.05")
+            caption="Uganda Results - Hypred Low Tier: ME=0.05")
 
-final_table(dataset=hypred_uganda_ME.12[hypred_uganda_ME.12$section=="low",], 
-            caption="Uganda results - Hypred low tier: ME=0.12")
+final_table(dataset=hypred_uganda_ME.075[hypred_uganda_ME.075$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.075")
+
+final_table(dataset=hypred_uganda_ME.1[hypred_uganda_ME.1$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.1")
+
+final_table(dataset=hypred_uganda_ME.125[hypred_uganda_ME.125$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.125")
+
+final_table(dataset=hypred_uganda_ME.15[hypred_uganda_ME.15$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.15")
+
+final_table(dataset=hypred_uganda_ME.175[hypred_uganda_ME.175$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.175")
+
+final_table(dataset=hypred_uganda_ME.2[hypred_uganda_ME.2$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.2")
+
+final_table(dataset=hypred_uganda_ME.225[hypred_uganda_ME.225$section=="low",], 
+            caption="Uganda Results - Hypred Low Tier: ME=0.225")
 
 final_table(dataset=hypred_uganda_ME.25[hypred_uganda_ME.25$section=="low",], 
-            caption="Uganda results - Hypred low tier: ME=0.25")
+            caption="Uganda Results - Hypred Low Tier: ME=0.25")
 
 final_table(dataset=hypred_uganda_ME.5[hypred_uganda_ME.5$section=="low",], 
-            caption="Uganda results - Hypred low tier: ME=0.5")
+            caption="Uganda Results - Hypred Low Tier: ME=0.5")
 
 final_table(dataset=hypred_uganda_ME.75[hypred_uganda_ME.75$section=="low",], 
-            caption="Uganda results - Hypred low tier: ME=0.75")
+            caption="Uganda Results - Hypred Low Tier: ME=0.75")
 
 
 # combines results for the 3 tier risk groups for the hypred method; user must define which method
@@ -480,7 +822,7 @@ comb_hypred <- function(dataset, mid_method, low_method){
   eff <- (eff_denom - eff_num)/eff_denom
   
   rds_denom <- length(mid$t) + length(low$t) + (top$all_t/100)
-  rds_num <- (top$all_t/100) + sum(mid$rds) + sum(low$rds)
+  rds_num <- (top$all_t/20) + sum(mid$rds) + sum(low$rds)
   rds <- round(rds_num/rds_denom, digits=1)
   
   return(c(sens, eff, rds))
@@ -488,32 +830,75 @@ comb_hypred <- function(dataset, mid_method, low_method){
 
 # AGAIG, SD=0
 comb_hypred(hypred_AGAIG_SD0_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.025, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD0_ME.225, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD0_ME.75, mid_method="mincov", low_method="mincov")
 
 # AGAIG, SD=1
+comb_hypred(hypred_AGAIG_SD1_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.025, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD1_ME.05, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_AGAIG_SD1_ME.12, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.225, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD1_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_AGAIG_SD1_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_AGAIG_SD1_ME.75, mid_method="mincov", low_method="mincov")
 
 # reverse, SD=0
 comb_hypred(hypred_reverse_SD0_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.025, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD0_ME.225, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD0_ME.75, mid_method="mincov", low_method="mincov")
 
-#reverse, SD=1
+# reverse, SD=1
+comb_hypred(hypred_reverse_SD1_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.025, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD1_ME.05, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_reverse_SD1_ME.12, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.225, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD1_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_reverse_SD1_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_reverse_SD1_ME.75, mid_method="mincov", low_method="mincov")
 
 # uganda real data
 comb_hypred(hypred_uganda_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.025, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.05, mid_method="mincov", low_method="mincov")
-comb_hypred(hypred_uganda_ME.12, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_uganda_ME.225, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.75, mid_method="mincov", low_method="mincov")

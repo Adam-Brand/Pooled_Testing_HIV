@@ -8,7 +8,7 @@ The real data collected from Uganda is not included in the repository. All of th
 
 In order to replicate the simulation results presented in the paper:
 
-1) run data_gen.R. This will create 6 datasets needed to run the simulations. There will be errors as part of the data_gen.R program sources the data cleaning program for the real data, which is not included in this repository. There is also a shiny program we used for visualizing distributions of VLs. The shiny folder is called shinypopfit, and is included in this repository. Downloading/using this shiny program is optional though. It is not needed for reproducing results.
+1) run data_gen.R. This will create 6 datasets needed to run the simulations. There will be errors as part of the data_gen.R program sources the data cleaning program for the real data, which is not included in this repository. The errors will not affect the generation of the simulated datasets. There is also a shiny program we used for visualizing distributions of VLs. The shiny folder is called shinypopfit, and is included in this repository. Downloading/using this shiny program is optional though. It is not needed for reproducing results.
 
     a) the datasets will save in the SimData folder
 

@@ -20,6 +20,22 @@ data <- predictVL(data, b0star=0.4414945, b1star=0.1170119, b2star=1.9283680, b3
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME0_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.025, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.025_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
                         cutoff=1000, SE=.05, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
@@ -28,10 +44,60 @@ saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.05_rand.rds")
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
-                        cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd")
+                        cutoff=1000, SE=.075, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.12_rand.rds")
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.075_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.1, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.1_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.125, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.125_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.15, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.15_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.175, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.175_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.2, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.2_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.225, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.225_rand.rds")
+
+
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
@@ -48,11 +114,36 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
 saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.5_rand.rds")
 
 
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_AGAIG_SD1_ME.75_rand.rds")
+
+
 
 ##### reverse scenarios using SD=1.0 and estimated betas from reverse training set
 data <- readRDS("SimData/Uganda_SimData_SD1.0.rds")
 #### these estimated betas also came from the sim_data_betas program using the 'reverse' training set
 data <- predictVL(data, b0star=5.8155002, b1star=-0.2442230, b2star=-3.7203965, b3star=0.1260099)
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME0_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.025, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.025_rand.rds")
+
 
 
 set.seed(18)
@@ -63,12 +154,63 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
 saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.05_rand.rds")
 
 
+
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
-                        cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd")
+                        cutoff=1000, SE=.075, tstperd=5, lowlimit=50, filltyp="rnd")
 
 
-saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.12_rand.rds")
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.075_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.1, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.1_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.125, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.125_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.15, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.15_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.175, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.175_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.2, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.2_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.225, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.225_rand.rds")
+
+
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
@@ -83,3 +225,12 @@ result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
 
 
 saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.5_rand.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=500, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=.75, tstperd=5, lowlimit=50, filltyp="rnd")
+
+
+saveRDS(result1, file="Results/SimResults/Results_reverse_SD1_ME.75_rand.rds")
+

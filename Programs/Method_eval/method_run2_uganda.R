@@ -33,19 +33,75 @@ saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME0.rds")
 
 set.seed(18)
 result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=0.025, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.025.rds")
+
+
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
                          cutoff=1000, SE=0.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
 saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.05.rds")
 
 
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=0.075, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.075.rds")
+
 
 set.seed(18)
 result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
-                         cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+                         cutoff=1000, SE=0.1, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.12.rds")
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.1.rds")
+
+
+
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=.125, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.125.rds")
+
+
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=.15, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.15.rds")
+
+
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=.175, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.175.rds")
+
+
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=.2, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.2.rds")
+
+
+set.seed(18)
+result1 <- hypred_uganda(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                         cutoff=1000, SE=.225, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_hypred_ME.225.rds")
 
 
 
@@ -84,23 +140,77 @@ result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
 saveRDS(result1, file="Results/UgandaResults/Uganda_ME0.rds")
 
 
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.025, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.025.rds")
+
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
-                        cutoff=1000, SE=.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+                        cutoff=1000, SE=0.05, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
 saveRDS(result1, file="Results/UgandaResults/Uganda_ME.05.rds")
 
 
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.075, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.075.rds")
+
 
 set.seed(18)
 result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
-                        cutoff=1000, SE=.12, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+                        cutoff=1000, SE=0.1, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
 
 
-saveRDS(result1, file="Results/UgandaResults/Uganda_ME.12.rds")
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.1.rds")
 
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.125, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.125.rds")
+
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.15, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.15.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.175, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.175.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.2, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.2.rds")
+
+
+set.seed(18)
+result1 <- pool.alg.cov(reps=33, data=data, matsize=10, prec=10, precrd=20,
+                        cutoff=1000, SE=0.225, tstperd=5, lowlimit=50, filltyp="rnd", Uganda=TRUE)
+
+
+saveRDS(result1, file="Results/UgandaResults/Uganda_ME.225.rds")
 
 
 set.seed(18)

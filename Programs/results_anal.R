@@ -28,29 +28,63 @@ library(PropCIs)
 library(DescTools)
 library(here)
 
+AGAIG_SD1_ME0 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME0_rand.rds")
+AGAIG_SD1_ME.025 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.025_rand.rds")
+AGAIG_SD1_ME.05 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.05_rand.rds")
+AGAIG_SD1_ME.075 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.075_rand.rds")
+AGAIG_SD1_ME.1 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.1_rand.rds")
+AGAIG_SD1_ME.125 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.125_rand.rds")
+AGAIG_SD1_ME.15 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.15_rand.rds")
+AGAIG_SD1_ME.175 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.175_rand.rds")
+AGAIG_SD1_ME.2 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.2_rand.rds")
+AGAIG_SD1_ME.225 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.225_rand.rds")
+AGAIG_SD1_ME.25 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.25_rand.rds")
+AGAIG_SD1_ME.5 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.5_rand.rds")
+AGAIG_SD1_ME.75 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.75_rand.rds")
 
-AGAIG_SD1.0_ME.05 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.05_rand.rds")
-AGAIG_SD1.0_ME.12 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.12_rand.rds")
-AGAIG_SD1.0_ME.25 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.25_rand.rds")
-AGAIG_SD1.0_ME.5 <- readRDS("Results/SimResults/Results_AGAIG_SD1_ME.5_rand.rds")
-
-reverse_SD1.0_ME.05 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.05_rand.rds")
-reverse_SD1.0_ME.12 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.12_rand.rds")
-reverse_SD1.0_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.25_rand.rds")
-reverse_SD1.0_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.5_rand.rds")
+reverse_SD1_ME0 <- readRDS("Results/SimResults/Results_reverse_SD1_ME0_rand.rds")
+reverse_SD1_ME.025 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.025_rand.rds")
+reverse_SD1_ME.05 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.05_rand.rds")
+reverse_SD1_ME.075 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.075_rand.rds")
+reverse_SD1_ME.1 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.1_rand.rds")
+reverse_SD1_ME.125 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.125_rand.rds")
+reverse_SD1_ME.15 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.15_rand.rds")
+reverse_SD1_ME.175 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.175_rand.rds")
+reverse_SD1_ME.2 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.2_rand.rds")
+reverse_SD1_ME.225 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.225_rand.rds")
+reverse_SD1_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.25_rand.rds")
+reverse_SD1_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.5_rand.rds")
+reverse_SD1_ME.75 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.75_rand.rds")
 
                 ##############################
 
 AGAIG_SD0_ME0 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME0_rand.rds")
+AGAIG_SD0_ME.025 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.025_rand.rds")
+AGAIG_SD0_ME.05 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.05_rand.rds")
+AGAIG_SD0_ME.075 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.075_rand.rds")
+AGAIG_SD0_ME.1 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.1_rand.rds")
+AGAIG_SD0_ME.125 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.125_rand.rds")
+AGAIG_SD0_ME.15 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.15_rand.rds")
+AGAIG_SD0_ME.175 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.175_rand.rds")
+AGAIG_SD0_ME.2 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.2_rand.rds")
+AGAIG_SD0_ME.225 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.225_rand.rds")
 AGAIG_SD0_ME.25 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.25_rand.rds")
 AGAIG_SD0_ME.5 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.5_rand.rds")
 AGAIG_SD0_ME.75 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.75_rand.rds")
 
 reverse_SD0_ME0 <- readRDS("Results/SimResults/Results_reverse_SD0_ME0_rand.rds")
+reverse_SD0_ME.025 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.025_rand.rds")
+reverse_SD0_ME.05 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.05_rand.rds")
+reverse_SD0_ME.075 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.075_rand.rds")
+reverse_SD0_ME.1 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.1_rand.rds")
+reverse_SD0_ME.125 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.125_rand.rds")
+reverse_SD0_ME.15 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.15_rand.rds")
+reverse_SD0_ME.175 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.175_rand.rds")
+reverse_SD0_ME.2 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.2_rand.rds")
+reverse_SD0_ME.225 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.225_rand.rds")
 reverse_SD0_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.25_rand.rds")
 reverse_SD0_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.5_rand.rds")
 reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.75_rand.rds")
-
 
 
 ### reforming the data frame into long format with the method name as a variable
@@ -197,8 +231,8 @@ binCI <- function(dataset, pool_method, matsize=10, ci_method="clopper-pearson")
     if (pool_method=="linreg"){names(summ)[1] <- "Linreg"}
     if (pool_method=="mss"){names(summ)[1] <- "MSS"}
     if (pool_method=="lrsoe"){names(summ)[1] <- "LRSOE"}
-    if (pool_method=="mincov"){names(summ)[1] <- "MiniCov"}
-    if (pool_method=="mini"){names(summ)[1] <- "Mini"}
+    if (pool_method=="mincov"){names(summ)[1] <- "MiniPred"}
+    if (pool_method=="mini"){names(summ)[1] <- "Mini+alg"}
     
 return(summ)
 }
@@ -263,32 +297,67 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 ### AGAIG scenarios
 
 # SD=0 data
-final_table(AGAIG_SD0_ME0, caption="AGAIG, SD=0, ME=0, est betas")
-final_table(AGAIG_SD0_ME.25, caption="AGAIG, SD=0, ME=0.25, est betas")
-final_table(AGAIG_SD0_ME.5, caption="AGAIG, SD=0, ME=0.5, est betas")
-final_table(AGAIG_SD0_ME.75, caption="AGAIG, SD=0, ME=0.75, est betas")
+final_table(AGAIG_SD0_ME0, caption="AGAIG, SD=0, ME=0, Estimated betas")
+final_table(AGAIG_SD0_ME.025, caption="AGAIG, SD=0, ME=0.025, Estimated betas")
+final_table(AGAIG_SD0_ME.05, caption="AGAIG, SD=0, ME=0.05, Estimated betas")
+final_table(AGAIG_SD0_ME.075, caption="AGAIG, SD=0, ME=0.075, Estimated betas")
+final_table(AGAIG_SD0_ME.1, caption="AGAIG, SD=0, ME=0.1, Estimated betas")
+final_table(AGAIG_SD0_ME.125, caption="AGAIG, SD=0, ME=0.125, Estimated betas")
+final_table(AGAIG_SD0_ME.15, caption="AGAIG, SD=0, ME=0.15, Estimated betas")
+final_table(AGAIG_SD0_ME.175, caption="AGAIG, SD=0, ME=0.175, Estimated betas")
+final_table(AGAIG_SD0_ME.2, caption="AGAIG, SD=0, ME=0.2, Estimated betas")
+final_table(AGAIG_SD0_ME.225, caption="AGAIG, SD=0, ME=0.225, Estimated betas")
+final_table(AGAIG_SD0_ME.25, caption="AGAIG, SD=0, ME=0.25, Estimated betas")
+final_table(AGAIG_SD0_ME.5, caption="AGAIG, SD=0, ME=0.5, Estimated betas")
+final_table(AGAIG_SD0_ME.75, caption="AGAIG, SD=0, ME=0.75, Estimated betas")
 
 # SD=1 data
-final_table(AGAIG_SD1.0_ME.05, caption="AGAIG, SD=1.0, ME=0.05, est betas")
-final_table(AGAIG_SD1.0_ME.12, caption="AGAIG, SD=1.0, ME=0.12, est betas")
-final_table(AGAIG_SD1.0_ME.25, caption="AGAIG, SD=1.0, ME=0.25, est betas")
-final_table(AGAIG_SD1.0_ME.5, caption="AGAIG, SD=1.0, ME=0.5, est betas")
+final_table(AGAIG_SD1_ME0, caption="AGAIG, SD=1.0, ME=0, Estimated betas")
+final_table(AGAIG_SD1_ME.025, caption="AGAIG, SD=1.0, ME=0.025, Estimated betas")
+final_table(AGAIG_SD1_ME.05, caption="AGAIG, SD=1.0, ME=0.05, Estimated betas")
+final_table(AGAIG_SD1_ME.075, caption="AGAIG, SD=1.0, ME=0.075, Estimated betas")
+final_table(AGAIG_SD1_ME.1, caption="AGAIG, SD=1.0, ME=0.1, Estimated betas")
+final_table(AGAIG_SD1_ME.125, caption="AGAIG, SD=1.0, ME=0.125, Estimated betas")
+final_table(AGAIG_SD1_ME.15, caption="AGAIG, SD=1.0, ME=0.15, Estimated betas")
+final_table(AGAIG_SD1_ME.175, caption="AGAIG, SD=1.0, ME=0.175, Estimated betas")
+final_table(AGAIG_SD1_ME.2, caption="AGAIG, SD=1.0, ME=0.2, Estimated betas")
+final_table(AGAIG_SD1_ME.225, caption="AGAIG, SD=1.0, ME=0.225, Estimated betas")
+final_table(AGAIG_SD1_ME.25, caption="AGAIG, SD=1.0, ME=0.25, Estimated betas")
+final_table(AGAIG_SD1_ME.5, caption="AGAIG, SD=1.0, ME=0.5, Estimated betas")
+final_table(AGAIG_SD1_ME.75, caption="AGAIG, SD=1.0, ME=0.75, Estimated betas")
 
 
 ### Reverse scenarios
 
 # SD=0 data
-final_table(reverse_SD0_ME0, caption="Reverse, SD=0, ME=0, est betas")
-final_table(reverse_SD0_ME.25, caption="Reverse, SD=0, ME=0.25, est betas")
-final_table(reverse_SD0_ME.5, caption="Reverse, SD=0, ME=0.5, est betas")
-final_table(reverse_SD0_ME.75, caption="Reverse, SD=0, ME=0.75, est betas")
+final_table(reverse_SD0_ME0, caption="reverse, SD=0, ME=0, Estimated betas")
+final_table(reverse_SD0_ME.025, caption="reverse, SD=0, ME=0.025, Estimated betas")
+final_table(reverse_SD0_ME.05, caption="reverse, SD=0, ME=0.05, Estimated betas")
+final_table(reverse_SD0_ME.075, caption="reverse, SD=0, ME=0.075, Estimated betas")
+final_table(reverse_SD0_ME.1, caption="reverse, SD=0, ME=0.1, Estimated betas")
+final_table(reverse_SD0_ME.125, caption="reverse, SD=0, ME=0.125, Estimated betas")
+final_table(reverse_SD0_ME.15, caption="reverse, SD=0, ME=0.15, Estimated betas")
+final_table(reverse_SD0_ME.175, caption="reverse, SD=0, ME=0.175, Estimated betas")
+final_table(reverse_SD0_ME.2, caption="reverse, SD=0, ME=0.2, Estimated betas")
+final_table(reverse_SD0_ME.225, caption="reverse, SD=0, ME=0.225, Estimated betas")
+final_table(reverse_SD0_ME.25, caption="reverse, SD=0, ME=0.25, Estimated betas")
+final_table(reverse_SD0_ME.5, caption="reverse, SD=0, ME=0.5, Estimated betas")
+final_table(reverse_SD0_ME.75, caption="reverse, SD=0, ME=0.75, Estimated betas")
 
 # SD=1 data
-final_table(reverse_SD1.0_ME.05, caption="Reverse, SD=1.0, ME=0.05, est betas")
-final_table(reverse_SD1.0_ME.12, caption="Reverse, SD=1.0, ME=0.12, est betas")
-final_table(reverse_SD1.0_ME.25, caption="Reverse, SD=1.0, ME=0.25, est betas")
-final_table(reverse_SD1.0_ME.5, caption="Reverse, SD=1.0, ME=0.5, est betas")
-
+final_table(reverse_SD1_ME0, caption="reverse, SD=1.0, ME=0, Estimated betas")
+final_table(reverse_SD1_ME.025, caption="reverse, SD=1.0, ME=0.025, Estimated betas")
+final_table(reverse_SD1_ME.05, caption="reverse, SD=1.0, ME=0.05, Estimated betas")
+final_table(reverse_SD1_ME.075, caption="reverse, SD=1.0, ME=0.075, Estimated betas")
+final_table(reverse_SD1_ME.1, caption="reverse, SD=1.0, ME=0.1, Estimated betas")
+final_table(reverse_SD1_ME.125, caption="reverse, SD=1.0, ME=0.125, Estimated betas")
+final_table(reverse_SD1_ME.15, caption="reverse, SD=1.0, ME=0.15, Estimated betas")
+final_table(reverse_SD1_ME.175, caption="reverse, SD=1.0, ME=0.175, Estimated betas")
+final_table(reverse_SD1_ME.2, caption="reverse, SD=1.0, ME=0.2, Estimated betas")
+final_table(reverse_SD1_ME.225, caption="reverse, SD=1.0, ME=0.225, Estimated betas")
+final_table(reverse_SD1_ME.25, caption="reverse, SD=1.0, ME=0.25, Estimated betas")
+final_table(reverse_SD1_ME.5, caption="reverse, SD=1.0, ME=0.5, Estimated betas")
+final_table(reverse_SD1_ME.75, caption="reverse, SD=1.0, ME=0.75, Estimated betas")
 
 
 
