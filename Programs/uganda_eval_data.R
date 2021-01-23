@@ -189,7 +189,7 @@ for (i in 1:length(test_final$study_id)){
 
 ##### writing the final test dataset
 ### make sure to include the filepath for the location you want the data
-saveRDS(test_final, "UgandaData/test_set_final.rds")
+saveRDS(test_final, file=here("UgandaData","test_set_final.rds"))
 
 
 

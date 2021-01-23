@@ -1,3 +1,29 @@
+#==============================================================================
+# FILENAME: shinysource.R
+# PROJECT: 	Pooled testing in HIV
+# PURPOSE: this is the source file for the shiny app called shinypopfit
+#          
+#          
+# AUTHOR: Adam Brand
+
+
+# INPUT datasets: None
+
+# OUTPUT: None, this is only a source file
+
+
+# R VERSION: 3.6.1
+#==============================================================================
+#Notes: as a source file, it needs to be in the same folder as the server.R file, but does not need to be run
+
+
+
+
+
+# =============================================================================
+
+
+
 # Finally, also in a separate R file, call this one shinysource.R
 
 Under500VL <- function(n){

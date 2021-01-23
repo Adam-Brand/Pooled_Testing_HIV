@@ -1,18 +1,21 @@
 #==============================================================================
 # FILENAME: results_anal.R
 # PROJECT: 	Pooled testing in HIV
-# PURPOSE: Creates the summary stats reported in the tables in the paper for methods except HyPred.
-#          It creates one table per scenario for each of the data SD=1.0 and SD=0; the AGAIG and reverse
-#          scenarios at different MEs. This code produces LaTeX code for 16 tables.
+# PURPOSE: Creates Latex code for the summary stats reported in the tables for the simulations in the Supplement.
+#          Does not produce the Hypred tables, that is done in another program
+#          It creates one table per scenario for each of the data SD=1.0 and SD=0; the AGAIG, reverse, No assoc ansd Misspec
+#          scenarios at different MEs. This code produces LaTeX code for 104 tables.
 # AUTHOR: Adam Brand
 
 
-# INPUT datasets: the results datasets in the 'Results' folder outputted by the method_eval programs
+# INPUT datasets: 104 results tables prouced by method_eval3_run2.R and method_eval4_run2.R
 
+# OUTPUT: latex code for 104 tables in the Suplement
 
 # R VERSION: 3.6.1
 #==============================================================================
-#Notes: 
+# Notes: Each function call towards the end of the program outputs latex code. To produce the tables,
+#       copy and paste the output code into Latex, and compile the latex document
 
 
 
@@ -56,7 +59,36 @@ reverse_SD1_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.25_rand.
 reverse_SD1_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.5_rand.rds")
 reverse_SD1_ME.75 <- readRDS("Results/SimResults/Results_reverse_SD1_ME.75_rand.rds")
 
-                ##############################
+noassoc_SD1_ME0 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME0_rand.rds")
+noassoc_SD1_ME.025 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.025_rand.rds")
+noassoc_SD1_ME.05 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.05_rand.rds")
+noassoc_SD1_ME.075 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.075_rand.rds")
+noassoc_SD1_ME.1 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.1_rand.rds")
+noassoc_SD1_ME.125 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.125_rand.rds")
+noassoc_SD1_ME.15 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.15_rand.rds")
+noassoc_SD1_ME.175 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.175_rand.rds")
+noassoc_SD1_ME.2 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.2_rand.rds")
+noassoc_SD1_ME.225 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.225_rand.rds")
+noassoc_SD1_ME.25 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.25_rand.rds")
+noassoc_SD1_ME.5 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.5_rand.rds")
+noassoc_SD1_ME.75 <- readRDS("Results/SimResults/Results_noassoc_SD1_ME.75_rand.rds")
+
+misspec_SD1_ME0 <- readRDS("Results/SimResults/Results_misspec_SD1_ME0_rand.rds")
+misspec_SD1_ME.025 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.025_rand.rds")
+misspec_SD1_ME.05 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.05_rand.rds")
+misspec_SD1_ME.075 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.075_rand.rds")
+misspec_SD1_ME.1 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.1_rand.rds")
+misspec_SD1_ME.125 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.125_rand.rds")
+misspec_SD1_ME.15 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.15_rand.rds")
+misspec_SD1_ME.175 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.175_rand.rds")
+misspec_SD1_ME.2 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.2_rand.rds")
+misspec_SD1_ME.225 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.225_rand.rds")
+misspec_SD1_ME.25 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.25_rand.rds")
+misspec_SD1_ME.5 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.5_rand.rds")
+misspec_SD1_ME.75 <- readRDS("Results/SimResults/Results_misspec_SD1_ME.75_rand.rds")
+
+
+###########################################################################################
 
 AGAIG_SD0_ME0 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME0_rand.rds")
 AGAIG_SD0_ME.025 <- readRDS("Results/SimResults/Results_AGAIG_SD0_ME.025_rand.rds")
@@ -86,6 +118,36 @@ reverse_SD0_ME.25 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.25_rand.
 reverse_SD0_ME.5 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.5_rand.rds")
 reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_reverse_SD0_ME.75_rand.rds")
 
+noassoc_SD0_ME0 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME0_rand.rds")
+noassoc_SD0_ME.025 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.025_rand.rds")
+noassoc_SD0_ME.05 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.05_rand.rds")
+noassoc_SD0_ME.075 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.075_rand.rds")
+noassoc_SD0_ME.1 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.1_rand.rds")
+noassoc_SD0_ME.125 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.125_rand.rds")
+noassoc_SD0_ME.15 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.15_rand.rds")
+noassoc_SD0_ME.175 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.175_rand.rds")
+noassoc_SD0_ME.2 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.2_rand.rds")
+noassoc_SD0_ME.225 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.225_rand.rds")
+noassoc_SD0_ME.25 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.25_rand.rds")
+noassoc_SD0_ME.5 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.5_rand.rds")
+noassoc_SD0_ME.75 <- readRDS("Results/SimResults/Results_noassoc_SD0_ME.75_rand.rds")
+
+misspec_SD0_ME0 <- readRDS("Results/SimResults/Results_misspec_SD0_ME0_rand.rds")
+misspec_SD0_ME.025 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.025_rand.rds")
+misspec_SD0_ME.05 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.05_rand.rds")
+misspec_SD0_ME.075 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.075_rand.rds")
+misspec_SD0_ME.1 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.1_rand.rds")
+misspec_SD0_ME.125 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.125_rand.rds")
+misspec_SD0_ME.15 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.15_rand.rds")
+misspec_SD0_ME.175 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.175_rand.rds")
+misspec_SD0_ME.2 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.2_rand.rds")
+misspec_SD0_ME.225 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.225_rand.rds")
+misspec_SD0_ME.25 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.25_rand.rds")
+misspec_SD0_ME.5 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.5_rand.rds")
+misspec_SD0_ME.75 <- readRDS("Results/SimResults/Results_misspec_SD0_ME.75_rand.rds")
+
+
+###########################################################################################
 
 ### reforming the data frame into long format with the method name as a variable
 reform <- function(df_name){
@@ -359,7 +421,70 @@ final_table(reverse_SD1_ME.25, caption="reverse, SD=1.0, ME=0.25, Estimated beta
 final_table(reverse_SD1_ME.5, caption="reverse, SD=1.0, ME=0.5, Estimated betas")
 final_table(reverse_SD1_ME.75, caption="reverse, SD=1.0, ME=0.75, Estimated betas")
 
+### No Association scenarios
 
+# SD=0 data
+final_table(noassoc_SD0_ME0, caption="No Association, SD=0, ME=0, Estimated betas")
+final_table(noassoc_SD0_ME.025, caption="No Association, SD=0, ME=0.025, Estimated betas")
+final_table(noassoc_SD0_ME.05, caption="No Association, SD=0, ME=0.05, Estimated betas")
+final_table(noassoc_SD0_ME.075, caption="No Association, SD=0, ME=0.075, Estimated betas")
+final_table(noassoc_SD0_ME.1, caption="No Association, SD=0, ME=0.1, Estimated betas")
+final_table(noassoc_SD0_ME.125, caption="No Association, SD=0, ME=0.125, Estimated betas")
+final_table(noassoc_SD0_ME.15, caption="No Association, SD=0, ME=0.15, Estimated betas")
+final_table(noassoc_SD0_ME.175, caption="No Association, SD=0, ME=0.175, Estimated betas")
+final_table(noassoc_SD0_ME.2, caption="No Association, SD=0, ME=0.2, Estimated betas")
+final_table(noassoc_SD0_ME.225, caption="No Association, SD=0, ME=0.225, Estimated betas")
+final_table(noassoc_SD0_ME.25, caption="No Association, SD=0, ME=0.25, Estimated betas")
+final_table(noassoc_SD0_ME.5, caption="No Association, SD=0, ME=0.5, Estimated betas")
+final_table(noassoc_SD0_ME.75, caption="No Association, SD=0, ME=0.75, Estimated betas")
+
+# SD=1 data
+final_table(noassoc_SD1_ME0, caption="No Association, SD=1.0, ME=0, Estimated betas")
+final_table(noassoc_SD1_ME.025, caption="No Association, SD=1.0, ME=0.025, Estimated betas")
+final_table(noassoc_SD1_ME.05, caption="No Association, SD=1.0, ME=0.05, Estimated betas")
+final_table(noassoc_SD1_ME.075, caption="No Association, SD=1.0, ME=0.075, Estimated betas")
+final_table(noassoc_SD1_ME.1, caption="No Association, SD=1.0, ME=0.1, Estimated betas")
+final_table(noassoc_SD1_ME.125, caption="No Association, SD=1.0, ME=0.125, Estimated betas")
+final_table(noassoc_SD1_ME.15, caption="No Association, SD=1.0, ME=0.15, Estimated betas")
+final_table(noassoc_SD1_ME.175, caption="No Association, SD=1.0, ME=0.175, Estimated betas")
+final_table(noassoc_SD1_ME.2, caption="No Association, SD=1.0, ME=0.2, Estimated betas")
+final_table(noassoc_SD1_ME.225, caption="No Association, SD=1.0, ME=0.225, Estimated betas")
+final_table(noassoc_SD1_ME.25, caption="No Association, SD=1.0, ME=0.25, Estimated betas")
+final_table(noassoc_SD1_ME.5, caption="No Association, SD=1.0, ME=0.5, Estimated betas")
+final_table(noassoc_SD1_ME.75, caption="No Association, SD=1.0, ME=0.75, Estimated betas")
+
+
+##### Misspecified scenario
+
+# SD=0 data
+final_table(misspec_SD0_ME0, caption="Misspecified, SD=0, ME=0, Estimated betas")
+final_table(misspec_SD0_ME.025, caption="Misspecified, SD=0, ME=0.025, Estimated betas")
+final_table(misspec_SD0_ME.05, caption="Misspecified, SD=0, ME=0.05, Estimated betas")
+final_table(misspec_SD0_ME.075, caption="Misspecified, SD=0, ME=0.075, Estimated betas")
+final_table(misspec_SD0_ME.1, caption="Misspecified, SD=0, ME=0.1, Estimated betas")
+final_table(misspec_SD0_ME.125, caption="Misspecified, SD=0, ME=0.125, Estimated betas")
+final_table(misspec_SD0_ME.15, caption="Misspecified, SD=0, ME=0.15, Estimated betas")
+final_table(misspec_SD0_ME.175, caption="Misspecified, SD=0, ME=0.175, Estimated betas")
+final_table(misspec_SD0_ME.2, caption="Misspecified, SD=0, ME=0.2, Estimated betas")
+final_table(misspec_SD0_ME.225, caption="Misspecified, SD=0, ME=0.225, Estimated betas")
+final_table(misspec_SD0_ME.25, caption="Misspecified, SD=0, ME=0.25, Estimated betas")
+final_table(misspec_SD0_ME.5, caption="Misspecified, SD=0, ME=0.5, Estimated betas")
+final_table(misspec_SD0_ME.75, caption="Misspecified, SD=0, ME=0.75, Estimated betas")
+
+# SD=1 data
+final_table(misspec_SD1_ME0, caption="Misspecified, SD=1.0, ME=0, Estimated betas")
+final_table(misspec_SD1_ME.025, caption="Misspecified, SD=1.0, ME=0.025, Estimated betas")
+final_table(misspec_SD1_ME.05, caption="Misspecified, SD=1.0, ME=0.05, Estimated betas")
+final_table(misspec_SD1_ME.075, caption="Misspecified, SD=1.0, ME=0.075, Estimated betas")
+final_table(misspec_SD1_ME.1, caption="Misspecified, SD=1.0, ME=0.1, Estimated betas")
+final_table(misspec_SD1_ME.125, caption="Misspecified, SD=1.0, ME=0.125, Estimated betas")
+final_table(misspec_SD1_ME.15, caption="Misspecified, SD=1.0, ME=0.15, Estimated betas")
+final_table(misspec_SD1_ME.175, caption="Misspecified, SD=1.0, ME=0.175, Estimated betas")
+final_table(misspec_SD1_ME.2, caption="Misspecified, SD=1.0, ME=0.2, Estimated betas")
+final_table(misspec_SD1_ME.225, caption="Misspecified, SD=1.0, ME=0.225, Estimated betas")
+final_table(misspec_SD1_ME.25, caption="Misspecified, SD=1.0, ME=0.25, Estimated betas")
+final_table(misspec_SD1_ME.5, caption="Misspecified, SD=1.0, ME=0.5, Estimated betas")
+final_table(misspec_SD1_ME.75, caption="Misspecified, SD=1.0, ME=0.75, Estimated betas")
 
 
 

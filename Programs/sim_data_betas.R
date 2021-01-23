@@ -85,6 +85,7 @@ plot(cv.fit0_rev)
 opt.lambda1.0 <- cv.fit1.0$lambda.min
 opt.lambda1.0
 
+
 opt.lambda0 <- cv.fit0$lambda.min
 opt.lambda0
 
@@ -100,6 +101,12 @@ opt.fit1.0 <- glmnet(x1.0, y1.0, alpha = 0, lambda = opt.lambda1.0)
 summary(opt.fit1.0)
 ## USED IN PAPER; no seed was set, so results may vary. The betas we used are recorded in the method_eval programs
 betas_ridge1.0 <- as.matrix(coef(opt.fit1.0))
+
+### getting the betas from the misspecified model; ridge not appropriate when only 1 predictor so we will
+### use regular linear regression
+miss_fit <- lm(simdata1.0$log.VL ~ simdata1.0$adhere)
+summary(miss_fit)
+
 
 
 ### getting the betas from the optimal fit

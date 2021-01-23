@@ -57,6 +57,39 @@ hypred_reverse_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_reverse_S
 hypred_reverse_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.5_rand.rds")
 hypred_reverse_SD1_ME.75 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD1_ME.75_rand.rds")
 
+
+# No association, SD=1
+hypred_noassoc_SD1_ME0 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME0_rand.rds")
+hypred_noassoc_SD1_ME.025 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.025_rand.rds")
+hypred_noassoc_SD1_ME.05 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.05_rand.rds")
+hypred_noassoc_SD1_ME.075 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.075_rand.rds")
+hypred_noassoc_SD1_ME.1 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.1_rand.rds")
+hypred_noassoc_SD1_ME.125 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.125_rand.rds")
+hypred_noassoc_SD1_ME.15 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.15_rand.rds")
+hypred_noassoc_SD1_ME.175 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.175_rand.rds")
+hypred_noassoc_SD1_ME.2 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.2_rand.rds")
+hypred_noassoc_SD1_ME.225 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.225_rand.rds")
+hypred_noassoc_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.25_rand.rds")
+hypred_noassoc_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.5_rand.rds")
+hypred_noassoc_SD1_ME.75 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD1_ME.75_rand.rds")
+
+
+# Misspecified, SD=1
+hypred_misspec_SD1_ME0 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME0_rand.rds")
+hypred_misspec_SD1_ME.025 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.025_rand.rds")
+hypred_misspec_SD1_ME.05 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.05_rand.rds")
+hypred_misspec_SD1_ME.075 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.075_rand.rds")
+hypred_misspec_SD1_ME.1 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.1_rand.rds")
+hypred_misspec_SD1_ME.125 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.125_rand.rds")
+hypred_misspec_SD1_ME.15 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.15_rand.rds")
+hypred_misspec_SD1_ME.175 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.175_rand.rds")
+hypred_misspec_SD1_ME.2 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.2_rand.rds")
+hypred_misspec_SD1_ME.225 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.225_rand.rds")
+hypred_misspec_SD1_ME.25 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.25_rand.rds")
+hypred_misspec_SD1_ME.5 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.5_rand.rds")
+hypred_misspec_SD1_ME.75 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD1_ME.75_rand.rds")
+
+
                 ##############################
 
 ### AGAIG, SD=0
@@ -89,6 +122,40 @@ hypred_reverse_SD0_ME.225 <- readRDS("Results/SimResults/Results_Hypred_reverse_
 hypred_reverse_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.25_rand.rds")
 hypred_reverse_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.5_rand.rds")
 hypred_reverse_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_reverse_SD0_ME.75_rand.rds")
+
+
+# No association, SD=0
+hypred_noassoc_SD0_ME0 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME0_rand.rds")
+hypred_noassoc_SD0_ME.025 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.025_rand.rds")
+hypred_noassoc_SD0_ME.05 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.05_rand.rds")
+hypred_noassoc_SD0_ME.075 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.075_rand.rds")
+hypred_noassoc_SD0_ME.1 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.1_rand.rds")
+hypred_noassoc_SD0_ME.125 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.125_rand.rds")
+hypred_noassoc_SD0_ME.15 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.15_rand.rds")
+hypred_noassoc_SD0_ME.175 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.175_rand.rds")
+hypred_noassoc_SD0_ME.2 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.2_rand.rds")
+hypred_noassoc_SD0_ME.225 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.225_rand.rds")
+hypred_noassoc_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.25_rand.rds")
+hypred_noassoc_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.5_rand.rds")
+hypred_noassoc_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_noassoc_SD0_ME.75_rand.rds")
+
+
+# Misspecified, SD=0
+hypred_misspec_SD0_ME0 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME0_rand.rds")
+hypred_misspec_SD0_ME.025 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.025_rand.rds")
+hypred_misspec_SD0_ME.05 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.05_rand.rds")
+hypred_misspec_SD0_ME.075 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.075_rand.rds")
+hypred_misspec_SD0_ME.1 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.1_rand.rds")
+hypred_misspec_SD0_ME.125 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.125_rand.rds")
+hypred_misspec_SD0_ME.15 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.15_rand.rds")
+hypred_misspec_SD0_ME.175 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.175_rand.rds")
+hypred_misspec_SD0_ME.2 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.2_rand.rds")
+hypred_misspec_SD0_ME.225 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.225_rand.rds")
+hypred_misspec_SD0_ME.25 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.25_rand.rds")
+hypred_misspec_SD0_ME.5 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.5_rand.rds")
+hypred_misspec_SD0_ME.75 <- readRDS("Results/SimResults/Results_Hypred_misspec_SD0_ME.75_rand.rds")
+
+
 
 ####################################################################################
 
@@ -651,6 +718,341 @@ final_table(dataset=hypred_reverse_SD1_ME.75[hypred_reverse_SD1_ME.75$section=="
 
 ###########################################################################################
 
+## No association, SD=0, mid tier
+final_table(dataset=hypred_noassoc_SD0_ME0[hypred_noassoc_SD0_ME0$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.025[hypred_noassoc_SD0_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.05[hypred_noassoc_SD0_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.075[hypred_noassoc_SD0_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.1[hypred_noassoc_SD0_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.125[hypred_noassoc_SD0_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.15[hypred_noassoc_SD0_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.175[hypred_noassoc_SD0_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.2[hypred_noassoc_SD0_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.225[hypred_noassoc_SD0_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.25[hypred_noassoc_SD0_ME.25$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.5[hypred_noassoc_SD0_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.75[hypred_noassoc_SD0_ME.75$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=0 ME=0.75, Estimated betas")
+
+
+
+# No Association, SD=1, mid tier
+final_table(dataset=hypred_noassoc_SD1_ME0[hypred_noassoc_SD1_ME0$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.025[hypred_noassoc_SD1_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.05[hypred_noassoc_SD1_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.075[hypred_noassoc_SD1_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.1[hypred_noassoc_SD1_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.125[hypred_noassoc_SD1_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.15[hypred_noassoc_SD1_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.175[hypred_noassoc_SD1_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.2[hypred_noassoc_SD1_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.225[hypred_noassoc_SD1_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.25[hypred_noassoc_SD1_ME.25$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.5[hypred_noassoc_SD1_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.75[hypred_noassoc_SD1_ME.75$section=="mid",], 
+            caption = "Hypred Mid Tier, No Association, SD=1 ME=0.75, Estimated betas")
+
+
+## No Association, SD=0, low tier
+final_table(dataset=hypred_noassoc_SD0_ME0[hypred_noassoc_SD0_ME0$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.025[hypred_noassoc_SD0_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.05[hypred_noassoc_SD0_ME.05$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.075[hypred_noassoc_SD0_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.1[hypred_noassoc_SD0_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.125[hypred_noassoc_SD0_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.15[hypred_noassoc_SD0_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.175[hypred_noassoc_SD0_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.2[hypred_noassoc_SD0_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.225[hypred_noassoc_SD0_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.25[hypred_noassoc_SD0_ME.25$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.5[hypred_noassoc_SD0_ME.5$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD0_ME.75[hypred_noassoc_SD0_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=0 ME=0.75, Estimated betas")
+
+
+## No Association, SD=1, low tier
+final_table(dataset=hypred_noassoc_SD1_ME0[hypred_noassoc_SD1_ME0$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.025[hypred_noassoc_SD1_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.05[hypred_noassoc_SD1_ME.05$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.075[hypred_noassoc_SD1_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.1[hypred_noassoc_SD1_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.125[hypred_noassoc_SD1_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.15[hypred_noassoc_SD1_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.175[hypred_noassoc_SD1_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.2[hypred_noassoc_SD1_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.225[hypred_noassoc_SD1_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.25[hypred_noassoc_SD1_ME.25$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.5[hypred_noassoc_SD1_ME.5$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_noassoc_SD1_ME.75[hypred_noassoc_SD1_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, No Association, SD=1 ME=0.75, Estimated betas")
+#####################################################################################################
+
+
+## Misspecified, SD=0, mid tier
+final_table(dataset=hypred_misspec_SD0_ME0[hypred_misspec_SD0_ME0$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.025[hypred_misspec_SD0_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.05[hypred_misspec_SD0_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.075[hypred_misspec_SD0_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.1[hypred_misspec_SD0_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.125[hypred_misspec_SD0_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.15[hypred_misspec_SD0_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.175[hypred_misspec_SD0_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.2[hypred_misspec_SD0_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.225[hypred_misspec_SD0_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.25[hypred_misspec_SD0_ME.25$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.5[hypred_misspec_SD0_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.75[hypred_misspec_SD0_ME.75$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=0 ME=0.75, Estimated betas")
+
+
+
+## Misspecified, SD=0, low tier
+final_table(dataset=hypred_misspec_SD0_ME0[hypred_misspec_SD0_ME0$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.025[hypred_misspec_SD0_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.05[hypred_misspec_SD0_ME.05$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.075[hypred_misspec_SD0_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.1[hypred_misspec_SD0_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.125[hypred_misspec_SD0_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.15[hypred_misspec_SD0_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.175[hypred_misspec_SD0_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.2[hypred_misspec_SD0_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.225[hypred_misspec_SD0_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.25[hypred_misspec_SD0_ME.25$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.5[hypred_misspec_SD0_ME.5$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD0_ME.75[hypred_misspec_SD0_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=0 ME=0.75, Estimated betas")
+
+
+
+
+# Misspecified, SD=1, mid tier
+final_table(dataset=hypred_misspec_SD1_ME0[hypred_misspec_SD1_ME0$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.025[hypred_misspec_SD1_ME.025$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.05[hypred_misspec_SD1_ME.05$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.075[hypred_misspec_SD1_ME.075$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.1[hypred_misspec_SD1_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.125[hypred_misspec_SD1_ME.125$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.15[hypred_misspec_SD1_ME.15$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.175[hypred_misspec_SD1_ME.175$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.2[hypred_misspec_SD1_ME.2$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.225[hypred_misspec_SD1_ME.225$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.25[hypred_misspec_SD1_ME.25$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.5[hypred_misspec_SD1_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.75[hypred_misspec_SD1_ME.75$section=="mid",], 
+            caption = "Hypred Mid Tier, Misspecified, SD=1 ME=0.75, Estimated betas")
+
+
+
+## Misspecified, SD=1, low tier
+final_table(dataset=hypred_misspec_SD1_ME0[hypred_misspec_SD1_ME0$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.025[hypred_misspec_SD1_ME.025$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.025, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.05[hypred_misspec_SD1_ME.05$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.05, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.075[hypred_misspec_SD1_ME.075$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.075, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.1[hypred_misspec_SD1_ME.1$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.1, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.125[hypred_misspec_SD1_ME.125$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.125, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.15[hypred_misspec_SD1_ME.15$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.15, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.175[hypred_misspec_SD1_ME.175$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.175, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.2[hypred_misspec_SD1_ME.2$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.2, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.225[hypred_misspec_SD1_ME.225$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.225, Estimated Betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.25[hypred_misspec_SD1_ME.25$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.25, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.5[hypred_misspec_SD1_ME.5$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.5, Estimated betas")
+
+final_table(dataset=hypred_misspec_SD1_ME.75[hypred_misspec_SD1_ME.75$section=="low",], 
+            caption = "Hypred Low Tier, Misspecified, SD=1 ME=0.75, Estimated betas")
+
+
+
 ####################################  Hypred Uganda results #####################################
 
 ## Hypred mid tier
@@ -735,6 +1137,7 @@ final_table(dataset=hypred_uganda_ME.5[hypred_uganda_ME.5$section=="low",],
 
 final_table(dataset=hypred_uganda_ME.75[hypred_uganda_ME.75$section=="low",], 
             caption="Uganda Results - Hypred Low Tier: ME=0.75")
+
 
 
 # combines results for the 3 tier risk groups for the hypred method; user must define which method
@@ -902,4 +1305,69 @@ comb_hypred(hypred_uganda_ME.225, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.25, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.5, mid_method="mincov", low_method="mincov")
 comb_hypred(hypred_uganda_ME.75, mid_method="mincov", low_method="mincov")
+
+
+## No assoc Sd=0
+comb_hypred(hypred_noassoc_SD0_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.025, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.225, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.25, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD0_ME.75, mid_method="mincov", low_method="mincov")
+
+
+## No assoc Sd=1
+comb_hypred(hypred_noassoc_SD1_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.025, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.225, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.25, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_noassoc_SD1_ME.75, mid_method="mincov", low_method="mincov")
+
+
+## Misspec Sd=0
+comb_hypred(hypred_misspec_SD0_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.025, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.225, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.25, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD0_ME.75, mid_method="mincov", low_method="mincov")
+
+
+## Misspec Sd=1
+comb_hypred(hypred_misspec_SD1_ME0, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.025, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.05, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.075, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.1, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.125, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.15, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.175, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.2, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.225, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.25, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.5, mid_method="mincov", low_method="mincov")
+comb_hypred(hypred_misspec_SD1_ME.75, mid_method="mincov", low_method="mincov")
+
 

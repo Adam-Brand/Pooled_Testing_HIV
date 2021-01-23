@@ -423,7 +423,7 @@ for (i in 1:length(mydata$study_id)){
 ##### End of cleaning and derivation code; this writes the dataset to an rds file
 
 
-saveRDS(mydata, "UgandaData/Clean_data.rds")
+saveRDS(mydata, file=here("UgandaData","Clean_data.rds"))
 
 
 

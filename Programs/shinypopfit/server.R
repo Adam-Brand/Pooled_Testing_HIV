@@ -1,3 +1,28 @@
+#==============================================================================
+# FILENAME: server.R
+# PROJECT: 	Pooled testing in HIV
+# PURPOSE: this is the server file for the shinypopfit shiny application
+#          
+#          
+# AUTHOR: Adam Brand
+
+
+# INPUT datasets: none
+
+# OUPUT: none - this program runs a shiny app locally
+
+
+# R VERSION: 3.6.1
+#==============================================================================
+#Notes: to run, click the "Run App" button on the top right of an R Studio session with this file loaded
+
+
+
+
+
+# =============================================================================
+
+
 library(shiny)
 source("shinysource.R")
 

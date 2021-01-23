@@ -1,3 +1,29 @@
+#==============================================================================
+# FILENAME: ui.R
+# PROJECT: 	Pooled testing in HIV
+# PURPOSE: ui.R file for the shiny program shinypopfit
+#          
+#          
+# AUTHOR: Adam Brand
+
+
+# INPUT datasets: none
+
+# OUTPUT: none, this is a user interface for the a shiny app
+
+
+# R VERSION: 3.6.1
+#==============================================================================
+#Notes: this needs to be in the same folder as the serverR file for this app, but does not need to be run
+
+
+
+
+
+# =============================================================================
+
+
+
 # This code also needs to be in a separate file, but called ui.R
 library(shiny)
 source("shinysource.R")

@@ -1369,7 +1369,7 @@ train.data2 <- select(train.data, study_id, sex, male, female, ageyrs,  age35, a
                       lastVL_t, enroll_t, vl, vllog, fail_draw, dub_fail, lastVLcat, label)
 
 
-saveRDS(train.data2, "UgandaData/train_data.rds")
+saveRDS(train.data2, file=here("UgandaData","train_data.rds"))
 
 
 

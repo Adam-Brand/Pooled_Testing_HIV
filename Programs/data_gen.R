@@ -258,9 +258,9 @@ summary(simdata$VL)
 summary(VLdata$VL)
 
 
-saveRDS(simdata, "SimData/Uganda_SimData_SD1.0.rds")
-saveRDS(simdata_train, "SimData/Uganda_SimData_train_SD1.0.rds")
-saveRDS(simdata_rev, "SimData/Uganda_SimData_train_SD1.0_reverse.rds")
+saveRDS(simdata, file=here("SimData","Uganda_SimData_SD1.0.rds"))
+saveRDS(simdata_train, file=here("SimData","Uganda_SimData_train_SD1.0.rds"))
+saveRDS(simdata_rev, file=here("SimData","Uganda_SimData_train_SD1.0_reverse.rds"))
 
 
 ### checking that the model isnt too overly predictive. We set the sd at 1.0 on log10 scale to get 0.327 R2
@@ -389,9 +389,9 @@ sum(simdata2$VL >=1000)/length(simdata2$VL)
 sum(simdata2_train$VL >=1000)/length(simdata2_train$VL)
 
 
-saveRDS(simdata2, "SimData/Uganda_SimData_SD0.rds")
-saveRDS(simdata2_train, "SimData/Uganda_SimData_train_SD0.rds")
-saveRDS(simdata2_rev,  "SimData/Uganda_SimData_train_SD0_reverse.rds")
+saveRDS(simdata2, file=here("SimData","Uganda_SimData_SD0.rds"))
+saveRDS(simdata2_train, file=here("SimData","Uganda_SimData_train_SD0.rds"))
+saveRDS(simdata2_rev,  file=here("SimData","Uganda_SimData_train_SD0_reverse.rds"))
 
 
 check <- readRDS("SimData/Uganda_SimData_SD0.rds")
