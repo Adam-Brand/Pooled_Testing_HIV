@@ -44,10 +44,8 @@ source("Programs/method_eval_source.R")
 
 ##### AGAIG scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Uganda_SimData_SD0.rds")
-#### these betas were estimated using the sim_data_betas program
-#### the betas are estimated using the training set with SD=1.0. Using the training set with SD=0
-#### provided 'too accurate' results due to the lack of variation
-data <- predictVL(data, b0star=0.4414945, b1star=0.1170119, b2star=1.9283680, b3star=0.1369999)
+#### these betas are the same that generated the data; scenario of perfect prediction accuracy
+data <- predictVL(data, b0star=0.5, b1star=0.1, b2star=2, b3star=0.1)
 
 
 
@@ -156,7 +154,7 @@ saveRDS(result1, file=here("Results","SimResults","Results_AGAIG_SD0_ME.75_rand.
 
 ##### reverse scenarios using SD=0 and estimated betas from the reverse training set
 data <- readRDS("SimData/Uganda_SimData_SD0.rds")
-data <- predictVL(data, b0star=5.8155002, b1star=-0.2442230, b2star=-3.7203965, b3star=0.1260099)
+data <- predictVL(data, b0star=6, b1star=-0.1, b2star=-2, b3star=-0.1)
 
 
 set.seed(18)
@@ -263,10 +261,9 @@ saveRDS(result1, file=here("Results","SimResults","Results_reverse_SD0_ME.75_ran
 
 ##### no prediction association scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Records_used_in_500_matrices_hypred/SD0_data_500_run2_perm.rds")
-#### these betas were estimated using the sim_data_betas program
-#### the betas are estimated using the training set with SD=1.0. Using the training set with SD=0
-#### provided 'too accurate' results due to the lack of variation
-data <- predictVL(data, b0star=0.4414945, b1star=0.1170119, b2star=1.9283680, b3star=0.1369999)
+#### these betas are the same that generated the data to provide perfect prediction
+#### the data used has had the VL permuted, so there is no association to the prediction model
+data <- predictVL(data, b0star=0.5, b1star=0.1, b2star=2, b3star=0.1)
 
 
 
@@ -376,10 +373,8 @@ saveRDS(result1, file=here("Results","SimResults","Results_noassoc_SD0_ME.75_ran
 
 ##### misspecified model scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Uganda_SimData_SD0.rds")
-#### these betas were estimated using the sim_data_betas program
-#### the betas are estimated using the training set with SD=1.0 without the binary predictor. Using the training set with SD=0
-#### provided 'too accurate' results due to the lack of variation
-data <- predictVL(data, b0star=0.623, b1star=0.133, b2star=0, b3star=0)
+#### these betas are set to reflect a misspecified model
+data <- predictVL(data, b0star=2, b1star=0.3, b2star=0, b3star=0)
 
 
 

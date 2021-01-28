@@ -164,7 +164,7 @@ saveRDS(result1, file=here("Results","SimResults","Results_Hypred_AGAIG_SD1_ME.7
 
 ##### AGAIG scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Records_used_in_500_matrices_hypred/SD0_data_500_run2.rds")
-data <- predictVL(data, b0star=0.4414945, b1star=0.1170119, b2star=1.9283680, b3star=0.1369999)
+data <- predictVL(data, b0star=0.5, b1star=0.1, b2star=2, b3star=0.1)
 
 
 set.seed(18)
@@ -387,7 +387,7 @@ saveRDS(result1, file=here("Results","SimResults","Results_Hypred_reverse_SD1_ME
 
 ##### Reverse scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Records_used_in_500_matrices_hypred/SD0_data_500_run2.rds")
-data <- predictVL(data, b0star=5.8155002, b1star=-0.2442230, b2star=-3.7203965, b3star=0.1260099)
+data <- predictVL(data, b0star=6, b1star=-0.1, b2star=-2, b3star=-0.1)
 
 
 
@@ -724,7 +724,7 @@ saveRDS(result1, file=here("Results","SimResults","Results_Hypred_misspec_SD1_ME
 
 ##### no assoc scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Records_used_in_500_matrices_hypred/SD0_data_500_run2_perm.rds")
-data <- predictVL(data, b0star=0.4414945, b1star=0.1170119, b2star=1.9283680, b3star=0.1369999)
+data <- predictVL(data, b0star=0.5, b1star=0.1, b2star=2, b3star=0.1)
 
 
 set.seed(18)
@@ -834,7 +834,7 @@ saveRDS(result1, file=here("Results","SimResults","Results_Hypred_noassoc_SD0_ME
 
 ##### misspec scenarios using SD=0 and estimated betas
 data <- readRDS("SimData/Records_used_in_500_matrices_hypred/SD0_data_500_run2.rds")
-data <- predictVL(data, b0star=0.623, b1star=0.133, b2star=0, b3star=0)
+data <- predictVL(data, b0star=2, b1star=0.3, b2star=0, b3star=0)
 
 
 set.seed(18)
