@@ -430,41 +430,41 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 # 
 # 
 # # AGAIG, SD=1, mid tier
-# final_table(dataset=hypred_AGAIG_SD1_ME0[hypred_AGAIG_SD1_ME0$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME0[hypred_AGAIG_SD1_ME0$section=="mid",], 
+             caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.025[hypred_AGAIG_SD1_ME.025$section=="mid",], 
 #             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.025, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.05, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="mid",], 
+             caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0.05, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.075[hypred_AGAIG_SD1_ME.075$section=="mid",], 
 #             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.075, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.1[hypred_AGAIG_SD1_ME.1$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.1, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.1[hypred_AGAIG_SD1_ME.1$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0.1, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.125[hypred_AGAIG_SD1_ME.125$section=="mid",], 
 #             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.125, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.15[hypred_AGAIG_SD1_ME.15$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.15, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.15[hypred_AGAIG_SD1_ME.15$section=="mid",], 
+             caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0.15, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.175[hypred_AGAIG_SD1_ME.175$section=="mid",], 
 #             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.175, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.2[hypred_AGAIG_SD1_ME.2$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.2, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.2[hypred_AGAIG_SD1_ME.2$section=="mid",], 
+             caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0.2, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.225[hypred_AGAIG_SD1_ME.225$section=="mid",], 
 #             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.225, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="mid",], 
+             caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0.25, Estimated betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="mid",], 
-#             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="mid",], 
+            caption = "Hypred Mid Tier, AGAIG, SD=1 $SD_{ME}$=0.5, Estimated betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.75[hypred_AGAIG_SD1_ME.75$section=="mid",], 
 #             caption = "Hypred Mid Tier, AGAIG, SD=1 ME=0.75, Estimated betas")
@@ -512,41 +512,41 @@ final_table <- function(dataset, caption, matsize=10, ci_method="clopper-pearson
 # 
 # 
 # ## AGAIG, SD=1, low tier
-# final_table(dataset=hypred_AGAIG_SD1_ME0[hypred_AGAIG_SD1_ME0$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME0[hypred_AGAIG_SD1_ME0$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.025[hypred_AGAIG_SD1_ME.025$section=="low",], 
 #             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.025, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.05, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.05[hypred_AGAIG_SD1_ME.05$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0.05, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.075[hypred_AGAIG_SD1_ME.075$section=="low",], 
 #             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.075, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.1[hypred_AGAIG_SD1_ME.1$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.1, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.1[hypred_AGAIG_SD1_ME.1$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0.1, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.125[hypred_AGAIG_SD1_ME.125$section=="low",], 
 #             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.125, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.15[hypred_AGAIG_SD1_ME.15$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.15, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.15[hypred_AGAIG_SD1_ME.15$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0.15, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.175[hypred_AGAIG_SD1_ME.175$section=="low",], 
 #             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.175, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.2[hypred_AGAIG_SD1_ME.2$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.2, Estimated Betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.2[hypred_AGAIG_SD1_ME.2$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0.2, Estimated Betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.225[hypred_AGAIG_SD1_ME.225$section=="low",], 
 #             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.225, Estimated Betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.25, Estimated betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.25[hypred_AGAIG_SD1_ME.25$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0.25, Estimated betas")
 # 
-# final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="low",], 
-#             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.5, Estimated betas")
+ final_table(dataset=hypred_AGAIG_SD1_ME.5[hypred_AGAIG_SD1_ME.5$section=="low",], 
+             caption = "Hypred Low Tier, AGAIG, SD=1 $SD_{ME}$=0.5, Estimated betas")
 # 
 # final_table(dataset=hypred_AGAIG_SD1_ME.75[hypred_AGAIG_SD1_ME.75$section=="low",], 
 #             caption = "Hypred Low Tier, AGAIG, SD=1 ME=0.75, Estimated betas")
